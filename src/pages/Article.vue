@@ -11,8 +11,11 @@
                 <p>Commentaires</p>
                 <ul v-if="article.comments && article.comments.length">
                     <li v-for="comment in article.comments" :key="'comment-' + comment.id">
-                        <p>{{ comment.message }}</p>
-                        <p>id <span>{{ getUser(comment.userId) }}</span></p>
+                        <img :src="comment.avatar" :alt="comment.username">
+                        <div>
+                            <p>{{ comment.username }}</p>
+                            <p>{{ comment.message }}</p>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -32,17 +35,6 @@
         computed: {
             article() {
                 return this.$store.state.news.find(e => e.id === this.id)
-            }
-        },
-        methods: {
-            getUser(id) {
-                console.log('user')
-                console.log(id);
-                this.$store.dispatch('getUser', id).then(res => {
-                    console.log('res')
-                    console.log(res)
-                })
-                return id
             }
         },
         mounted() {
@@ -96,10 +88,48 @@
             padding-top: 20px;
             border-top: solid 1px #444;
 
+            & > p {
+                margin-bottom: 20px;
+            }
+
             ul {
                 font-family: 'Roboto', sans-serif;
                 font-weight: 100;
                 font-size: 16px;
+            }
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-right: 20px;
+            }
+            li {
+                display: flex;
+                margin-bottom: 20px;
+                width: fit-content;
+                background-color: #fff;
+                padding: 5px 20px 5px 10px;
+                border-radius: 10px;
+                color: #333;
+                position: relative;
+
+                &:after {
+                    content: '';
+                    display: block;
+                    background-color: #fff;
+                    width: 10px;
+                    height: 10px;
+                    transform: rotate(45deg);
+                    position: absolute;
+                    left: 25px;
+                    bottom: -5px;
+                }
+
+                div > p:first-of-type {
+                    opacity: .5;
+                    font-size: 14px;
+                }
             }
         }
 
