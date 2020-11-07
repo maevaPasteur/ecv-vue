@@ -7,13 +7,15 @@
             <img :src="article.image" :alt="article.title">
         </div>
 
-        <ul class="small-artists" v-if="artistsLoad">
-            <li v-for="(artist, index) in artists" :key="'artist' + index">
-                <a :href="'/artists/' + artist.id">
-                    <img :src="artist.avatar" :alt="artist.name">
-                </a>
-            </li>
-        </ul>
+        <div class="small-artists" v-if="artistsLoad">
+            <ul>
+                <li v-for="(artist, index) in artists" :key="'artist' + index">
+                    <a :href="'/artists/' + artist.id">
+                        <img :src="artist.avatar" :alt="artist.name">
+                    </a>
+                </li>
+            </ul>
+        </div>
 
         <p class="content text">{{article.content}}</p>
 
@@ -44,36 +46,28 @@
         data() {
             return {
                 id: Number(this.$route.params.id),
+                article: null,
                 artistsLoad: false,
                 artists: []
             }
         },
-        computed: {
-            article() {
-                const article = this.$store.state.news.find(e => e.id === this.id);
-                if(article && article.artistesId) {
-                    this.getArtists(article.artistesId)
-                }
-                return article;
-            }
-        },
         methods: {
             getArtists(ids) {
-                ids.forEach( async (id, index) => {
+                ids.forEach(async (id, index) => {
                     this.artists[index] = await this.$store.dispatch('getArtist', id);
-                    if(index === ids.length - 1) {
+                    if (index === ids.length - 1) {
                         this.artistsLoad = true
                     }
-                })
-            },
-            getArtist(id) {
-                this.$store.dispatch('getArtist', id).then(res => {
-                    return res
                 })
             }
         },
         mounted() {
-            this.$store.dispatch('getNews');
+            this.$store.dispatch('getNew', this.id).then(res => {
+                this.article = res;
+                if (res && res.artistesId) {
+                    this.getArtists(res.artistesId)
+                }
+            })
         }
     }
 </script>
@@ -83,9 +77,12 @@
     .detail-article {
 
         .small-artists {
-            display: flex;
-            flex-wrap: wrap;
             margin-bottom: 20px;
+
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+            }
 
             li {
                 &:not(:first-of-type) {
@@ -98,6 +95,11 @@
                 height: 60px;
                 border-radius: 50%;
                 object-fit: cover;
+                transition: transform ease .15s;
+
+                &:hover {
+                    transform: scale(.95);
+                }
             }
         }
 
@@ -179,6 +181,7 @@
                 object-fit: cover;
                 margin-right: 20px;
             }
+
             li {
                 display: flex;
                 margin-bottom: 20px;
