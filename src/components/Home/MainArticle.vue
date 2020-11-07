@@ -1,7 +1,7 @@
 <template>
     <section class="main-article" v-if="news && news.length">
         <flickity class="main-slider" ref="mainSlider" :options="flickityOptions">
-            <div class="slide" v-for="article in news.slice(0, 5)" :key="article.title">
+            <div class="slide" v-for="article in news" :key="article.title">
                 <img :src="article.image" :alt="article.title"/>
                 <a :href="'/articles'+article.id" class="container">
                     <h2>{{ article.title }}</h2>
@@ -30,7 +30,7 @@
         },
         computed: {
             news() {
-                return this.$store.state.news
+                return this.$store.state.news.slice(0, 5)
             }
         },
         mounted() {

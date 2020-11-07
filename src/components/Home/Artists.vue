@@ -1,6 +1,6 @@
 <template>
     <section class="artists section-item">
-        <h2>Les artistes du moment</h2>
+        <h2>Tous nos artistes du moment</h2>
         <flickity v-if="artists && artists.length" :options="flickityOptions" ref="flickity">
             <a href="#" v-for="(artist, index) in artists" :key="index + artist.name" class="slide">
                 <div class="img">
@@ -68,7 +68,7 @@
         }
 
         .flickity-prev-next-button {
-            top: -65px;
+            top: -75px;
             background-color: transparent;
             &:disabled {
                 opacity: 0;

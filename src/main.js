@@ -12,8 +12,12 @@ Vue.config.productionTip = false;
 
 Vue.use(Vuex);
 
+Vue.filter('splitNumber', function (value) {
+  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+});
+
 new Vue({
-  store,
-  router,
-  render: h => h(App),
+    store,
+    router,
+    render: h => h(App),
 }).$mount('#app');

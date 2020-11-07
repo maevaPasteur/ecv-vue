@@ -14,7 +14,10 @@ const actions = {
     getArtists({ commit }) {
         API.get('artists')
             .then(response => {
-                commit('SET_ARTISTS', response.data)
+                const artists = response.data.sort((a,b) => {
+                    return b.likes - a.likes
+                });
+                commit('SET_ARTISTS', artists)
             })
     },
     // eslint-disable-next-line no-unused-vars

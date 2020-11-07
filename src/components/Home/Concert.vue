@@ -28,7 +28,6 @@
         mounted() {
             this.$store.dispatch('getArtist', this.concert.artistId).then(res => {
                 this.artist = res;
-                console.log(this.count, this.index)
                 if(this.index === 0) {
                     this.$emit('ready')
                 }

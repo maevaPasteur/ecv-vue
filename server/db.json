@@ -57,11 +57,11 @@
     },
     {
       "id": 7,
-      "title": "Kendji Girac est déjà disque d’or avec son nouvel album «Mi Vida»",
+      "title": "Son «Corps» cartonne : le joli retour en grâce de la chanteuse Yseult",
       "published": "27/10/2020",
-      "image": "https://www.live-actu.com/wp-content/uploads/2020/06/Kendji-Girac-Habibi-2020-06-09-Actu.jpg",
-      "content": "Que de bonnes nouvelles pour Kendji Girac! En plus de rester au sommet du Top Albums, le chanteur vient d’être récompensé d’une certification d’or pour son dernier opus «Mi Vida». Plus de 52 000 copies de son album ont été écoulées en seulement deux semaines! Un exploit qui est allé droit au cœur de Kendji comme il l’a écrit sur Instagram : «Merci Merci Merci. C’est grâce à vous. Je suis trop trop content». Disponible depuis le 9 octobre dernier, «Mi Vida» cartonne grâce aux hits «Habibi», «Dernier Métro» en featuring avec Gims mais aussi «Dans mes bras» avec Dadju. Les onze titres de cet opus ont pour thème commun : l’amour ! «Je parle beaucoup des histoires d’amour. Il y en a un petit peu que j’ai vécues et d’autres qui sont assez romancées. Après je ne vais pas vous révéler celles qui sont mélangées à ma vie. C’est au public de rêver sur ces chansons d’amour et de trouver celles qui me concernent ou pas.» a récemment révélé Kendji Girac au micro d’NRJ.",
-      "artistesId": [12]
+      "image": "https://www.tap-poitiers.com/wp-content/thumbnails/uploads/2020/09/img_6472-tt-width-1600-height-1067-crop-1-bgcolor-000000.jpg",
+      "content": "La chanteuse revient de loin. Révélée en 2014 par «Nouvelle Star», elle se met à nu dans «Corps», poignante chanson autobiographique dont le clip a franchi 1,4 million de vues. « Un million de vues en un mois sans sponsorisation. C'est votre victoire, merci ». Sur son compte Instagram, Yseult a écrit le million en lettres capitales, comme pour mieux s'en convaincre. Le succès de « Corps », le titre et le clip qui a dépassé depuis 1,4 million de vues sur YouTube, signe un retour en grâce presque inespéré pour la chanteuse de 24 ans, qui avait disparu depuis l'échec de son premier album éponyme, vendu à 5 000 exemplaires en 2015. Portée par de bons titres électro pop comme « La vague » et « Bye Bye Bye », le disque aurait mérité meilleur sort. Mais enregistré dans la foulée de « La Nouvelle Star », dont elle fut finaliste en 2014, elle le juge trop désincarné et léger. « Je ne l'aime pas, cet album, tranche aujourd'hui Yseult. Je me suis aperçue que ce qui m'intéressait, en fait, c'était être derrière tout, la composition, les textes, le son… Maintenant, je n'ai pas de manageur, ni de directeur artistique, je fais tout et je sais dire non. C'est de la sueur, mais quand ça marche, tu te dis : meuf, tu n'as pas fait tout ça pour rien. ». Elle a déménagé il y a un an et demi à Bruxelles où elle a trouvé un nouvel écrin pour une nouvelle vie. « J'avais besoin de prouver à mes parents et à moi-même que je pouvais être indépendante, explique-t-elle. J'y ai trouvé beaucoup d'entraide entre artistes et un climat apaisant qui m'a permis de lancer ma petite entreprise. Je me suis fait confiance, j'ai arrêté de me comparer aux autres et pendant deux ans, je n'ai rien écouté de ce qui sortait. »",
+      "artistesId": [15]
     },
     {
       "id": 8,
@@ -92,6 +92,15 @@
     { "id": 9, "name": "pop" }
   ],
   "artists": [
+    {
+      "id": 0,
+      "name": "Travis Scott",
+      "avatar": "https://generations.fr/media/news/5fa290c352b0b-travis-scott-cacti-acheter-5-1000x750.jpg",
+      "origin": "Etats-Unis",
+      "genreId": 3,
+      "likes": 9845942,
+      "description": "Travis Scott, anciennement stylisé Travi$ Scott, de son vrai nom Jacques Berman Webster II, né le 30 avril 1992 à Houston au Texas, est un rappeur, chanteur, producteur, musicien, acteur, mannequin et réalisateur américain."
+    },
     {
       "id": 1,
       "name": "Coldplay",
@@ -193,12 +202,12 @@
     },
     {
       "id": 12,
-      "name": "Kendji Girac",
-      "avatar": "https://suis-nous.com/wp-content/uploads/2020/06/kendji.jpg",
-      "origin": "France",
-      "genreId": 9,
-      "likes": 536866,
-      "description": "Kendji Girac, de son vrai nom Kendji Maillé, est un chanteur et guitariste français, né le 3 juillet 1996 à Périgueux, en Dordogne. Vainqueur de la saison 3 de The Voice : La Plus Belle Voix en 2014, il connaît le succès dès son premier titre, Color Gitano. Il a depuis publié trois albums, ainsi qu'un album live."
+      "name": "Cardi B",
+      "avatar": "https://www.clique.tv/wp-content/uploads/2017/09/home-clique-tv-cardi-b-charts-bodak-yellow.jpg",
+      "origin": "Etats-Unis",
+      "genreId": 3,
+      "likes": 8818912,
+      "description": "Belcalis Marlenis Almánzar, plus connue sous le nom de Cardi B, née le 11 octobre 1992, est une rappeuse américaine, auteure-compositrice, personnalité de télévision et actrice. Elle est devenue célèbre sur Internet après que plusieurs de ses publications sont devenues virales sur Vine et Instagram."
     },
     {
       "id": 13,
@@ -211,12 +220,21 @@
     },
     {
       "id": 14,
-      "name": "Coldplay",
-      "avatar": "https://www.lfm.ch/wp-content/uploads/2020/01/imgjpgaf3587a885b46b71fe591e58a025c1625e04025e.jpg",
-      "origin": "Angleterre",
-      "genreId": 1,
-      "likes": 7244931,
-      "description": "Coldplay est un groupe britannique créé en 1996. Il est formé par l'auteur-compositeur-interprète Chris Martin et le guitariste Jon Buckland. Le bassiste Guy Berryman rejoint ensuite le groupe, avant que le batteur Will Champion ne vienne compléter le quatuor."
+      "name": "Kendji Girac",
+      "avatar": "https://suis-nous.com/wp-content/uploads/2020/06/kendji.jpg",
+      "origin": "France",
+      "genreId": 9,
+      "likes": 536866,
+      "description": "Kendji Girac, de son vrai nom Kendji Maillé, est un chanteur et guitariste français, né le 3 juillet 1996 à Périgueux, en Dordogne. Vainqueur de la saison 3 de The Voice : La Plus Belle Voix en 2014, il connaît le succès dès son premier titre, Color Gitano. Il a depuis publié trois albums, ainsi qu'un album live."
+    },
+    {
+      "id": 15,
+      "name": "Yseult",
+      "avatar": "https://media2.ledevoir.com/images_galerie/nwd_791295_625021/image.jpg",
+      "origin": "Belgique",
+      "genreId": 9,
+      "likes": 387654,
+      "description": "Yseult, née Yseult Onguenet le 18 août 1994 à Paris, est une auteure-compositeure-interprète et mannequin française."
     }
   ],
   "albums": [
