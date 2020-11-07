@@ -5,11 +5,45 @@ body {
   font-family: 'Bebas Neue', cursive;
 }
 
+textarea {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+}
+
+.text {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+}
+
 .section-item {
   width: calc(100% - 40px);
   display: block;
   max-width: 1200px;
   margin: 150px auto;
+
+  .flickity-prev-next-button {
+    top: -75px;
+    background-color: transparent;
+    &:disabled {
+      opacity: 0;
+    }
+
+    svg {
+      fill: #fff;
+      width: 15px;
+      left: auto;
+      right: 0;
+      top: 50%;
+      height: auto;
+    }
+  }
+
+  .flickity-prev-next-button.previous {
+    left: auto;
+    right: 60px;
+  }
 
   h2 {
     font-size: 40px;

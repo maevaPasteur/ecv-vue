@@ -1,13 +1,21 @@
+import API from '../../api/config';
+
 const state = {
     genres: []
 };
 
-const mutations = {
-
-};
+const mutations = {};
 
 const actions = {
-
+    // eslint-disable-next-line no-unused-vars
+    getGenre({commit}, id) {
+        return new Promise(resolve => {
+            API.get(`genres/${id}`)
+                .then(response => {
+                    resolve(response.data)
+                })
+        })
+    }
 };
 
 const getters = {

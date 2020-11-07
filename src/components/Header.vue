@@ -1,7 +1,7 @@
 <template>
     <header>
         <div class="bar">
-            <h1>News APP</h1>
+            <a href="/"><h1>News APP</h1></a>
             <button></button>
         </div>
     </header>
