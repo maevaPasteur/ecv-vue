@@ -8,6 +8,7 @@
                 </div>
                 <div class="content">
                     <h3>{{ artist.name }}</h3>
+                    <p>{{ artist.likes | splitNumber }} <icon-heart @click.native.prevent="like"/></p>
                 </div>
             </a>
         </flickity>
@@ -17,11 +18,13 @@
 <script>
 
     import Flickity from 'vue-flickity'
+    import IconHeart from "../Icons/IconHeart";
 
     export default {
         name: 'Artists',
         components: {
-            Flickity
+            Flickity,
+            IconHeart
         },
         data() {
             return {
@@ -41,6 +44,11 @@
         },
         mounted() {
             this.$store.dispatch('getArtists')
+        },
+        methods: {
+            like() {
+                console.log('like')
+            }
         }
     }
 </script>
@@ -48,9 +56,15 @@
 <style lang="scss">
 
     .artists {
+
         .slide {
             width: calc((100% - 30px) / 4);
             margin-right: 10px;
+            overflow: hidden;
+        }
+
+        a:hover img {
+            transform: scale(1.05);
         }
 
         img {
@@ -60,6 +74,7 @@
             left: 0;
             top: 0;
             object-fit: cover;
+            transition: transform ease-out .5s;
         }
 
         .img {
@@ -77,6 +92,10 @@
             left: 20px;
             width: calc(100% - 40px);
             text-shadow: 0 0 20px #424242;
+        }
+
+        svg {
+            width: 15px;
         }
     }
 

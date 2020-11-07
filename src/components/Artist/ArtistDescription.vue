@@ -89,6 +89,9 @@
                 this.$store.dispatch('getNewsByArtist', this.artist.id).then(res => {
                     this.articles = res
                 })
+            },
+            like() {
+                console.log('like')
             }
         }
     }
