@@ -4,6 +4,7 @@
         <top-artists/>
         <concerts/>
         <artists/>
+        <articles/>
     </div>
 </template>
 
@@ -13,6 +14,7 @@
     import Concerts from "@/components/Home/Concerts";
     import Artists from "../components/Home/Artists";
     import TopArtists from "../components/Home/TopArtists";
+    import Articles from "../components/Home/Articles";
 
     export default {
         name: 'Home',
@@ -20,7 +22,8 @@
             MainArticles,
             Concerts,
             Artists,
-            TopArtists
+            TopArtists,
+            Articles
         }
     }
 </script>
