@@ -1,34 +1,43 @@
 <template>
-  <div class="page">
-    <header>Header</header>
-    <main>
-      <transition name="fade">
-        <slot/>
-      </transition>
-    </main>
-    <footer>Footer</footer>
-  </div>
+    <div class="page">
+        <Header/>
+        <main>
+            <transition name="fade">
+                <slot/>
+            </transition>
+        </main>
+        <Footer/>
+    </div>
 </template>
 
 <script>
 
-export default {
-  components: {}
-}
+    import Header from "../components/Header";
+    import Footer from "../components/Footer";
+
+    export default {
+        components: {Header, Footer}
+    }
 
 </script>
 
-<style>
-  /*
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
-  }
-  .fade-enter, .fade-leave-to {
-    opacity: 0;
-  }
-  .fade-leave-to {
-    position: absolute;
-  }
+<style lang="scss">
 
-   */
+    main {
+        position: relative;
+        z-index: 1;
+    }
+
+    /*
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to {
+      opacity: 0;
+    }
+    .fade-leave-to {
+      position: absolute;
+    }
+
+     */
 </style>

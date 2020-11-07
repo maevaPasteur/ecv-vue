@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1> Login </h1>
+    <h1> Register </h1>
     <label>Email</label>
     <input
       type="text"
@@ -11,8 +11,8 @@
       type="password"
       v-model="password"
     />
-    <button @click="login">
-      Login
+    <button @click="submit">
+      Register
     </button>
     <p v-if="error">{{ error }}</p>
   </div>
@@ -30,8 +30,8 @@ export default {
     }
   },
   methods: {
-    login () {
-      axios.post('http://localhost:3000/login', {
+    submit () {
+      axios.post('register', {
         email: this.email,
         password: this.password
       })
@@ -44,6 +44,5 @@ export default {
         })
     }
   }
-
 }
 </script>

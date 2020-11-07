@@ -1,52 +1,44 @@
-import axios from 'axios'
+import API from '../../api/config'
 
 const state = {
-  manyNews: [],
-  news: null,
-}
-
-const getters = {
-  getManyNews: state => state.manyNews,
-  getNews: state => state.news,
-}
+    news: []
+};
 
 const mutations = {
-  setManyNews (state, manyNews) {
-    state.manyNews = manyNews
-  },
-  setNews (state, news) {
-    state.news = news
-  }
-}
+    SET_NEWS(state, news) {
+        state.news = news
+    }
+};
 
 const actions = {
-  async fetchManyNews ({ commit }) {
-    const { data } = await axios.get('http://localhost:3000/news')
-    commit('setManyNews', data)
-  },
-  async fetchNews ({ commit }, id) {
-    const { data } = await axios.get(`http://localhost:3000/news/${id}`)
-    commit('setNews', data)
-  },
-  async createNews ({ commit }, data) {
-    await axios.post(`http://localhost:3000/news`, {
-      ...data
-    })
-  },
-  async editNews ({ commit }, data) {
-    await axios.patch(`http://localhost:3000/news/${data.id}`, {
-      ...data
-    })
-  },
-  async deleteNews ({ commit }, id) {
-    await axios.delete(`http://localhost:3000/news/${id}`)
-  },
-}
+    getNews({ commit }) {
+        API.get('news')
+            .then(response => {
+                let articles = response.data;
 
-export default {
-  namespaced: true,
-  state,
-  getters,
-  mutations,
-  actions
-}
+                // Trier du + au - récent
+                articles.sort(function (a, b) {
+                  let date = a.published.split('/');
+                  const c = new Date(`${date[1]}/${date[0]}/${date[2]}`);
+                  date = b.published.split('/');
+                  const d = new Date(`${date[1]}/${date[0]}/${date[2]}`);
+                  return d - c;
+                });
+
+                commit('SET_NEWS', articles)
+            })
+    }
+};
+
+const getters = {
+    news: state => state.news
+};
+
+const news = {
+    state: state,
+    mutations: mutations,
+    actions: actions,
+    getters: getters
+};
+
+export default news

@@ -1,16 +1,27 @@
 <template>
     <div>
-        <h1>Hello home</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consequatur consequuntur delectus deserunt
-            ex fuga, fugiat in minus quam reiciendis totam veniam, veritatis voluptatibus? Accusamus ducimus facere iusto
-            optio vitae?</p>
-        <router-link :to="{name: 'test'}">Lien A</router-link>
+        <main-article/>
+        <concerts/>
+        <artists/>
     </div>
 </template>
 
 <script>
 
+    import MainArticle from "@/components/Home/MainArticle";
+    import Concerts from "@/components/Home/Concerts";
+    import Artists from "../components/Home/Artists";
+
     export default {
-        name: 'Home'
+        name: 'Home',
+        components: {
+            MainArticle,
+            Concerts,
+            Artists
+        }
     }
 </script>
+
+<style lang="scss">
+    @import 'src/assets/scss/_styles.scss';
+</style>

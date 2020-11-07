@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1> Register </h1>
+    <h1> Login </h1>
     <label>Email</label>
     <input
       type="text"
@@ -11,15 +11,16 @@
       type="password"
       v-model="password"
     />
-    <button @click="submit">
-      Register
+    <button @click="login">
+      Login
     </button>
     <p v-if="error">{{ error }}</p>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+
+import API from '../api/config'
 
 export default {
   data () {
@@ -30,8 +31,8 @@ export default {
     }
   },
   methods: {
-    submit () {
-      axios.post('http://localhost:3000/register', {
+    login () {
+      API.post('login', {
         email: this.email,
         password: this.password
       })
@@ -39,10 +40,11 @@ export default {
           localStorage.setItem('token', res.data.accessToken)
           this.$router.push({ name: 'people' })
         })
-        .catch(er => {
+        .catch(() => {
           this.error = 'Une erreur est survenue'
         })
     }
   }
+
 }
 </script>

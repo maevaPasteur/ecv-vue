@@ -9,7 +9,7 @@ Côté back office, les utilisateurs pourront modifier les news, les artistes, l
 La page d'accueil affichera les dernières news et albums. <br>
 <br>
 #### Bonus
-Les internautes peuvent s'inscrire pour commenter les news et mettre des likes sur les artistes. <br>
+Les internautes peuvent s'inscrire pour commenter les news  et mettre des likes sur les artistes. <br>
 La page d'accueil contient le top 5 des artistes les plus likés.
 
 <br>

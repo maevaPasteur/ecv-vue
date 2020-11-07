@@ -8,34 +8,76 @@
   ],
   "news": [
     {
+      "handle": "",
       "title": "Gims, Angèle, Nekfeu… Ces duos entre les francophones et les internationaux",
       "published": "12/09/2020",
-      "image": "https://img.nrj.fr/g5SP8PJ8o3IsvBKfvScQuisTQyE=/0x450/smart/https%3A%2F%2Fimage-api.nrj.fr%2Fmedias%2F2020%2F10%2Fgims-ange-le-nekfeu_5f9c1d3379763.",
-      "content": "Annoncée au mois d’octobre, cette collaboration entre Dua Lipa et Angèle était inattendue. Les premiers indices ont été postés sur les réseaux sociaux. De son côté, la chanteuse anglais promettait de revenir prochainement avec de nouveaux projets. Ses fans, sachant que l’interprète de «Physical» était de retour en studio, tous s’attendaient à ces morceaux inédits. Le projet a été lancé, qu’ils se tiennent prêts à découvrir le «Club Future Nostalgia». Le premier titre révélé étant «Fever». «I've got a fever, so can you check? Hand on my forehead, kiss my neck. And when you touch me, baby, I turn redI've got a fever, so can you check? (I've got a fever). Car dans mes yeux, ça se voit. La fièvre dans les yeux, oui ça se voit. Mon cœur se serre, j'ai du feu dans la voix. Le plus souvent, c'est quand je pense à toi.»Pour celui-ci, Dua Lipa est entourée d’Angèle. Ensemble, elles offrent une chanson rythmée qui mélange bien évidemment le français et l’anglais. Elles ont également été aperçues ensemble quelques jours avant la sortie de «Fever». Pour les internautes aucun doute, les artistes ont tourné un clip. Sur Instagram et Twitter, Dua Lipa et Angèle ont aussi partagé des photos d’elles, où elles sont très proches."
+      "image": "https://ctr.cdnartwhere.eu/sites/demo/files/styles/manual_crop/public/2020-10/angele-dualipa_0.jpg",
+      "content": "Annoncée au mois d’octobre, cette collaboration entre Dua Lipa et Angèle était inattendue. Les premiers indices ont été postés sur les réseaux sociaux. De son côté, la chanteuse anglais promettait de revenir prochainement avec de nouveaux projets. Ses fans, sachant que l’interprète de «Physical» était de retour en studio, tous s’attendaient à ces morceaux inédits. Le projet a été lancé, qu’ils se tiennent prêts à découvrir le «Club Future Nostalgia». Le premier titre révélé étant «Fever». «I've got a fever, so can you check? Hand on my forehead, kiss my neck. And when you touch me, baby, I turn redI've got a fever, so can you check? (I've got a fever). Car dans mes yeux, ça se voit. La fièvre dans les yeux, oui ça se voit. Mon cœur se serre, j'ai du feu dans la voix. Le plus souvent, c'est quand je pense à toi.»Pour celui-ci, Dua Lipa est entourée d’Angèle. Ensemble, elles offrent une chanson rythmée qui mélange bien évidemment le français et l’anglais. Elles ont également été aperçues ensemble quelques jours avant la sortie de «Fever». Pour les internautes aucun doute, les artistes ont tourné un clip. Sur Instagram et Twitter, Dua Lipa et Angèle ont aussi partagé des photos d’elles, où elles sont très proches.",
+      "artistesId": [4, 5]
     },
     {
-      "title": "Quoi de mieux qu'une version acoustique pour retrouver un peu de sérénité? Shawn Mendes a récemment offert à ses fans une douce version de sa dernière chanson «Wonder».",
+      "id": 2,
+      "title": "Quoi de mieux qu'une version acoustique pour retrouver un peu de sérénité?",
       "published": "14/09/2020",
-      "image": "https://img.nrj.fr/O2ulnIAyrNMHeKeTzazUmfLhQVA=/800x450/smart/https%3A%2F%2Fimage-api.nrj.fr%2Fmedias%2F2020%2F10%2Fshawn-mendes_5f9c1958f0b18.jpg",
-      "content": "Shawn Mendes est de retour. Après une pause dans sa carrière, l'interprète de «Stitches» a annoncé quelques projets à ses fans: la sortie d'un album inédit le 4 décembre prochain, porté par le titre «Wonder» déjà dévoilé mais aussi la diffusion d'un documentaire sur Netflix.Et l'artiste canadien, désormais en pleine promotion de cet opus, a aussi dévoilé une version acoustique de ce premier extrait, il y a quelques heures. Accompagné de son piano, Shawn Mendes a offert une reprise tout en douceur, qui a ravi ses fans."
+      "image": "https://images-na.ssl-images-amazon.com/images/I/81B1F0TMyBL._SL1400_.jpg",
+      "content": "Shawn Mendes est de retour. Après une pause dans sa carrière, l'interprète de «Stitches» a annoncé quelques projets à ses fans: la sortie d'un album inédit le 4 décembre prochain, porté par le titre «Wonder» déjà dévoilé mais aussi la diffusion d'un documentaire sur Netflix.Et l'artiste canadien, désormais en pleine promotion de cet opus, a aussi dévoilé une version acoustique de ce premier extrait, il y a quelques heures. Accompagné de son piano, Shawn Mendes a offert une reprise tout en douceur, qui a ravi ses fans.",
+      "artistesId": [6]
     },
     {
+      "id": 3,
       "title": "Jonas Brothers: «I Need You Christmas» est là",
       "published": "08/09/2020",
       "image": "https://img.nrj.fr/jIu5wPPOs81fygUYGI1Wevc8xL4=/650x366/smart/https%3A%2F%2Fimage-api.nrj.fr%2Fmedias%2F2019%2F05%2Fpicto-jonasb_5ce41e0871752.JPG",
-      "content": "Un cadeau en avance! Chaque année, Joe, Nick et Kevin aiment se plonger dans cette période féérique des fêtes de fin d’année. Une période qu’ils aiment partager en famille mais également avec leurs fans. En décembre 2019, ils partageaient «Like It’s Christmas», cette fois-ci les revoilà dans un registre différent, mais toujours basé sous le thème de Noël. Avec «I Need You Christman», les Jonas Brothers composent un titre qui rappelle les classiques d’Ella Fitzgerald avec «Have Yourself a Merry Christmas» ou encore de Frank Sinatra avec «Silent Night», en interprétant leur chanson avec seulement quelques instruments, piano, guitare acoustique et de violons."
+      "content": "Un cadeau en avance! Chaque année, Joe, Nick et Kevin aiment se plonger dans cette période féérique des fêtes de fin d’année. Une période qu’ils aiment partager en famille mais également avec leurs fans. En décembre 2019, ils partageaient «Like It’s Christmas», cette fois-ci les revoilà dans un registre différent, mais toujours basé sous le thème de Noël. Avec «I Need You Christman», les Jonas Brothers composent un titre qui rappelle les classiques d’Ella Fitzgerald avec «Have Yourself a Merry Christmas» ou encore de Frank Sinatra avec «Silent Night», en interprétant leur chanson avec seulement quelques instruments, piano, guitare acoustique et de violons.",
+      "artistesId": [7]
     },
     {
+      "id": 4,
       "title": "Dadju dévoile la réédition «Poison ou Antidote : Miel Book»",
       "published": "30/08/2020",
       "image": "https://static.actu.fr/uploads/2020/09/dadju-zenith-caen-coronavirus-854x508-1.jpg",
-      "content": "Il est là! Après plusieurs semaines d'attente, Dadju vient d'offrir un nouveau projet musical à ses fans. Il s'agit de la réédition de son album à succès «Poison ou Antidote». Le nouvel opus s'intitule «Poison ou Antidote : Miel Book» et se compose de onze nouveaux titres, dont «Amour Toxic» et «Dieu Merci» feat Tiakola déjà dévoilés par le chanteur. L'interprète de «Bobo au cœur» s'est aussi entouré d'autres artistes à l'image de Jaekers, Fally Ipupa et Ocevne. Sur ses réseaux sociaux, le frère de Gims a annoncé la sortie de ce projet: «Trop de sucre n’est pas bon pour la santé. Mais ça reste entre nous...» Mais si le sucre est à consommer avec modération, il n'en est rien du nouvel album de Dadju, que vous pouvez écouter en boucle! "
+      "content": "Il est là! Après plusieurs semaines d'attente, Dadju vient d'offrir un nouveau projet musical à ses fans. Il s'agit de la réédition de son album à succès «Poison ou Antidote». Le nouvel opus s'intitule «Poison ou Antidote : Miel Book» et se compose de onze nouveaux titres, dont «Amour Toxic» et «Dieu Merci» feat Tiakola déjà dévoilés par le chanteur. L'interprète de «Bobo au cœur» s'est aussi entouré d'autres artistes à l'image de Jaekers, Fally Ipupa et Ocevne. Sur ses réseaux sociaux, le frère de Gims a annoncé la sortie de ce projet: «Trop de sucre n’est pas bon pour la santé. Mais ça reste entre nous...» Mais si le sucre est à consommer avec modération, il n'en est rien du nouvel album de Dadju, que vous pouvez écouter en boucle! ",
+      "artistesId": [8]
     },
     {
+      "id": 5,
       "title": "Amel Bent s'entoure d'Hatik pour un duo surprise «1,2,3»",
       "published": "15/09/2020",
-      "image": "https://img.20mn.fr/7JpLjkr8TXmY2Fs7GMyxlQ/768x492_hatik-amel-bent-devoile-1-2-3-premier-duo-vendredi.jpg",
-      "content": "Personne ne s'attendait à une telle collaboration. Et pourtant, Amel Bent et Hatik ont fait le pari d'enregistrer une chanson ensemble. Elle s'intitule «1,2,3» et elle est disponible depuis ce vendredi 30 octobre 2020. Très fier de ce duo, l'interprète du morceau à succès «Angela» a adressé quelques mots à sa partenaire: «Qui s’y attendait à celle-la ? Merci pour l’honneur que tu me fais de m’inviter ma reuss», a-t-il écrit sur les réseaux sociaux. À travers le morceau, les deux artistes évoquent les doutes dans une relation amoureuse et le moment d'avouer ses sentiments à l'autre."
+      "image": "https://cdn.radiofrance.fr/s3/cruiser-production/2020/06/c729fe83-b5ce-44d7-ba33-b99be400b9ed/1200x680_hatik.jpg",
+      "content": "Personne ne s'attendait à une telle collaboration. Et pourtant, Amel Bent et Hatik ont fait le pari d'enregistrer une chanson ensemble. Elle s'intitule «1,2,3» et elle est disponible depuis ce vendredi 30 octobre 2020. Très fier de ce duo, l'interprète du morceau à succès «Angela» a adressé quelques mots à sa partenaire: «Qui s’y attendait à celle-la ? Merci pour l’honneur que tu me fais de m’inviter ma reuss», a-t-il écrit sur les réseaux sociaux. À travers le morceau, les deux artistes évoquent les doutes dans une relation amoureuse et le moment d'avouer ses sentiments à l'autre.",
+      "artistesId": [9, 10]
+    },
+    {
+      "id": 6,
+      "title": "Dua Lipa annonce un événement en live dans son «Studio 2054»",
+      "published": "10/08/2020",
+      "image": "https://morocco-grlk5lagedl.stackpathdns.com/production/morocco/images/1570184370127663-Dua-Lipa.jpg?w=1920&h=800&fit=fill&crop=faces&auto=%5B%22format%22%2C%20%22compress%22%5D&cs=srgb",
+      "content": "C'est un événement à ne pas manquer pour tous les fans de Dua Lipa. Alors que l'interprète de «Physical» poursuit la promotion de ses derniers projets musicaux, la chanteuse a annoncé un concert en livestream, «Studio 2054». Le show qui se déroulera le 27 novembre prochain sera rythmé par les récentes chansons de la principale intéressée, à travers son dernier album «Future Nostalgia» mais aussi son édition remix. La chanteuse se verra aussi «évoluer à travers des décors personnalisés, des émissions de télévision surréalistes, des discothèques, des raves extatiques, des lieux de rencontre pour les rockers trash, des salles de bal voguing et des vestiaires de style diva», comme l'indique le site officiel de l'événement.",
+      "artistesId": [11]
+    },
+    {
+      "id": 7,
+      "title": "Kendji Girac est déjà disque d’or avec son nouvel album «Mi Vida»",
+      "published": "27/10/2020",
+      "image": "https://www.live-actu.com/wp-content/uploads/2020/06/Kendji-Girac-Habibi-2020-06-09-Actu.jpg",
+      "content": "Que de bonnes nouvelles pour Kendji Girac! En plus de rester au sommet du Top Albums, le chanteur vient d’être récompensé d’une certification d’or pour son dernier opus «Mi Vida». Plus de 52 000 copies de son album ont été écoulées en seulement deux semaines! Un exploit qui est allé droit au cœur de Kendji comme il l’a écrit sur Instagram : «Merci Merci Merci. C’est grâce à vous. Je suis trop trop content». Disponible depuis le 9 octobre dernier, «Mi Vida» cartonne grâce aux hits «Habibi», «Dernier Métro» en featuring avec Gims mais aussi «Dans mes bras» avec Dadju. Les onze titres de cet opus ont pour thème commun : l’amour ! «Je parle beaucoup des histoires d’amour. Il y en a un petit peu que j’ai vécues et d’autres qui sont assez romancées. Après je ne vais pas vous révéler celles qui sont mélangées à ma vie. C’est au public de rêver sur ces chansons d’amour et de trouver celles qui me concernent ou pas.» a récemment révélé Kendji Girac au micro d’NRJ.",
+      "artistesId": [12]
+    },
+    {
+      "id": 8,
+      "title": "Coldplay : leur premier album célèbre ses 20 ans !",
+      "published": "27/10/2020",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Coldplay_-_Global-Citizen-Festival_Hamburg_14.jpg/1200px-Coldplay_-_Global-Citizen-Festival_Hamburg_14.jpg",
+      "content": "Le groupe anglais a décidé de marquer les 20 ans de son premier opus \"Parachutes\", en rééditant leurs anciennes vidéos dans une version en haute définition. Le single \"Shiver\" a ainsi été posté sur les réseaux sociaux dans sa nouvelle mouture modernisée. C'est l'occasion de revenir sur l'incroyable longévité du groupe britannique, ainsi que sur ce premier album, devenu un classique. \"Parachutes\" (2000) reçoit dès sa sortie un accueil favorable de la part du public comme des critiques. Ces derniers pointent la noirceur de cet album alors que le groupe insiste plutôt sur un mélange de genre très troublant, avec des paroles superbes mais une musique très mélancolique. Les influences du groupe Radiohead et de leur album \"OK Computer\" se font sentir tout le long du disque. La voix de Chris Martin est mise en avant dans des chansons au tempo lent, des ballades pop-rock douces et envoûtantes. Les ventes décollent et \"Parachutes\" se place à la première place du Top Album au Royaume-Uni. Le groupe connaît un succès important en Europe, y compris en France, où le disque reçoit des critiques élogieuses. Le groupe de rock alternatif anglais Colplay est né avec cet album de ballades romantiques, devenu culte auprès des fans de la première heure.",
+      "artistesId": [14]
+    },
+    {
+      "id": 9,
+      "title": "Harry Styles: son clip «Golden» est là!",
+      "published": "26/10/2020",
+      "image": "https://static.billboard.com/files/2020/10/01-harry-styles-press-golden-billboard-1548-1603729502-compressed.jpg",
+      "content": "Une affaire de longue date… Depuis cet été, les fans d’Harry Styles sont à la recherche du moindre indice! Pendant la période estival, le chanteur anglais a été aperçu sur les côtes italiennes en plein tournage d’un nouveau clip. Après les succès de «Adore You», «Falling» ou encore «Watermelon Sugar», les internautes s’interrogeaient sur cette nouvelle Tout se serait déroulé en Italie. En effet, Harry Styles a enregistré plusieurs prises pour le clip de «Golden». Tout au long de la vidéo, ce dernier court après la personne qu’il aime. Des plans de lui en costume au milieu de la route ou encore avec un chapeau de marin sur la tête, se mélangent pendant ces quelques minutes.",
+      "artistesId": [13]
     }
   ],
   "genres": [
@@ -54,7 +96,7 @@
       "id": 1,
       "name": "Coldplay",
       "country": "Great Britain",
-      "avatar": "https://upload.wikimedia.org/wikipedia/en/1/1d/Coldplay_shot_by_Marcus_Haney_01.png",
+      "avatar": "https://cdn-rfm.lanmedia.fr/var/rfm/storage/images/news/coldplay-l-album-everyday-life-decroche-un-disque-d-or-18253/261372-1-fre-FR/Coldplay-L-album-Everyday-Life-decroche-un-disque-d-or.jpg",
       "genreId": 1,
       "likes": 100310,
       "description": "Il est formé par l'auteur-compositeur-interprète Chris Martin et le guitariste Jon Buckland. Le bassiste Guy Berryman rejoint ensuite le groupe, avant que le batteur Will Champion ne vienne compléter le quatuor."
@@ -76,6 +118,105 @@
       "genreId": 3,
       "likes": 20420,
       "description": "Damso, de son vrai nom William Kalubi Mwamba, né le 10 mai 1992 à Kinshasa (Zaïre, actuelle République démocratique du Congo), est un rappeur et auteur-compositeur-interprète belgo-congolais."
+    },
+    {
+      "id": 4,
+      "name": "Angèle",
+      "avatar": "https://www.mokaddict.com/media/cache/person_detail_main_picture/2018/12/5267-angele.jpg",
+      "origin": "Belgique",
+      "genreId": 9,
+      "likes": 30756,
+      "description": "Angèle Van Laeken, simplement dite Angèle, est une autrice-compositrice-interprète, instrumentiste et productrice belge, née le 3 décembre 1995 à Uccle."
+    },
+    {
+      "id": 5,
+      "name": "Nekfeu",
+      "avatar": "https://cdn-s-www.leprogres.fr/images/AA55290C-1653-4EEF-81D9-E79AF63A50F3/NW_detail_M/title-1576680650.jpg",
+      "origin": "France",
+      "genreId": 3,
+      "likes": 29381,
+      "description": "Nekfeu, de son vrai nom Ken Samaras, né le 3 avril 1990 à La Trinité, dans les Alpes-Maritimes, est un rappeur et acteur français. Il est aussi, dans une moindre mesure, réalisateur et directeur de photographie."
+    },
+    {
+      "id": 6,
+      "name": "Shawn Mendes",
+      "avatar": "https://i0.wp.com/www.fr24news.com/fr/a1/wp-content/uploads/2020/06/shawn-mendes-nov-24-2019-billboard-1548-1585083743-1024x677.jpg?fit=1024%2C677&ssl=1",
+      "origin": "Canada",
+      "genreId": 9,
+      "likes": 1371428,
+      "description": "Shawn Mendes est un chanteur et auteur-compositeur-interprète canadien, né le 8 août 1998 à Toronto, au Canada. Il devient populaire en 2014 grâce à son single Life of the Party et commence sa tournée aux États-Unis après avoir signé avec le label Island Records."
+    },
+    {
+      "id": 7,
+      "name": "Jonas Brothers",
+      "avatar": "https://music-planet.fr/wp-content/uploads/2019/06/Jonas-Brothers-FB-1-bis-Recadr%C3%A9e.jpg",
+      "origin": "Etats-Unis",
+      "genreId": 1,
+      "likes": 1512721,
+      "description": "Les Jonas Brothers est un groupe de pop rock américain constitué de trois frères originaires de Wyckoff dans le New Jersey : Kevin Jonas, né le 5 novembre 1987, Joe Jonas, né le 15 août 1989, et Nick Jonas, né le 16 septembre 1992."
+    },
+    {
+      "id": 8,
+      "name": "Dadju",
+      "avatar": "https://static.actu.fr/uploads/2020/02/dadju.jpg",
+      "origin": "France",
+      "genreId": 9,
+      "likes": 156984,
+      "description": "Dadju, de son nom complet Dadju Djuna Nsungula, né le 2 mai 1991 à Melun, en Seine-et-Marne, est un auteur-compositeur-interprète français. Il est issu d'une famille de musiciens : son père Djuna Djanana était un chanteur du groupe Viva La Musica de Papa Wemba, le chanteur et rappeur Gims est son frère."
+    },
+    {
+      "id": 9,
+      "name": "Hatik",
+      "avatar": "https://4ecluses.com/sites/default/files/les4ecluses/styles/galerie_photos/public/ged/import/CHAISEPLIANTE-COVER-HATIK--FIFOU.jpg?itok=U55XAKNA",
+      "origin": "France",
+      "genreId": 3,
+      "likes": 394947,
+      "description": "Clément Penhoat, dit Hatik, né le 26 novembre 1992 à Chevreuse, est un rappeur et acteur français. Il se fait connaître par son projet musical Chaise pliante, qui se décline de 2018 à 2020 en une dizaine de singles et en deux albums homonymes, dont l'un est certifié disque de platine. En 2020, il obtient le premier rôle dans la série de Canal+ Validé."
+    },
+    {
+      "id": 10,
+      "name": "Amel Bent",
+      "avatar": "https://www.breakingnews.fr/wp-content/uploads/2020/09/amel-bent.jpg",
+      "origin": "France",
+      "genreId": 6,
+      "likes": 134624,
+      "description": "Amel Bent, de son nom complet Amel Bent Bachir, est une chanteuse et actrice française, née le 21 juin 1985 à Joué-lès-Tours, en Indre-et-Loire. En 2004, sa prestation artistique lors de la Saison 2 de l'émission Nouvelle Star, diffusée sur M6, la révèle au grand public."
+    },
+    {
+      "id": 11,
+      "name": "Dua Lipa",
+      "avatar": "https://www.modzik.com/wp-content/uploads/2017/07/MODZIK-DUA-LIPA-HEADER.jpg",
+      "origin": "Angleterre",
+      "genreId": 9,
+      "likes": 4234826,
+      "description": "Dua Lipa, née le 22 août 1995 à Westminster est une auteure-compositrice-interprète britannique. En 2015, elle signe avec Warner Bros. Records et publie son premier single, New Love, peu de temps après. En décembre 2016, un documentaire porté sur Lipa et titré See in Blue est réalisé par la revue musicale The Fader."
+    },
+    {
+      "id": 12,
+      "name": "Kendji Girac",
+      "avatar": "https://suis-nous.com/wp-content/uploads/2020/06/kendji.jpg",
+      "origin": "France",
+      "genreId": 9,
+      "likes": 536866,
+      "description": "Kendji Girac, de son vrai nom Kendji Maillé, est un chanteur et guitariste français, né le 3 juillet 1996 à Périgueux, en Dordogne. Vainqueur de la saison 3 de The Voice : La Plus Belle Voix en 2014, il connaît le succès dès son premier titre, Color Gitano. Il a depuis publié trois albums, ainsi qu'un album live."
+    },
+    {
+      "id": 13,
+      "name": "Harry Styles",
+      "avatar": "https://media.vanityfair.com/photos/5f9aeb23ebcf8e096f6dad6d/master/w_2560%2Cc_limit/harry.jpg",
+      "origin": "Angleterre",
+      "genreId": 1,
+      "likes": 3276816,
+      "description": "Harry Styles, né le 1ᵉʳ février 1994 à Redditch, est un chanteur, musicien et acteur britannique. En 2010, il auditionne en solo au concours de chant télévisé The X Factor, mais se fait éliminer."
+    },
+    {
+      "id": 14,
+      "name": "Coldplay",
+      "avatar": "https://www.lfm.ch/wp-content/uploads/2020/01/imgjpgaf3587a885b46b71fe591e58a025c1625e04025e.jpg",
+      "origin": "Angleterre",
+      "genreId": 1,
+      "likes": 7244931,
+      "description": "Coldplay est un groupe britannique créé en 1996. Il est formé par l'auteur-compositeur-interprète Chris Martin et le guitariste Jon Buckland. Le bassiste Guy Berryman rejoint ensuite le groupe, avant que le batteur Will Champion ne vienne compléter le quatuor."
     }
   ],
   "albums": [
@@ -84,14 +225,72 @@
       "name": "QALF",
       "released": 2020,
       "tracks": 15,
-      "artistId": 3
+      "artistId": 3,
+      "cover": "https://i.pinimg.com/564x/96/d3/e5/96d3e5445434509b11086d897a526673.jpg"
     },
     {
       "id": 2,
       "name": "Geography",
       "released": 2018,
       "tracks": 13,
-      "artistId": 2
+      "artistId": 2,
+      "cover": "https://images-na.ssl-images-amazon.com/images/I/81UCBBsAXkL._SL1200_.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Les Étoiles Vagabondes",
+      "released": 2018,
+      "tracks": 14,
+      "artistId": 5,
+      "cover": "https://images-na.ssl-images-amazon.com/images/I/81WavdmBKiL._SL1500_.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Brol",
+      "released": 2018,
+      "tracks": 16,
+      "artistId": 4,
+      "cover": "https://media.cultura.com/media/catalog/product/cache/1/image/500x500/0dc2d03fe217f8c83829496872af24a0/b/r/brol-0602567933021_0.jpg?t=1596469500"
+    },
+    {
+      "id": 5,
+      "name": "Demain",
+      "released": 2019,
+      "tracks": 12,
+      "artistId": 10,
+      "cover": "https://france3-regions.francetvinfo.fr/image/LSvFZ_b5m5_3FRQPmL_RYB7QghE/1200x675/regions/2020/06/09/5edf7ec1d971d_amel_bent-4264905.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Ensemble",
+      "released": 2015,
+      "tracks": 15,
+      "artistId": 12,
+      "cover": "https://img.discogs.com/CMRQvWW-GYUB5ukn97DnEW8jEK4=/fit-in/600x594/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10637364-1501424204-6849.jpeg.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Amigo",
+      "released": 2018,
+      "tracks": 12,
+      "artistId": 12,
+      "cover": "https://images-na.ssl-images-amazon.com/images/I/7125%2BXhpV%2BL._SY355_.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Wonder",
+      "released": 2020,
+      "tracks": 14,
+      "artistId": 6,
+      "cover": "https://upload.wikimedia.org/wikipedia/en/6/68/Shawn_Mendes_-_Wonder.png"
+    },
+    {
+      "id": 9,
+      "name": "Weekend Wins",
+      "released": 2018,
+      "tracks": 12,
+      "artistId": 6,
+      "cover": "https://static.qobuz.com/images/covers/ha/bi/jwjdg7r0ubiha_600.jpg"
     }
   ],
   "concerts": [
@@ -108,10 +307,64 @@
       "artistId": 3
     },
     {
-      "id": 1,
+      "id": 3,
       "name": "O2 Academy Manchester",
       "date": "10/12/2018",
       "artistId": 2
+    },
+    {
+      "id": 4,
+      "name": "Olympia",
+      "date": "20/07/2019",
+      "artistId": 6
+    },
+    {
+      "id": 5,
+      "name": "Paris Bercy",
+      "date": "12/08/2019",
+      "artistId": 9
+    },
+    {
+      "id": 6,
+      "name": "Stade de France",
+      "date": "20/01/2021",
+      "artistId": 2
+    },
+    {
+      "id": 7,
+      "name": "Olympia",
+      "date": "22/12/2020",
+      "artistId": 1
+    },
+    {
+      "id": 8,
+      "name": "O2 Academy Manchester",
+      "date": "15/12/2020",
+      "artistId": 9
+    },
+    {
+      "id": 9,
+      "name": "Paris Bercy",
+      "date": "05/02/2021",
+      "artistId": 7
+    },
+    {
+      "id": 10,
+      "name": "Stade de France",
+      "date": "05/02/2021",
+      "artistId": 8
+    },
+    {
+      "id": 11,
+      "name": "Paris Bercy",
+      "date": "05/02/2021",
+      "artistId": 1
+    },
+    {
+      "id": 12,
+      "name": "Stade de France",
+      "date": "20/01/2021",
+      "artistId": 4
     }
   ]
 }
