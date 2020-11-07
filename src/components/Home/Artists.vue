@@ -67,28 +67,6 @@
             padding-bottom: 150%;
         }
 
-        .flickity-prev-next-button {
-            top: -75px;
-            background-color: transparent;
-            &:disabled {
-                opacity: 0;
-            }
-
-            svg {
-                fill: #fff;
-                width: 15px;
-                left: auto;
-                right: 0;
-                top: 50%;
-                height: auto;
-            }
-        }
-
-        .flickity-prev-next-button.previous {
-            left: auto;
-            right: 60px;
-        }
-
         h3 {
             font-size: 40px;
         }

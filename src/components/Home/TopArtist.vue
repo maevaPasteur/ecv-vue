@@ -17,7 +17,7 @@
 
 <script>
 
-    import IconHeart from "../icons/IconHeart";
+    import IconHeart from "../Icons/IconHeart";
 
     export default {
         name: 'TopArtist',
