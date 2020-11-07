@@ -3,9 +3,9 @@ import Vue from 'vue'
 import userApi from '@/api/users'
 
 import Home from "../pages/Home";
-import Test from "../pages/Test";
+import Article from "../pages/Article";
 
-Vue.use(Router)
+Vue.use(Router);
 
 const router = new Router({
   mode: 'history',
@@ -17,9 +17,9 @@ const router = new Router({
       component: Home
     },
     {
-      path: '/test',
-      name: 'test',
-      component: Test
+      path: '/articles/:id',
+      name: 'article',
+      component: Article
     }
   ]
 })

@@ -24,6 +24,6 @@ const routes = [
     name: 'news.show',
     component: Show,
   }
-]
+];
 
 export default routes

@@ -3,7 +3,7 @@
         <flickity class="main-slider" ref="mainSlider" :options="flickityOptions">
             <div class="slide" v-for="article in news" :key="article.title">
                 <img :src="article.image" :alt="article.title"/>
-                <a :href="'/articles'+article.id" class="container">
+                <a :href="'/articles/'+article.id" class="container">
                     <h2>{{ article.title }}</h2>
                     <p>{{ article.published }}</p>
                 </a>
@@ -17,7 +17,7 @@
     import Flickity from 'vue-flickity'
 
     export default {
-        name: 'MainArticle',
+        name: 'MainArticles',
         components: {Flickity},
         data() {
             return {

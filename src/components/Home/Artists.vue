@@ -2,7 +2,7 @@
     <section class="artists section-item">
         <h2>Tous nos artistes du moment</h2>
         <flickity v-if="artists && artists.length" :options="flickityOptions" ref="flickity">
-            <a href="#" v-for="(artist, index) in artists" :key="index + artist.name" class="slide">
+            <a :href="'/artists/' + artist.id" v-for="(artist, index) in artists" :key="index + artist.name" class="slide">
                 <div class="img">
                     <img :src="artist.avatar" :alt="artist.name">
                 </div>

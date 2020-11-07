@@ -6,6 +6,7 @@ import albums from "./modules/albums";
 import genres from "./modules/genres";
 import artists from "./modules/artists";
 import concerts from "./modules/concerts";
+import users from "./modules/users";
 
 Vue.use(Vuex);
 
@@ -14,7 +15,8 @@ const state = {
   ...albums.state,
   ...genres.state,
   ...artists.state,
-  ...concerts.state
+  ...concerts.state,
+  ...users.state
 };
 
 const mutations = {
@@ -22,7 +24,8 @@ const mutations = {
   ...albums.mutations,
   ...genres.mutations,
   ...artists.mutations,
-  ...concerts.mutations
+  ...concerts.mutations,
+  ...users.mutations
 };
 
 const actions = {
@@ -30,7 +33,8 @@ const actions = {
   ...albums.actions,
   ...genres.actions,
   ...artists.actions,
-  ...concerts.actions
+  ...concerts.actions,
+  ...users.actions
 };
 
 const getters = {
@@ -38,7 +42,8 @@ const getters = {
   ...albums.getters,
   ...genres.getters,
   ...artists.getters,
-  ...concerts.getters
+  ...concerts.getters,
+  ...users.getters
 };
 
 let store = new Vuex.Store({

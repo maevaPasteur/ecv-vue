@@ -1,6 +1,6 @@
 <template>
     <li>
-        <a href="#">
+        <a :href="'/artists/' + artist.id">
             <div class="image">
                 <img :src="artist.avatar" :alt="artist.name">
                 <div class="infos">

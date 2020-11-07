@@ -1,83 +1,275 @@
 {
   "users": [
     {
+      "id": 1,
+      "username": "Toto",
+      "avatar": "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "email": "toto@example.com",
-      "password": "$2a$10$dXNszRnkYBxyRPwYHgIfxeOD0/IBDbkI2aXpj1qXrMwvoVKPXa1Vq",
-      "id": 1
+      "password": "$2a$10$dXNszRnkYBxyRPwYHgIfxeOD0/IBDbkI2aXpj1qXrMwvoVKPXa1Vq"
+    },
+    {
+      "id": 2,
+      "username": "Tess",
+      "avatar": "https://us.123rf.com/450wm/tverdohlib/tverdohlib1701/tverdohlib170101145/70510037-jolie-sexy-jeune-femme-ou-une-fille-mignonne-avec-%C3%A9galit%C3%A9-dans-les-cheveux-chignon-en-chemise-au-visage-.jpg?ver=6",
+      "email": "toto2@example.com",
+      "password": "$2a$10$dXNszRnkYBxyRPwYHgIfxeOD0/IBDbkI2aXpj1qXrMwvoVKPXa1Vq"
+    },
+    {
+      "id": 3,
+      "username": "Hugo",
+      "avatar": "https://baviconcept.com/wp-content/uploads/2013/07/profile_img.png",
+      "email": "toto3@example.com",
+      "password": "$2a$10$dXNszRnkYBxyRPwYHgIfxeOD0/IBDbkI2aXpj1qXrMwvoVKPXa1Vq"
+    },
+    {
+      "id": 4,
+      "username": "Julie39",
+      "avatar": "https://www.heysaturday.co/wp-content/uploads/2016/11/best-dating-profile-photos-women-b.jpg",
+      "email": "julie@example.com",
+      "password": "$2a$10$dXNszRnkYBxyRPwYHgIfxeOD0/IBDbkI2aXpj1qXrMwvoVKPXa1Vq"
+    },
+    {
+      "id": 5,
+      "username": "Tom Tom",
+      "avatar": "https://www.over40datingsite.co.uk/wp-content/uploads/2016/09/shutterstock_341919467.jpg",
+      "email": "tomtom@example.com",
+      "password": "$2a$10$dXNszRnkYBxyRPwYHgIfxeOD0/IBDbkI2aXpj1qXrMwvoVKPXa1Vq"
     }
   ],
   "news": [
     {
-      "handle": "",
+      "id": 1,
       "title": "Gims, Angèle, Nekfeu… Ces duos entre les francophones et les internationaux",
       "published": "12/09/2020",
       "image": "https://ctr.cdnartwhere.eu/sites/demo/files/styles/manual_crop/public/2020-10/angele-dualipa_0.jpg",
-      "content": "Annoncée au mois d’octobre, cette collaboration entre Dua Lipa et Angèle était inattendue. Les premiers indices ont été postés sur les réseaux sociaux. De son côté, la chanteuse anglais promettait de revenir prochainement avec de nouveaux projets. Ses fans, sachant que l’interprète de «Physical» était de retour en studio, tous s’attendaient à ces morceaux inédits. Le projet a été lancé, qu’ils se tiennent prêts à découvrir le «Club Future Nostalgia». Le premier titre révélé étant «Fever». «I've got a fever, so can you check? Hand on my forehead, kiss my neck. And when you touch me, baby, I turn redI've got a fever, so can you check? (I've got a fever). Car dans mes yeux, ça se voit. La fièvre dans les yeux, oui ça se voit. Mon cœur se serre, j'ai du feu dans la voix. Le plus souvent, c'est quand je pense à toi.»Pour celui-ci, Dua Lipa est entourée d’Angèle. Ensemble, elles offrent une chanson rythmée qui mélange bien évidemment le français et l’anglais. Elles ont également été aperçues ensemble quelques jours avant la sortie de «Fever». Pour les internautes aucun doute, les artistes ont tourné un clip. Sur Instagram et Twitter, Dua Lipa et Angèle ont aussi partagé des photos d’elles, où elles sont très proches.",
-      "artistesId": [4, 5]
+      "content": "Annoncée au mois d’octobre, cette collaboration entre Dua Lipa et Angèle était inattendue. \n\n Les premiers indices ont été postés sur les réseaux sociaux. De son côté, la chanteuse anglais promettait de revenir prochainement avec de nouveaux projets. Ses fans, sachant que l’interprète de «Physical» était de retour en studio, tous s’attendaient à ces morceaux inédits. Le projet a été lancé, qu’ils se tiennent prêts à découvrir le «Club Future Nostalgia». Le premier titre révélé étant «Fever». «I've got a fever, so can you check? Hand on my forehead, kiss my neck. And when you touch me, baby, I turn redI've got a fever, so can you check? (I've got a fever). Car dans mes yeux, ça se voit. La fièvre dans les yeux, oui ça se voit. Mon cœur se serre, j'ai du feu dans la voix. Le plus souvent, c'est quand je pense à toi.»Pour celui-ci, Dua Lipa est entourée d’Angèle. Ensemble, elles offrent une chanson rythmée qui mélange bien évidemment le français et l’anglais. Elles ont également été aperçues ensemble quelques jours avant la sortie de «Fever». Pour les internautes aucun doute, les artistes ont tourné un clip. Sur Instagram et Twitter, Dua Lipa et Angèle ont aussi partagé des photos d’elles, où elles sont très proches.",
+      "artistesId": [4, 5],
+      "likes": 67,
+      "comments": [
+        {
+          "id": 1,
+          "userId": 3,
+          "message": "Wowww !"
+        },
+        {
+          "id": 2,
+          "userId": 5,
+          "message": "Super article \uD83D\uDC4C"
+        },
+        {
+          "id": 3,
+          "userId": 2,
+          "message": "\uD83D\uDE0D \uD83D\uDE0D \uD83D\uDE0D Merci pour l'article !!"
+        }
+      ]
     },
     {
       "id": 2,
       "title": "Quoi de mieux qu'une version acoustique pour retrouver un peu de sérénité?",
       "published": "14/09/2020",
       "image": "https://images-na.ssl-images-amazon.com/images/I/81B1F0TMyBL._SL1400_.jpg",
-      "content": "Shawn Mendes est de retour. Après une pause dans sa carrière, l'interprète de «Stitches» a annoncé quelques projets à ses fans: la sortie d'un album inédit le 4 décembre prochain, porté par le titre «Wonder» déjà dévoilé mais aussi la diffusion d'un documentaire sur Netflix.Et l'artiste canadien, désormais en pleine promotion de cet opus, a aussi dévoilé une version acoustique de ce premier extrait, il y a quelques heures. Accompagné de son piano, Shawn Mendes a offert une reprise tout en douceur, qui a ravi ses fans.",
-      "artistesId": [6]
+      "content": "Shawn Mendes est de retour. Après une pause dans sa carrière, l'interprète de «Stitches» a annoncé quelques projets à ses fans: la sortie d'un album inédit le 4 décembre prochain, porté par le titre «Wonder» déjà dévoilé mais aussi la diffusion d'un documentaire sur Netflix. \n\n Et l'artiste canadien, désormais en pleine promotion de cet opus, a aussi dévoilé une version acoustique de ce premier extrait, il y a quelques heures. Accompagné de son piano, Shawn Mendes a offert une reprise tout en douceur, qui a ravi ses fans.",
+      "artistesId": [6],
+      "likes": 67,
+      "comments": [
+        {
+          "id": 1,
+          "userId": 3,
+          "message": "Wowww !"
+        },
+        {
+          "id": 2,
+          "userId": 5,
+          "message": "Super article \uD83D\uDC4C"
+        },
+        {
+          "id": 3,
+          "userId": 2,
+          "message": "\uD83D\uDE0D \uD83D\uDE0D \uD83D\uDE0D Merci pour l'article !!"
+        }
+      ]
     },
     {
       "id": 3,
       "title": "Jonas Brothers: «I Need You Christmas» est là",
       "published": "08/09/2020",
       "image": "https://img.nrj.fr/jIu5wPPOs81fygUYGI1Wevc8xL4=/650x366/smart/https%3A%2F%2Fimage-api.nrj.fr%2Fmedias%2F2019%2F05%2Fpicto-jonasb_5ce41e0871752.JPG",
-      "content": "Un cadeau en avance! Chaque année, Joe, Nick et Kevin aiment se plonger dans cette période féérique des fêtes de fin d’année. Une période qu’ils aiment partager en famille mais également avec leurs fans. En décembre 2019, ils partageaient «Like It’s Christmas», cette fois-ci les revoilà dans un registre différent, mais toujours basé sous le thème de Noël. Avec «I Need You Christman», les Jonas Brothers composent un titre qui rappelle les classiques d’Ella Fitzgerald avec «Have Yourself a Merry Christmas» ou encore de Frank Sinatra avec «Silent Night», en interprétant leur chanson avec seulement quelques instruments, piano, guitare acoustique et de violons.",
-      "artistesId": [7]
+      "content": "Un cadeau en avance! Chaque année, Joe, Nick et Kevin aiment se plonger dans cette période féérique des fêtes de fin d’année. Une période qu’ils aiment partager en famille mais également avec leurs fans. En décembre 2019, ils partageaient «Like It’s Christmas», cette fois-ci les revoilà dans un registre différent, mais toujours basé sous le thème de Noël. \n\n Avec «I Need You Christman», les Jonas Brothers composent un titre qui rappelle les classiques d’Ella Fitzgerald avec «Have Yourself a Merry Christmas» ou encore de Frank Sinatra avec «Silent Night», en interprétant leur chanson avec seulement quelques instruments, piano, guitare acoustique et de violons.",
+      "artistesId": [7],
+      "likes": 67,
+      "comments": [
+        {
+          "id": 1,
+          "userId": 3,
+          "message": "Wowww !"
+        },
+        {
+          "id": 2,
+          "userId": 5,
+          "message": "Super article \uD83D\uDC4C"
+        },
+        {
+          "id": 3,
+          "userId": 2,
+          "message": "\uD83D\uDE0D \uD83D\uDE0D \uD83D\uDE0D Merci pour l'article !!"
+        }
+      ]
     },
     {
       "id": 4,
       "title": "Dadju dévoile la réédition «Poison ou Antidote : Miel Book»",
       "published": "30/08/2020",
       "image": "https://static.actu.fr/uploads/2020/09/dadju-zenith-caen-coronavirus-854x508-1.jpg",
-      "content": "Il est là! Après plusieurs semaines d'attente, Dadju vient d'offrir un nouveau projet musical à ses fans. Il s'agit de la réédition de son album à succès «Poison ou Antidote». Le nouvel opus s'intitule «Poison ou Antidote : Miel Book» et se compose de onze nouveaux titres, dont «Amour Toxic» et «Dieu Merci» feat Tiakola déjà dévoilés par le chanteur. L'interprète de «Bobo au cœur» s'est aussi entouré d'autres artistes à l'image de Jaekers, Fally Ipupa et Ocevne. Sur ses réseaux sociaux, le frère de Gims a annoncé la sortie de ce projet: «Trop de sucre n’est pas bon pour la santé. Mais ça reste entre nous...» Mais si le sucre est à consommer avec modération, il n'en est rien du nouvel album de Dadju, que vous pouvez écouter en boucle! ",
-      "artistesId": [8]
+      "content": "Il est là! Après plusieurs semaines d'attente, Dadju vient d'offrir un nouveau projet musical à ses fans. Il s'agit de la réédition de son album à succès «Poison ou Antidote». Le nouvel opus s'intitule «Poison ou Antidote : Miel Book» et se compose de onze nouveaux titres, dont «Amour Toxic» et «Dieu Merci» feat Tiakola déjà dévoilés par le chanteur. \n\n L'interprète de «Bobo au cœur» s'est aussi entouré d'autres artistes à l'image de Jaekers, Fally Ipupa et Ocevne. Sur ses réseaux sociaux, le frère de Gims a annoncé la sortie de ce projet: «Trop de sucre n’est pas bon pour la santé. Mais ça reste entre nous...» Mais si le sucre est à consommer avec modération, il n'en est rien du nouvel album de Dadju, que vous pouvez écouter en boucle! ",
+      "artistesId": [8],
+      "likes": 67,
+      "comments": [
+        {
+          "id": 1,
+          "userId": 3,
+          "message": "Wowww !"
+        },
+        {
+          "id": 2,
+          "userId": 5,
+          "message": "Super article \uD83D\uDC4C"
+        },
+        {
+          "id": 3,
+          "userId": 2,
+          "message": "\uD83D\uDE0D \uD83D\uDE0D \uD83D\uDE0D Merci pour l'article !!"
+        }
+      ]
     },
     {
       "id": 5,
       "title": "Amel Bent s'entoure d'Hatik pour un duo surprise «1,2,3»",
       "published": "15/09/2020",
       "image": "https://cdn.radiofrance.fr/s3/cruiser-production/2020/06/c729fe83-b5ce-44d7-ba33-b99be400b9ed/1200x680_hatik.jpg",
-      "content": "Personne ne s'attendait à une telle collaboration. Et pourtant, Amel Bent et Hatik ont fait le pari d'enregistrer une chanson ensemble. Elle s'intitule «1,2,3» et elle est disponible depuis ce vendredi 30 octobre 2020. Très fier de ce duo, l'interprète du morceau à succès «Angela» a adressé quelques mots à sa partenaire: «Qui s’y attendait à celle-la ? Merci pour l’honneur que tu me fais de m’inviter ma reuss», a-t-il écrit sur les réseaux sociaux. À travers le morceau, les deux artistes évoquent les doutes dans une relation amoureuse et le moment d'avouer ses sentiments à l'autre.",
-      "artistesId": [9, 10]
+      "content": "Personne ne s'attendait à une telle collaboration. Et pourtant, Amel Bent et Hatik ont fait le pari d'enregistrer une chanson ensemble. Elle s'intitule «1,2,3» et elle est disponible depuis ce vendredi 30 octobre 2020. Très fier de ce duo, l'interprète du morceau à succès «Angela» a adressé quelques mots à sa partenaire: «Qui s’y attendait à celle-la ? Merci pour l’honneur que tu me fais de m’inviter ma reuss», a-t-il écrit sur les réseaux sociaux. \n\n À travers le morceau, les deux artistes évoquent les doutes dans une relation amoureuse et le moment d'avouer ses sentiments à l'autre.",
+      "artistesId": [9, 10],
+      "likes": 67,
+      "comments": [
+        {
+          "id": 1,
+          "userId": 3,
+          "message": "Wowww !"
+        },
+        {
+          "id": 2,
+          "userId": 5,
+          "message": "Super article \uD83D\uDC4C"
+        },
+        {
+          "id": 3,
+          "userId": 2,
+          "message": "\uD83D\uDE0D \uD83D\uDE0D \uD83D\uDE0D Merci pour l'article !!"
+        }
+      ]
     },
     {
       "id": 6,
       "title": "Dua Lipa annonce un événement en live dans son «Studio 2054»",
       "published": "10/08/2020",
       "image": "https://morocco-grlk5lagedl.stackpathdns.com/production/morocco/images/1570184370127663-Dua-Lipa.jpg?w=1920&h=800&fit=fill&crop=faces&auto=%5B%22format%22%2C%20%22compress%22%5D&cs=srgb",
-      "content": "C'est un événement à ne pas manquer pour tous les fans de Dua Lipa. Alors que l'interprète de «Physical» poursuit la promotion de ses derniers projets musicaux, la chanteuse a annoncé un concert en livestream, «Studio 2054». Le show qui se déroulera le 27 novembre prochain sera rythmé par les récentes chansons de la principale intéressée, à travers son dernier album «Future Nostalgia» mais aussi son édition remix. La chanteuse se verra aussi «évoluer à travers des décors personnalisés, des émissions de télévision surréalistes, des discothèques, des raves extatiques, des lieux de rencontre pour les rockers trash, des salles de bal voguing et des vestiaires de style diva», comme l'indique le site officiel de l'événement.",
-      "artistesId": [11]
+      "content": "C'est un événement à ne pas manquer pour tous les fans de Dua Lipa. Alors que l'interprète de «Physical» poursuit la promotion de ses derniers projets musicaux, la chanteuse a annoncé un concert en livestream, «Studio 2054». Le show qui se déroulera le 27 novembre prochain sera rythmé par les récentes chansons de la principale intéressée, à travers son dernier album «Future Nostalgia» mais aussi son édition remix. \n\n La chanteuse se verra aussi «évoluer à travers des décors personnalisés, des émissions de télévision surréalistes, des discothèques, des raves extatiques, des lieux de rencontre pour les rockers trash, des salles de bal voguing et des vestiaires de style diva», comme l'indique le site officiel de l'événement.",
+      "artistesId": [11],
+      "likes": 67,
+      "comments": [
+        {
+          "id": 1,
+          "userId": 3,
+          "message": "Wowww !"
+        },
+        {
+          "id": 2,
+          "userId": 5,
+          "message": "Super article \uD83D\uDC4C"
+        },
+        {
+          "id": 3,
+          "userId": 2,
+          "message": "\uD83D\uDE0D \uD83D\uDE0D \uD83D\uDE0D Merci pour l'article !!"
+        }
+      ]
     },
     {
       "id": 7,
       "title": "Son «Corps» cartonne : le joli retour en grâce de la chanteuse Yseult",
       "published": "27/10/2020",
       "image": "https://www.tap-poitiers.com/wp-content/thumbnails/uploads/2020/09/img_6472-tt-width-1600-height-1067-crop-1-bgcolor-000000.jpg",
-      "content": "La chanteuse revient de loin. Révélée en 2014 par «Nouvelle Star», elle se met à nu dans «Corps», poignante chanson autobiographique dont le clip a franchi 1,4 million de vues. « Un million de vues en un mois sans sponsorisation. C'est votre victoire, merci ». Sur son compte Instagram, Yseult a écrit le million en lettres capitales, comme pour mieux s'en convaincre. Le succès de « Corps », le titre et le clip qui a dépassé depuis 1,4 million de vues sur YouTube, signe un retour en grâce presque inespéré pour la chanteuse de 24 ans, qui avait disparu depuis l'échec de son premier album éponyme, vendu à 5 000 exemplaires en 2015. Portée par de bons titres électro pop comme « La vague » et « Bye Bye Bye », le disque aurait mérité meilleur sort. Mais enregistré dans la foulée de « La Nouvelle Star », dont elle fut finaliste en 2014, elle le juge trop désincarné et léger. « Je ne l'aime pas, cet album, tranche aujourd'hui Yseult. Je me suis aperçue que ce qui m'intéressait, en fait, c'était être derrière tout, la composition, les textes, le son… Maintenant, je n'ai pas de manageur, ni de directeur artistique, je fais tout et je sais dire non. C'est de la sueur, mais quand ça marche, tu te dis : meuf, tu n'as pas fait tout ça pour rien. ». Elle a déménagé il y a un an et demi à Bruxelles où elle a trouvé un nouvel écrin pour une nouvelle vie. « J'avais besoin de prouver à mes parents et à moi-même que je pouvais être indépendante, explique-t-elle. J'y ai trouvé beaucoup d'entraide entre artistes et un climat apaisant qui m'a permis de lancer ma petite entreprise. Je me suis fait confiance, j'ai arrêté de me comparer aux autres et pendant deux ans, je n'ai rien écouté de ce qui sortait. »",
-      "artistesId": [15]
+      "content": "La chanteuse revient de loin. Révélée en 2014 par «Nouvelle Star», elle se met à nu dans «Corps», poignante chanson autobiographique dont le clip a franchi 1,4 million de vues. « Un million de vues en un mois sans sponsorisation. C'est votre victoire, merci ». \n\n Sur son compte Instagram, Yseult a écrit le million en lettres capitales, comme pour mieux s'en convaincre. \n\n Le succès de « Corps », le titre et le clip qui a dépassé depuis 1,4 million de vues sur YouTube, signe un retour en grâce presque inespéré pour la chanteuse de 24 ans, qui avait disparu depuis l'échec de son premier album éponyme, vendu à 5 000 exemplaires en 2015. Portée par de bons titres électro pop comme « La vague » et « Bye Bye Bye », le disque aurait mérité meilleur sort. Mais enregistré dans la foulée de « La Nouvelle Star », dont elle fut finaliste en 2014, elle le juge trop désincarné et léger. « Je ne l'aime pas, cet album, tranche aujourd'hui Yseult. Je me suis aperçue que ce qui m'intéressait, en fait, c'était être derrière tout, la composition, les textes, le son… Maintenant, je n'ai pas de manageur, ni de directeur artistique, je fais tout et je sais dire non. C'est de la sueur, mais quand ça marche, tu te dis : meuf, tu n'as pas fait tout ça pour rien. ». Elle a déménagé il y a un an et demi à Bruxelles où elle a trouvé un nouvel écrin pour une nouvelle vie. « J'avais besoin de prouver à mes parents et à moi-même que je pouvais être indépendante, explique-t-elle. J'y ai trouvé beaucoup d'entraide entre artistes et un climat apaisant qui m'a permis de lancer ma petite entreprise. Je me suis fait confiance, j'ai arrêté de me comparer aux autres et pendant deux ans, je n'ai rien écouté de ce qui sortait. »",
+      "artistesId": [15],
+      "likes": 67,
+      "comments": [
+        {
+          "id": 1,
+          "userId": 3,
+          "message": "Wowww !"
+        },
+        {
+          "id": 2,
+          "userId": 5,
+          "message": "Super article \uD83D\uDC4C"
+        },
+        {
+          "id": 3,
+          "userId": 2,
+          "message": "\uD83D\uDE0D \uD83D\uDE0D \uD83D\uDE0D Merci pour l'article !!"
+        }
+      ]
     },
     {
       "id": 8,
       "title": "Coldplay : leur premier album célèbre ses 20 ans !",
       "published": "27/10/2020",
       "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Coldplay_-_Global-Citizen-Festival_Hamburg_14.jpg/1200px-Coldplay_-_Global-Citizen-Festival_Hamburg_14.jpg",
-      "content": "Le groupe anglais a décidé de marquer les 20 ans de son premier opus \"Parachutes\", en rééditant leurs anciennes vidéos dans une version en haute définition. Le single \"Shiver\" a ainsi été posté sur les réseaux sociaux dans sa nouvelle mouture modernisée. C'est l'occasion de revenir sur l'incroyable longévité du groupe britannique, ainsi que sur ce premier album, devenu un classique. \"Parachutes\" (2000) reçoit dès sa sortie un accueil favorable de la part du public comme des critiques. Ces derniers pointent la noirceur de cet album alors que le groupe insiste plutôt sur un mélange de genre très troublant, avec des paroles superbes mais une musique très mélancolique. Les influences du groupe Radiohead et de leur album \"OK Computer\" se font sentir tout le long du disque. La voix de Chris Martin est mise en avant dans des chansons au tempo lent, des ballades pop-rock douces et envoûtantes. Les ventes décollent et \"Parachutes\" se place à la première place du Top Album au Royaume-Uni. Le groupe connaît un succès important en Europe, y compris en France, où le disque reçoit des critiques élogieuses. Le groupe de rock alternatif anglais Colplay est né avec cet album de ballades romantiques, devenu culte auprès des fans de la première heure.",
-      "artistesId": [14]
+      "content": "Le groupe anglais a décidé de marquer les 20 ans de son premier opus \"Parachutes\", en rééditant leurs anciennes vidéos dans une version en haute définition. \n\n Le single \"Shiver\" a ainsi été posté sur les réseaux sociaux dans sa nouvelle mouture modernisée. C'est l'occasion de revenir sur l'incroyable longévité du groupe britannique, ainsi que sur ce premier album, devenu un classique. \"Parachutes\" (2000) reçoit dès sa sortie un accueil favorable de la part du public comme des critiques. \n\n Ces derniers pointent la noirceur de cet album alors que le groupe insiste plutôt sur un mélange de genre très troublant, avec des paroles superbes mais une musique très mélancolique. Les influences du groupe Radiohead et de leur album \"OK Computer\" se font sentir tout le long du disque. La voix de Chris Martin est mise en avant dans des chansons au tempo lent, des ballades pop-rock douces et envoûtantes. Les ventes décollent et \"Parachutes\" se place à la première place du Top Album au Royaume-Uni. Le groupe connaît un succès important en Europe, y compris en France, où le disque reçoit des critiques élogieuses. Le groupe de rock alternatif anglais Colplay est né avec cet album de ballades romantiques, devenu culte auprès des fans de la première heure.",
+      "artistesId": [14],
+      "likes": 67,
+      "comments": [
+        {
+          "id": 1,
+          "userId": 3,
+          "message": "Wowww !"
+        },
+        {
+          "id": 2,
+          "userId": 5,
+          "message": "Super article \uD83D\uDC4C"
+        },
+        {
+          "id": 3,
+          "userId": 2,
+          "message": "\uD83D\uDE0D \uD83D\uDE0D \uD83D\uDE0D Merci pour l'article !!"
+        }
+      ]
     },
     {
       "id": 9,
       "title": "Harry Styles: son clip «Golden» est là!",
       "published": "26/10/2020",
       "image": "https://static.billboard.com/files/2020/10/01-harry-styles-press-golden-billboard-1548-1603729502-compressed.jpg",
-      "content": "Une affaire de longue date… Depuis cet été, les fans d’Harry Styles sont à la recherche du moindre indice! Pendant la période estival, le chanteur anglais a été aperçu sur les côtes italiennes en plein tournage d’un nouveau clip. Après les succès de «Adore You», «Falling» ou encore «Watermelon Sugar», les internautes s’interrogeaient sur cette nouvelle Tout se serait déroulé en Italie. En effet, Harry Styles a enregistré plusieurs prises pour le clip de «Golden». Tout au long de la vidéo, ce dernier court après la personne qu’il aime. Des plans de lui en costume au milieu de la route ou encore avec un chapeau de marin sur la tête, se mélangent pendant ces quelques minutes.",
-      "artistesId": [13]
+      "content": "Une affaire de longue date… Depuis cet été, les fans d’Harry Styles sont à la recherche du moindre indice! \n\n Pendant la période estival, le chanteur anglais a été aperçu sur les côtes italiennes en plein tournage d’un nouveau clip. Après les succès de «Adore You», «Falling» ou encore «Watermelon Sugar», les internautes s’interrogeaient sur cette nouvelle Tout se serait déroulé en Italie. En effet, Harry Styles a enregistré plusieurs prises pour le clip de «Golden». Tout au long de la vidéo, ce dernier court après la personne qu’il aime. \n\n Des plans de lui en costume au milieu de la route ou encore avec un chapeau de marin sur la tête, se mélangent pendant ces quelques minutes.",
+      "artistesId": [13],
+      "likes": 67,
+      "comments": [
+        {
+          "id": 1,
+          "userId": 3,
+          "message": "Wowww !"
+        },
+        {
+          "id": 2,
+          "userId": 5,
+          "message": "Super article \uD83D\uDC4C"
+        },
+        {
+          "id": 3,
+          "userId": 2,
+          "message": "\uD83D\uDE0D \uD83D\uDE0D \uD83D\uDE0D Merci pour l'article !!"
+        }
+      ]
     }
   ],
   "genres": [
@@ -212,7 +404,7 @@
     {
       "id": 13,
       "name": "Harry Styles",
-      "avatar": "https://media.vanityfair.com/photos/5f9aeb23ebcf8e096f6dad6d/master/w_2560%2Cc_limit/harry.jpg",
+      "avatar": "https://media.vogue.fr/photos/5df9ec1dad7bff00091af3ee/master/w_1920,c_limit/001-Harry-Styles-Meet-the-Designer-POTD-VogueGlove-Dec12-PA-Images.jpg",
       "origin": "Angleterre",
       "genreId": 1,
       "likes": 3276816,

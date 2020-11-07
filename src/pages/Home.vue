@@ -1,6 +1,6 @@
 <template>
     <div>
-        <main-article/>
+        <main-articles/>
         <top-artists/>
         <concerts/>
         <artists/>
@@ -9,7 +9,7 @@
 
 <script>
 
-    import MainArticle from "@/components/Home/MainArticle";
+    import MainArticles from "@/components/Home/MainArticles";
     import Concerts from "@/components/Home/Concerts";
     import Artists from "../components/Home/Artists";
     import TopArtists from "../components/Home/TopArtists";
@@ -17,7 +17,7 @@
     export default {
         name: 'Home',
         components: {
-            MainArticle,
+            MainArticles,
             Concerts,
             Artists,
             TopArtists
