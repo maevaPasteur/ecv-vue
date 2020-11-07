@@ -39,7 +39,7 @@ export default {
           localStorage.setItem('token', res.data.accessToken)
           this.$router.push({ name: 'people' })
         })
-        .catch(er => {
+        .catch(() => {
           this.error = 'Une erreur est survenue'
         })
     }

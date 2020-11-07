@@ -11,22 +11,20 @@ const mutations = {
 };
 
 const actions = {
-    getArtists({ commit }) {
-        API.get('artists')
-            .then(response => {
-                const artists = response.data.sort((a,b) => {
-                    return b.likes - a.likes
-                });
-                commit('SET_ARTISTS', artists)
-            })
+    getArtists({commit}) {
+        API.get('artists').then(response => {
+            const artists = response.data.sort((a, b) => {
+                return b.likes - a.likes
+            });
+            commit('SET_ARTISTS', artists)
+        })
     },
     // eslint-disable-next-line no-unused-vars
     getArtist({commit}, id) {
         return new Promise(resolve => {
-            API.get(`artists/${id}`)
-                .then(response => {
-                    resolve(response.data)
-                })
+            API.get(`artists/${id}`).then(response => {
+                resolve(response.data)
+            })
         })
     }
 };

@@ -5,6 +5,8 @@ import userApi from '@/api/users'
 import Home from "../pages/Home";
 import Article from "../pages/Article";
 import Artist from "../pages/Artist";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 Vue.use(Router);
 
@@ -26,6 +28,16 @@ const router = new Router({
       path: '/artists/:id',
       name: 'artiste',
       component: Artist
+    },
+    {
+      path: '/connexion',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/inscription',
+      name: 'register',
+      component: Register
     }
   ]
 });
