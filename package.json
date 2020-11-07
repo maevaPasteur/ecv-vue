@@ -6,14 +6,24 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "server": "json-server -p 3001 server/db.json -m ./node_modules/json-server-auth -r server/routes.json"
+    "back": "nodemon api/index.js",
+    "style": "prettier -c './api/**/*'",
+    "style:fix": "prettier --c --write './api/**/*'"
   },
   "dependencies": {
     "axios": "^0.21.0",
+    "bcrypt": "^5.0.0",
+    "compression": "^1.7.4",
+    "cookie": "^0.4.1",
+    "cookie-parser": "^1.4.5",
     "core-js": "^3.6.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "json-server": "^0.16.2",
     "json-server-auth": "^2.0.2",
     "jwt-decode": "^3.0.0",
+    "mongoose": "^5.10.13",
     "node-sass": "^5.0.0",
     "sass": "^1.28.0",
     "sass-loader": "^10.0.4",
@@ -29,6 +39,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "nodemon": "^2.0.6",
+    "prettier": "^2.1.2",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
