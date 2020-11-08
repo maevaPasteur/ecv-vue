@@ -96,10 +96,33 @@
     background-color: #2d2d2d;
   }
 
+  .details {
+    img {
+      width: 100%;
+    }
+    & > p, & > img {
+      margin-bottom: 20px;
+    }
+    .id {
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: #fff;
+      color: transparent;
+      font-size: 50px;
+    }
+    .text {
+      line-height: 1.4;
+    }
+  }
+
   table {
     width: 100%;
     margin-top: 40px;
     border-collapse: collapse;
+
+    tr img {
+      margin: 0;
+    }
 
     .id {
       background-color: #2C8DA0;
@@ -117,6 +140,11 @@
       }
     }
 
+    td, td a {
+      display: flex;
+      align-items: center;
+    }
+
     .edit, .delete {
 
       img {
@@ -129,11 +157,13 @@
         }
       }
     }
-  }
 
-  .show {
-    img {
-      width: 100%;
+    .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
     }
   }
 }

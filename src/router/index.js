@@ -4,7 +4,7 @@ import userApi from '@/api/users'
 
 import newsRoutes from "./news";
 import frontRoutes from "./front";
-import Backoffice from "../backoffice/Index";
+import Backoffice from "../pages/backoffice/Index";
 
 Vue.use(Router);
 

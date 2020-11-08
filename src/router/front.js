@@ -1,9 +1,9 @@
-import Home from "@/pages/Home";
-import Article from "@/pages/Article";
-import Artist from "@/pages/Artist";
-import Login from "@/pages/Login";
-import Register from "@/pages/Register";
-import Profile from "@/pages/Profile";
+import Home from "@/pages/front/Home";
+import Article from "@/pages/front/Article";
+import Artist from "@/pages/front/Artist";
+import Login from "@/pages/front/Login";
+import Register from "@/pages/front/Register";
+import Profile from "@/pages/front/Profile";
 
 const frontRoutes = [
     {
