@@ -8,7 +8,8 @@
     "lint": "vue-cli-service lint",
     "back": "nodemon api/index.js",
     "style": "prettier -c './api/**/*'",
-    "style:fix": "prettier --c --write './api/**/*'"
+    "style:fix": "prettier --c --write './api/**/*'",
+    "server": "json-server -p 3001 server/db.json -m ./node_modules/json-server-auth -r server/routes.json"
   },
   "dependencies": {
     "axios": "^0.21.0",
