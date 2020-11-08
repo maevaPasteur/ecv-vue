@@ -1,5 +1,6 @@
 const { compare } = require('bcrypt');
 const usersCol = require('./models/Users');
+const createSessionAndLog = require("../utils/createSessionAndLog");
 
 /**
  * Check if an user exist.
@@ -15,8 +16,17 @@ module.exports = async function Login(data) {
   }
 
   if (await compare(data.password, user.password)) {
+    const d = await createSessionAndLog(user);
+
     return {
       code: 200,
+      header: d.header,
+      forClient: d.forClient
     };
+  }
+
+  return {
+    code: 401,
+    content: 'Email and password combination incorrect.'
   }
 };
