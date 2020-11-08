@@ -23,7 +23,7 @@ module.exports = mongoose.model(
     },
     role: {
       required: true,
-      type: String,
+      type: Boolean,
     },
   })
 );
