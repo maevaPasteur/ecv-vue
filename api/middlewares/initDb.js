@@ -3,7 +3,7 @@ const response = require('../utils/response');
 
 module.exports = function (ops) {
   return async function (req, res, next) {
-    if (mongoose.connection.readyState === 1) return;
+    if (mongoose.connection.readyState === 1) return next();
 
     try {
       mongoose.connect(process.env.DB_URL, {

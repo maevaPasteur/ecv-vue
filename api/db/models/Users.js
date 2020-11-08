@@ -22,8 +22,7 @@ module.exports = mongoose.model(
       type: String,
     },
     role: {
-      required: true,
       type: Boolean,
     },
-  })
+  }, {timestamps: true})
 );

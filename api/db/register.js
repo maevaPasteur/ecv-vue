@@ -1,5 +1,6 @@
 const { hash } = require('bcrypt');
 const usersCol = require('./models/Users');
+const createSessionAndLog = require('../utils/createSessionAndLog');
 
 /**
  * Create a new user if not already register.
@@ -9,13 +10,16 @@ module.exports = async function Register(data) {
   if (!(await usersCol.exists({ email: data.email }))) {
     const passwordHashed = await hash(data.password, 10);
 
-    await new usersCol({
+    const newUser = await new usersCol({
       ...data,
       password: passwordHashed,
     }).save();
 
+    const d = await createSessionAndLog(newUser);
     return {
       code: 200,
+      header: d.header,
+      forClient: d.forClient
     };
   }
 

@@ -7,6 +7,7 @@ const compression = require('compression');
 
 const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
+const logoutRouter = require('./routes/logout');
 const initDb = require('./middlewares/initDb');
 
 app.use(compression());
@@ -22,5 +23,6 @@ app.use(initDb());
 
 app.use('/api/login', loginRouter);
 app.use('/api/register', registerRouter);
+app.use('/api/logout', logoutRouter);
 
 app.listen(3000);
