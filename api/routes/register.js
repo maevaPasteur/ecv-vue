@@ -7,7 +7,7 @@ const registerController = require('../db/register');
 router.post('/', async function (req, res) {
   const bodyArray = Object.keys(req.body);
 
-  if (bodyArray.length >= 6) {
+  if (bodyArray.length >= 5) {
     return response(res, 400);
   }
 
@@ -15,8 +15,7 @@ router.post('/', async function (req, res) {
     !bodyArray.includes('username') ||
     !bodyArray.includes('email') ||
     !bodyArray.includes('password') ||
-    !bodyArray.includes('avatar') ||
-    !bodyArray.includes('role')
+    !bodyArray.includes('avatar')
   ) {
     return response(res, 422);
   }
