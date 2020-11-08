@@ -1,13 +1,23 @@
 <template>
-    <div class="backoffice">
-
+    <show :editRoute="editRoute" :confirmSentence="confirmSentence" @remove="remove">
         <div v-if="article" class="details">
             <p class="id">#{{ article.id }}</p>
             <h1>{{ article.title }}</h1>
             <p>{{ article.published }}</p>
             <p class="text">{{ article.content }}</p>
             <img :src="article.image" :alt="article.title">
-            <h2>Commentaires</h2>
+            <div v-if="artistsLoad">
+                <h2>Les artistes</h2>
+                <ul>
+                    <li v-for="(artist, index) in artists" :key="'artist-show-'+index">
+                        <router-link :to="{ name: '' }">
+                            <img class="avatar" :src="artist.avatar" :alt="artist.name">
+                            <span class="small-id">#{{ artist.id }}</span>
+                            <span>{{ artist.name }}</span>
+                        </router-link>
+                    </li>
+                </ul>
+            </div>
             <table>
                 <tr>
                     <th>Utilisateur</th>
@@ -17,28 +27,35 @@
                     <td>
                         <a href="#">
                             <img class="avatar" :src="comment.avatar" :alt="comment.username">
-                            <span>#{{ comment.userId }}</span>
+                            <span class="small-id">#{{ comment.userId }}</span>
                             <span>{{ comment.username }}</span>
                         </a>
                     </td>
+                    <td>{{ comment.message }}</td>
                 </tr>
             </table>
         </div>
-
-        <button>Edit news</button>
-        <button>Delete</button>
-    </div>
+    </show>
 </template>
 
 <script>
 
+    import Show from "@/components/Backoffice/Show";
+
     export default {
+        components: {
+            Show
+        },
         data() {
             return {
                 id: Number(this.$route.params.id),
                 article: null,
                 artistsLoad: false,
-                artists: []
+                artists: [],
+                editRoute: {
+                    name: 'news.edit', params: { id: this.id }
+                },
+                confirmSentence: 'Êtes-vous certain de vouloir supprimer cet article ?'
             }
         },
         methods: {
@@ -49,6 +66,9 @@
                         this.artistsLoad = true
                     }
                 })
+            },
+            remove() {
+                console.log('supp')
             }
         },
         mounted() {
@@ -57,8 +77,7 @@
                 if (res && res.artistesId) {
                     this.getArtists(res.artistesId)
                 }
-            })
-
+            });
         }
     }
 
