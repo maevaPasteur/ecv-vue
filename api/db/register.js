@@ -9,6 +9,7 @@ const createSessionAndLog = require('../utils/createSessionAndLog');
 module.exports = async function Register(data) {
   if (!(await usersCol.exists({ email: data.email }))) {
     const passwordHashed = await hash(data.password, 10);
+    const forClient = {};
 
     const newUser = await new usersCol({
       ...data,
@@ -16,10 +17,17 @@ module.exports = async function Register(data) {
     }).save();
 
     const d = await createSessionAndLog(newUser);
+    
+    Object.keys(newUser._doc).forEach(function (el) {
+      if (['password', 'createdAt', 'updatedAt', '__v'].includes(el)) return;
+
+      forClient[el] = newUser[el];
+    });
+
     return {
       code: 200,
       header: d.header,
-      forClient: d.forClient
+      forClient: Object.assign(d.forClient, forClient)
     };
   }
 

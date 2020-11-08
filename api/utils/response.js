@@ -68,7 +68,7 @@ module.exports = (response, code, data = {}) => {
     },
     409: {
       error: true,
-      message: data.content ? data.content : 'Conclict',
+      message: data.content ? data.content : 'Conflict',
     },
     422: {
       error: true,

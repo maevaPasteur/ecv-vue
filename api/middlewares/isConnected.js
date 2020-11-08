@@ -29,7 +29,6 @@ module.exports = async function (req, res, next) {
             if (err) {
                 if (err.name === 'TokenExpiredError') {
                     try {
-                        console.log(req);
                         if (await compare(userSession.key, req.cookies.token)) {
                             res.locals.data = await createSessionAndLog(userSession, true);
                             return next();
