@@ -2,7 +2,7 @@
     <div class="backoffice">
         <slot/>
         <div class="btn-actions">
-            <router-link :to="editRoute">Modifier <img src="@/assets/images/pen.svg" alt="modifier l'article"></router-link>
+            <router-link :to="{name: editRouteName, params: { id: id }}">Modifier <img src="@/assets/images/pen.svg" alt="modifier l'article"></router-link>
             <a href="#" @click.prevent="showPopin = true">Supprimer <img src="@/assets/images/delete.svg" alt="supprimer l'article"></a>
         </div>
         <transition name="fade">
@@ -29,7 +29,8 @@
             }
         },
         props: {
-            editRoute: Object,
+            editRouteName: String,
+            id: [String, Number],
             confirmSentence: {
                 type: String,
                 default: 'Êtes vous sûre de vouloir le supprimer ?'

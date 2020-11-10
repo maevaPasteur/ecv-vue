@@ -5,24 +5,24 @@ import Edit from '@/pages/backoffice/news/Edit.vue'
 
 const newsRoutes = [
   {
-    path: '/news',
+    path: '/admin/article',
     name: 'news.index',
-    component: Index,
+    component: Index
   },
   {
-    path: '/news/create',
+    path: '/admin/article/create',
     name: 'news.create',
-    component: Create,
+    component: Create
   },
   {
-    path: '/news/:id/edit',
+    path: '/admin/article/:id/edit',
     name: 'news.edit',
-    component: Edit,
+    component: Edit
   },
   {
-    path: '/news/:id',
+    path: '/admin/article/:id',
     name: 'news.show',
-    component: Show,
+    component: Show
   }
 ];
 

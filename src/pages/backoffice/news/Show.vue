@@ -1,5 +1,12 @@
 <template>
-    <show :editRoute="editRoute" :confirmSentence="confirmSentence" @remove="remove">
+    <show :editRouteName="editRouteName" :id="id" :confirmSentence="confirmSentence" @remove="remove">
+
+        <div class="breadcrumb">
+            <router-link :to="{ name: 'admin' }">Admin</router-link>
+            <router-link :to="{ name: 'news.index' }">Tous les articles</router-link>
+            <a href="#">Voir l'article</a>
+        </div>
+
         <div v-if="article" class="details">
             <p class="id">#{{ article.id }}</p>
             <h1>{{ article.title }}</h1>
@@ -52,9 +59,7 @@
                 article: null,
                 artistsLoad: false,
                 artists: [],
-                editRoute: {
-                    name: 'news.edit', params: { id: this.id }
-                },
+                editRouteName: 'news.edit',
                 confirmSentence: 'Êtes-vous certain de vouloir supprimer cet article ?'
             }
         },

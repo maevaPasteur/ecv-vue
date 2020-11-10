@@ -9,17 +9,30 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+
+//import { mapActions } from 'vuex'
 
 export default {
   data () {
     return {
       title: '',
       content: '',
+      published: '',
+      image: '',
+      artistesId: '',
       error: null
     }
   },
+  computed: {
+    artists() {
+      return this.$store.state.artists
+    }
+  },
+  mounted() {
+    this.$store.dispatch('getArtists')
+  },
   methods: {
+    /*
     ...mapActions({
       createNews: 'news/createNews'
     }),
@@ -28,6 +41,8 @@ export default {
       this.createNews(payload)
       this.$router.push({ name: 'news.index' })
     }
+
+     */
   },
 }
 </script>
