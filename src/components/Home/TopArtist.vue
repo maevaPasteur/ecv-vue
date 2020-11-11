@@ -1,6 +1,6 @@
 <template>
     <li>
-        <a :href="'/artists/' + artist.id">
+        <router-link :to="{ name: 'artist', params: { id: artist.id }}">
             <div class="image">
                 <img :src="artist.avatar" :alt="artist.name">
                 <div class="infos">
@@ -11,7 +11,7 @@
                     <p class="name">{{ artist.name }}</p>
                 </div>
             </div>
-        </a>
+        </router-link>
     </li>
 </template>
 

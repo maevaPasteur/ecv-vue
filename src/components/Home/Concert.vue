@@ -1,5 +1,5 @@
 <template>
-    <a href="#" class="slide">
+    <router-link :to="{ name: 'artist', params: { id: concert.artistId } }" class="slide">
         <div class="img">
             <img v-if="artist" :src="artist.avatar" :alt="artist.name">
         </div>
@@ -8,7 +8,7 @@
             <p>{{concert.name}}</p>
             <p>{{concert.date}}</p>
         </div>
-    </a>
+    </router-link>
 </template>
 
 <script>

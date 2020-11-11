@@ -3,13 +3,13 @@
         <h2>Suggestions</h2>
         <flickity v-if="news && news.length" class="suggestion-articles" :options="flickityOptions">
             <div class="slide" v-for="article in news" :key="article.title">
-                <a :href="'/articles/'+article.id">
+                <router-link :to="{ name: 'article', params: { id: article.id }}">
                     <img :src="article.image" :alt="article.title"/>
                     <div>
                         <h3>{{ article.title }}</h3>
                         <p>{{ article.published }}</p>
                     </div>
-                </a>
+                </router-link>
             </div>
         </flickity>
     </section>

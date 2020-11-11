@@ -31,3 +31,8 @@ input, textarea, button {
     outline: none;
   }
 }
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+}

@@ -1,5 +1,9 @@
 <template>
-    <footer>Footer</footer>
+    <footer class="text">
+        <p>Projet Vuejs x Vuex - Master 2 - ECV Digital</p>
+        <p>Réalisé par Lucas Tostée & Maëva Pasteur</p>
+        <a href="https://github.com/maevaPasteur/ecv-vue">Voir le Github</a>
+    </footer>
 </template>
 
 
@@ -14,7 +18,27 @@
 <style lang="scss">
 
     footer {
-       padding: 20px;
+        margin-top: 80px;
+        padding: 20px;
+        text-align: center;
+        border-top: solid 1px #444;
+
+        p, a {
+            font-size: 12px;
+            line-height: 1.5;
+            color: #ddd;
+        }
+
+        p:first-of-type {
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        a {
+            font-weight: bold;
+        }
     }
 
 </style>

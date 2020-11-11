@@ -46,7 +46,6 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex';
 
     import Show from "@/components/Backoffice/Show";
 
@@ -63,14 +62,6 @@
                 editRouteName: 'news.edit',
                 confirmSentence: 'Êtes-vous certain de vouloir supprimer cet article ?'
             }
-        },
-        computed: {
-            ...mapState({
-                a (state) {
-                    console.log(this.$route, state.news);
-                    return state.news;
-                }
-            })
         },
         methods: {
             getArtists(ids) {

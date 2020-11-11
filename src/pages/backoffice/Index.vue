@@ -3,7 +3,7 @@
     <div class="backoffice">
         <section>
             <h1>Back Office</h1>
-            <p class="text">Bienvenue sur votre interface d'administration</p>
+            <h2 class="text">Bienvenue sur votre interface d'administration</h2>
             <div class="list-menu">
                 <details open>
                     <summary><h2>Les articles</h2></summary>
@@ -15,29 +15,29 @@
                 <details open>
                     <summary><h2>Les utilisateurs</h2></summary>
                     <div class="text">
-                        <router-link :to="{ path: 'register' }">Voir tous les utilisateurs</router-link>
-                        <router-link :to="{ path: 'register' }">Ajouter un utilisateur</router-link>
+                        <router-link :to="{ name: 'register' }">Voir tous les utilisateurs</router-link>
+                        <router-link :to="{ name: 'register' }">Ajouter un utilisateur</router-link>
                     </div>
                 </details>
                 <details open>
                     <summary><h2>Les concerts</h2></summary>
                     <div class="text">
-                        <router-link :to="{ path: 'register' }">Voir tous les concerts</router-link>
-                        <router-link :to="{ path: 'register' }">Ajouter un concert</router-link>
+                        <router-link :to="{ name: 'concerts.index' }">Voir tous les concerts</router-link>
+                        <router-link :to="{ name: 'concerts.create' }">Ajouter un concert</router-link>
                     </div>
                 </details>
                 <details open>
                     <summary><h2>Les albums</h2></summary>
                     <div class="text">
-                        <router-link :to="{ path: 'register' }">Voir tous les albums</router-link>
-                        <router-link :to="{ path: 'register' }">Ajouter un album</router-link>
+                        <router-link :to="{ name: 'register' }">Voir tous les albums</router-link>
+                        <router-link :to="{ name: 'register' }">Ajouter un album</router-link>
                     </div>
                 </details>
                 <details open>
                     <summary><h2>Les artistes</h2></summary>
                     <div class="text">
-                        <router-link :to="{ path: 'register' }">Voir tous les artistes</router-link>
-                        <router-link :to="{ path: 'register' }">Ajouter un artiste</router-link>
+                        <router-link :to="{ name: 'artists.index' }">Voir tous les artistes</router-link>
+                        <router-link :to="{ name: 'artists.create' }">Ajouter un artiste</router-link>
                     </div>
                 </details>
             </div>

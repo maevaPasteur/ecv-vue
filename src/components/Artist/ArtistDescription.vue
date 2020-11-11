@@ -6,7 +6,9 @@
         <div class="infos">
             <div>
                 <h1>{{ artist.name }}</h1>
-                <p class="like">{{ artist.likes | splitNumber }} <icon-heart @click.native.prevent="like"/></p>
+                <p class="like">{{ artist.likes | splitNumber }}
+                    <icon-heart @click.native.prevent="like"/>
+                </p>
                 <br><br>
                 <h2>Pays d'origine</h2>
                 <p class="text">{{ artist.origin }}</p>
@@ -16,7 +18,7 @@
                 <br><br>
                 <h2>Biographie</h2>
                 <p class="text">{{ artist.description }}</p>
-                <div v-if="albums">
+                <div v-if="albums && albums.length">
                     <br><br>
                     <h2>Albums</h2>
                     <ul class="text albums">
@@ -30,18 +32,18 @@
                         </li>
                     </ul>
                 </div>
-                <div v-if="articles">
+                <div v-if="articles && articles.length">
                     <br><br>
                     <h2>Articles</h2>
                     <ul class="list-articles">
                         <li v-for="(article, index) in articles" :key="'article-artist-' + index">
-                            <a :href="'news/' + article.id">
+                            <router-link :to="{name: 'article', params: { id: article.id }}">
                                 <img :src="article.image" :alt="article.title">
                                 <p>
                                     {{ article.title }}<br>
                                     <span>{{ article.published }}</span>
                                 </p>
-                            </a>
+                            </router-link>
                         </li>
                     </ul>
                 </div>
@@ -67,14 +69,17 @@
             }
         },
         mounted() {
-            this.$store.dispatch('getArtist', this.id).then(res => {
-                this.artist = res;
-                this.getGenre();
-                this.getAlbums();
-                this.getArticles();
-            })
+            this.getArtist()
         },
         methods: {
+            getArtist() {
+                this.$store.dispatch('getArtist', this.id).then(res => {
+                    this.artist = res;
+                    this.getGenre();
+                    this.getAlbums();
+                    this.getArticles();
+                })
+            },
             getGenre() {
                 this.$store.dispatch('getGenre', this.artist.genreId).then(res => {
                     this.genre = res.name
@@ -92,6 +97,23 @@
             },
             like() {
                 console.log('like')
+            },
+            resetData(id) {
+                this.id = id;
+                this.artist = undefined;
+                this.genre = undefined;
+                this.albums = undefined;
+                this.articles = undefined;
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                });
+            }
+        },
+        watch: {
+            '$route.params.id'(id) {
+                this.resetData(id);
+                this.getArtist();
             }
         }
     }
@@ -157,12 +179,14 @@
                 align-items: center;
                 line-height: 1.5;
             }
+
             img {
                 width: 150px;
                 height: 150px;
                 object-fit: cover;
                 margin-right: 20px;
             }
+
             .name {
                 font-weight: bold;
             }
@@ -182,6 +206,7 @@
                     transform: scale(1.05);
                 }
             }
+
             img {
                 position: absolute;
                 width: 100%;
@@ -193,12 +218,14 @@
                 z-index: 0;
                 transition: transform ease-out .5s;
             }
+
             p {
                 padding: 50px 20px;
                 position: relative;
                 z-index: 2;
                 text-shadow: 0 0 10px #5a5a5a;
             }
+
             span {
                 -webkit-text-fill-color: transparent;
                 -webkit-text-stroke-width: 1px;

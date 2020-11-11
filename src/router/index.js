@@ -3,7 +3,11 @@ import Vue from 'vue'
 import userApi from '@/api/users'
 
 import newsRoutes from "./news";
+import concertsRoutes from "./concerts"
+import artistsRoutes from "./artists"
+
 import frontRoutes from "./front";
+
 import Backoffice from "../pages/backoffice/Index";
 
 Vue.use(Router);
@@ -18,7 +22,9 @@ const router = new Router({
           component: Backoffice
         },
         ...frontRoutes,
-        ...newsRoutes
+        ...newsRoutes,
+        ...concertsRoutes,
+        ...artistsRoutes
     ]
 });
 

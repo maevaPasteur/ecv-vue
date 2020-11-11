@@ -1,50 +1,43 @@
 <template>
-  <div>
-    <h1> Login </h1>
-    <label>Email</label>
-    <input
-      type="text"
-      v-model="email"
-    />
-    <label>Password</label>
-    <input
-      type="password"
-      v-model="password"
-    />
-    <button @click="login">
-      Login
-    </button>
-    <p v-if="error">{{ error }}</p>
-  </div>
+    <div class="page-login">
+        <form>
+            <h1>Je me connecte</h1>
+            <label>Email</label>
+            <input type="email" required v-model="email"/>
+            <label>Mot de passe</label>
+            <input type="password" required v-model="password"/>
+            <p class="error" v-if="error">{{ error }}</p>
+            <button type="submit" @submit.prevent="login">Connexion</button>
+            <router-link class="text" :to="{ name: 'register' }">Je n'ai pas encore de compte</router-link>
+        </form>
+    </div>
 </template>
 
 <script>
 
-import API from '../../api/config'
+    import API from '../../api/config'
 
-export default {
-  data () {
-    return {
-      email: '',
-      password: '',
-      error: null
-    }
-  },
-  methods: {
-    login () {
-      API.post('login', {
-        email: this.email,
-        password: this.password
-      })
-        .then(res => {
-          localStorage.setItem('token', res.data.accessToken)
-          this.$router.push({ name: 'people' })
-        })
-        .catch(() => {
-          this.error = 'Une erreur est survenue'
-        })
-    }
-  }
+    export default {
+        data() {
+            return {
+                email: '',
+                password: '',
+                error: null
+            }
+        },
+        methods: {
+            login() {
+                API.post('login', {
+                    email: this.email,
+                    password: this.password
+                }).then(res => {
+                    localStorage.setItem('token', res.data.accessToken)
+                    this.$router.push({name: 'people'})
+                }).catch(() => {
+                    this.error = 'Une erreur est survenue'
+                })
+            }
+        }
 
-}
+    }
 </script>

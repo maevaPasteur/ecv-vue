@@ -1,8 +1,8 @@
 <template>
     <section class="artists section-item">
         <h2>Tous nos artistes du moment</h2>
-        <flickity v-if="artists && artists.length" :options="flickityOptions" ref="flickity">
-            <a :href="'/artists/' + artist.id" v-for="(artist, index) in artists" :key="index + artist.name" class="slide">
+        <flickity class="slider" :class="{'is-dragging': isDragging}" v-if="artists && artists.length" :options="flickityOptions" ref="flickity" @init="initSlider">
+            <router-link :to="{ name: 'artist', params: { id: artist.id }}" v-for="(artist, index) in artists" :key="index + artist.name" class="slide">
                 <div class="img">
                     <img :src="artist.avatar" :alt="artist.name">
                 </div>
@@ -10,7 +10,7 @@
                     <h3>{{ artist.name }}</h3>
                     <p>{{ artist.likes | splitNumber }} <icon-heart @click.native.prevent="like"/></p>
                 </div>
-            </a>
+            </router-link>
         </flickity>
     </section>
 </template>
@@ -28,6 +28,7 @@
         },
         data() {
             return {
+                isDragging: false,
                 flickityOptions: {
                     prevNextButtons: true,
                     pageDots: false,
@@ -43,11 +44,15 @@
             }
         },
         mounted() {
-            this.$store.dispatch('getArtists')
+            this.$store.dispatch('getArtists');
         },
         methods: {
             like() {
                 console.log('like')
+            },
+            initSlider() {
+                this.$refs.flickity.on('dragStart', () => this.isDragging = true);
+                this.$refs.flickity.on('dragEnd', () => this.isDragging = false);
             }
         }
     }
@@ -56,6 +61,14 @@
 <style lang="scss">
 
     .artists {
+
+        .is-dragging {
+            pointer-events: none;
+        }
+
+        .slider {
+            outline: 0;
+        }
 
         .slide {
             width: calc((100% - 30px) / 4);

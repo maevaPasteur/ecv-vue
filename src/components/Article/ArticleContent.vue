@@ -10,9 +10,9 @@
         <div class="small-artists" v-if="artistsLoad">
             <ul>
                 <li v-for="(artist, index) in artists" :key="'artist' + index">
-                    <a :href="'/artists/' + artist.id">
+                    <router-link :to="{ name: 'artist', params: { id: artist.id }}">
                         <img :src="artist.avatar" :alt="artist.name">
-                    </a>
+                    </router-link>
                 </li>
             </ul>
         </div>

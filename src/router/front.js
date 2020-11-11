@@ -18,7 +18,7 @@ const frontRoutes = [
     },
     {
         path: '/artists/:id',
-        name: 'artiste',
+        name: 'artist',
         component: Artist
     },
     {
