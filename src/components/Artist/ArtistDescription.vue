@@ -52,11 +52,11 @@
 
 <script>
 
-    import IconHeart from "../../components/Icons/IconHeart";
+    // import IconHeart from "../../components/Icons/IconHeart";
 
     export default {
         name: 'ArtistDescription',
-        components: { IconHeart },
+        // components: { IconHeart },
         data() {
             return {
                 id: Number(this.$route.params.id),

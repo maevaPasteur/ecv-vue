@@ -17,11 +17,11 @@
 
 <script>
 
-    import IconHeart from "../Icons/IconHeart";
+    // import IconHeart from "../Icons/IconHeart";
 
     export default {
         name: 'TopArtist',
-        components: {IconHeart},
+        // components: {IconHeart},
         props: {
             artist: Object,
             index: Number

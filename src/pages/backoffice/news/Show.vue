@@ -31,6 +31,7 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex';
 
     export default {
         data() {
@@ -40,6 +41,14 @@
                 artistsLoad: false,
                 artists: []
             }
+        },
+        computed: {
+            ...mapState({
+                a (state) {
+                    console.log(this.$route, state.news);
+                    return state.news;
+                }
+            })
         },
         methods: {
             getArtists(ids) {
