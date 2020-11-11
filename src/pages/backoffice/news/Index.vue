@@ -31,6 +31,9 @@
                 </td>
             </tr>
         </table>
+        <div class="btn-actions">
+            <router-link :to="{ name: 'news.create' }" class="create">Créer un article</router-link>
+        </div>
     </div>
 </template>
 

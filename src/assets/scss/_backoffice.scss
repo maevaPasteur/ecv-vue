@@ -273,6 +273,14 @@
       font-weight: bold;
     }
   }
+  .create {
+    border: solid 2px #fff;
+
+    &:hover {
+      background-color: transparent !important;
+      color: #fff;
+    }
+  }
 }
 
 .breadcrumb {

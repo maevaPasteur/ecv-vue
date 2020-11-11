@@ -36,8 +36,8 @@
                 <details open>
                     <summary><h2>Les artistes</h2></summary>
                     <div class="text">
-                        <router-link :to="{ name: 'register' }">Voir tous les artistes</router-link>
-                        <router-link :to="{ name: 'register' }">Ajouter un artiste</router-link>
+                        <router-link :to="{ name: 'artists.index' }">Voir tous les artistes</router-link>
+                        <router-link :to="{ name: 'artists.create' }">Ajouter un artiste</router-link>
                     </div>
                 </details>
             </div>

@@ -4,6 +4,8 @@ import userApi from '@/api/users'
 
 import newsRoutes from "./news";
 import concertsRoutes from "./concerts"
+import artistsRoutes from "./artists"
+
 import frontRoutes from "./front";
 
 import Backoffice from "../pages/backoffice/Index";
@@ -21,7 +23,8 @@ const router = new Router({
         },
         ...frontRoutes,
         ...newsRoutes,
-        ...concertsRoutes
+        ...concertsRoutes,
+        ...artistsRoutes
     ]
 });
 

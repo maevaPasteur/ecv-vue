@@ -34,6 +34,9 @@
                 </td>
             </tr>
         </table>
+        <div class="btn-actions">
+            <router-link :to="{ name: 'concerts.create' }" class="create">Créer un concert</router-link>
+        </div>
     </div>
 </template>
 
