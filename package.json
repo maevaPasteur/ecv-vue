@@ -6,10 +6,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "back": "nodemon api/index.js",
-    "style": "prettier -c './api/**/*'",
-    "style:fix": "prettier --c --write './api/**/*'",
-    "server": "json-server -p 3001 server/db.json -m ./node_modules/json-server-auth -r server/routes.json"
+    "back": "nodemon api-2/index.js",
+    "style": "prettier -c './api-2/**/*'",
+    "style:fix": "prettier --c --write './api-2/**/*'",
+    "server": "json-server -p 3001 server/db.json -m ./node_modules/json-server-auth -r server/routes.json && nodemon api-2/index.js"
   },
   "dependencies": {
     "axios": "^0.21.0",
