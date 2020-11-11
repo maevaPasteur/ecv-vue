@@ -32,6 +32,14 @@ const actions = {
                 commit('SET_CONCERTS', concerts);
             })
     },
+    // eslint-disable-next-line no-unused-vars
+    getConcert({commit}, id) {
+        return new Promise(resolve => {
+            API.get(`concerts/${id}`).then(response => {
+                resolve(response.data)
+            })
+        })
+    },
     getNextConcerts({ commit }) {
         API.get('concerts')
             .then(response => {

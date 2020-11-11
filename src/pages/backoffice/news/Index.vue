@@ -1,5 +1,9 @@
 <template>
     <div class="backoffice">
+        <div class="breadcrumb">
+            <router-link :to="{ name: 'admin' }">Admin</router-link>
+            <a href="#">Tous les articles</a>
+        </div>
         <h1>Les articles</h1>
         <table>
             <tr>
@@ -35,7 +39,7 @@
     export default {
         computed: {
             news() {
-                return this.$store.state.news.slice(0, 5)
+                return this.$store.state.news
             }
         },
         mounted() {

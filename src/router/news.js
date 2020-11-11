@@ -10,12 +10,12 @@ const newsRoutes = [
     component: Index
   },
   {
-    path: '/admin/article/create',
+    path: '/admin/article/nouveau',
     name: 'news.create',
     component: Create
   },
   {
-    path: '/admin/article/:id/edit',
+    path: '/admin/article/:id/modifier',
     name: 'news.edit',
     component: Edit
   },
