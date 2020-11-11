@@ -2,9 +2,7 @@
     <div class="page">
         <Header/>
         <main>
-            <transition name="fade">
-                <slot/>
-            </transition>
+            <slot/>
         </main>
         <Footer/>
     </div>

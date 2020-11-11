@@ -4,13 +4,13 @@
         <h2>Toutes les news</h2>
         <ul>
             <li class="new" v-for="(article, index) in news" :key="'article-all-' + index">
-                <a :to="{name: 'article', params: { id: article.id }}">
+                <router-link :to="{name: 'article', params: { id: article.id }}">
                     <div class="image">
                         <img :src="article.image" :alt="article.title">
                         <span>{{ article.published }}</span>
                     </div>
                     <h3>{{ article.title }}</h3>
-                </a>
+                </router-link>
             </li>
         </ul>
     </section>

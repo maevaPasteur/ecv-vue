@@ -21,6 +21,7 @@
         margin-top: 80px;
         padding: 20px;
         text-align: center;
+        border-top: solid 1px #444;
 
         p, a {
             font-size: 12px;
