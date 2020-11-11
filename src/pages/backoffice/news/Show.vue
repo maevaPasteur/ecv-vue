@@ -67,7 +67,7 @@
         computed: {
             ...mapState({
                 a (state) {
-                    console.log(this.$route, state.news);
+                    // console.log(this.$route, state.news);
                     return state.news;
                 }
             })

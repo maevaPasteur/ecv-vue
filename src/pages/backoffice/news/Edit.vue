@@ -9,7 +9,7 @@
     </div>
 
     <h1>Modifier l'article</h1>
-    <form>
+    <form @submit.prevent='save'>
       <label>Titre</label>
       <input required type="text" v-model="article.title" />
       <label>Date</label>
@@ -26,36 +26,43 @@
           <label :for="'artist'+artist.id">{{ artist.name }}</label>
         </div>
       </div>
-      <button @submit="save">Valider</button>
+      <button type="submit">Valider</button>
     </form>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
 
 export default {
 
   data() {
     return {
       id: this.$route.params.id,
-      article: null
     }
   },
   methods: {
-    save() {
-
+    ...mapActions(['getNews', 'getArtists', 'updateNew']),
+    save () {
+      this.updateNew(this.article);
     }
   },
   computed: {
-    artists() {
-      return this.$store.state.artists
-    }
+    ...mapState({
+      article (state) {
+        if (state.news.length === 0) return {};
+
+        const urlId = parseInt(this.$route.params.id);
+        return state.news.find(n => n.id === urlId);
+      },
+      artists: state => state.artists
+    })
   },
   mounted () {
-    this.$store.dispatch('getNew', this.id).then(res => {
-      this.article = res;
-    });
-    this.$store.dispatch('getArtists')
+    if (Object.keys(this.article).length) return;
+
+    this.getNews();
+    this.getArtists();
   }
 }
 

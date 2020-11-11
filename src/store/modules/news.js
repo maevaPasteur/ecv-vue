@@ -7,10 +7,24 @@ const state = {
 const mutations = {
     SET_NEWS(state, news) {
         state.news = news
+    },
+    SET_NEW(state, newItem) {
+        const newNews = [ ...state.news];
+        
+        newNews.map(function (n, index) {
+            if (n.id === newItem.id) return newNews[index] = newItem;
+            return n;
+        });
+
+        state.news = [ ...newNews ];
     }
 };
 
 const actions = {
+    async updateNew({commit}, news) {
+        const newArticle = await API.patch(`news/${news.id}`, { ...news });
+        commit('SET_NEW', newArticle.data);
+    },
     getNews({commit}) {
         API.get('news')
             .then(response => {
