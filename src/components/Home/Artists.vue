@@ -2,7 +2,7 @@
     <section class="artists section-item">
         <h2>Tous nos artistes du moment</h2>
         <flickity v-if="artists && artists.length" :options="flickityOptions" ref="flickity">
-            <a :href="'/artists/' + artist.id" v-for="(artist, index) in artists" :key="index + artist.name" class="slide">
+            <router-link  :to="{ name: 'artist', params: { id: artist.id }}" v-for="(artist, index) in artists" :key="index + artist.name" class="slide">
                 <div class="img">
                     <img :src="artist.avatar" :alt="artist.name">
                 </div>
@@ -10,7 +10,7 @@
                     <h3>{{ artist.name }}</h3>
                     <p>{{ artist.likes | splitNumber }} <icon-heart @click.native.prevent="like"/></p>
                 </div>
-            </a>
+            </router-link>
         </flickity>
     </section>
 </template>

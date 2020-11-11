@@ -4,7 +4,7 @@
         <h2>Toutes les news</h2>
         <ul>
             <li class="new" v-for="(article, index) in news" :key="'article-all-' + index">
-                <a :href="'news/' + article.id">
+                <a :to="{name: 'article', params: { id: article.id }}">
                     <div class="image">
                         <img :src="article.image" :alt="article.title">
                         <span>{{ article.published }}</span>
@@ -42,7 +42,8 @@
                 transform: scale(1.1);
             }
             .image span {
-                transform: translate(-50%, -50%) scale(.9);
+                transform: translate(-50%, -50%) scale(.95);
+                opacity: 0;
             }
         }
 
@@ -74,7 +75,7 @@
                 color: transparent;
                 font-size: 35px;
                 text-shadow: 0 0 10px #5a5a5a;
-                transition: transform ease-out 1s;
+                transition: transform ease-out .3s, opacity ease-out .3s;
             }
         }
 

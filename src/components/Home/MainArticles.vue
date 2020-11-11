@@ -3,10 +3,10 @@
         <flickity class="main-slider" ref="mainSlider" :options="flickityOptions">
             <div class="slide" v-for="article in news" :key="article.title">
                 <img :src="article.image" :alt="article.title"/>
-                <a :href="'/articles/'+article.id" class="container">
+                <router-link :to="{name: article, params: { id: article.id }}" class="container">
                     <h2>{{ article.title }}</h2>
                     <p>{{ article.published }}</p>
-                </a>
+                </router-link>
             </div>
         </flickity>
     </section>

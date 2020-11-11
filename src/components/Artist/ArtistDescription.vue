@@ -35,13 +35,13 @@
                     <h2>Articles</h2>
                     <ul class="list-articles">
                         <li v-for="(article, index) in articles" :key="'article-artist-' + index">
-                            <a :href="'news/' + article.id">
+                            <router-link :to="{name: article, params: { id: article.id }}">
                                 <img :src="article.image" :alt="article.title">
                                 <p>
                                     {{ article.title }}<br>
                                     <span>{{ article.published }}</span>
                                 </p>
-                            </a>
+                            </router-link>
                         </li>
                     </ul>
                 </div>

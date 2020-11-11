@@ -9,8 +9,9 @@
         <transition name="fade">
             <nav v-if="menuVisible" class="menu">
                 <ul>
-                    <li><router-link :to="{ path: 'login' }">Connexion</router-link></li>
-                    <li><router-link :to="{ path: 'register' }">Inscription</router-link></li>
+                    <li><router-link @click.native="toggleMenu" :to="{ name: 'home' }">Accueil</router-link></li>
+                    <li><router-link @click.native="toggleMenu" :to="{ name: 'login' }">Connexion</router-link></li>
+                    <li><router-link @click.native="toggleMenu" :to="{ name: 'register' }">Inscription</router-link></li>
                 </ul>
             </nav>
         </transition>
@@ -59,6 +60,7 @@
         justify-content: center;
         font-size: 40px;
         line-height: 1.5;
+        text-align: center;
     }
 
     header {
