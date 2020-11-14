@@ -1,16 +1,12 @@
 import API from '../../api/config'
 
 const state = {
-    concerts: [],
-    nextConcerts: []
+    concerts: []
 };
 
 const mutations = {
     SET_CONCERTS(state, concerts) {
         state.concerts = concerts
-    },
-    SET_NEXT_CONCERTS(state, concerts) {
-        state.nextConcerts = concerts
     }
 };
 

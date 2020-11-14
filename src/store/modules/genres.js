@@ -4,9 +4,20 @@ const state = {
     genres: []
 };
 
-const mutations = {};
+const mutations = {
+    SET_GENRES(state, genres) {
+        state.genres = genres
+    },
+};
 
 const actions = {
+
+    getGenres({commit}) {
+        API.get('genres').then(response => {
+            commit('SET_GENRES', response.data);
+        })
+    },
+
     // eslint-disable-next-line no-unused-vars
     getGenre({commit}, id) {
         return new Promise(resolve => {

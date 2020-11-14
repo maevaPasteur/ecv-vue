@@ -5,10 +5,19 @@ const state = {
 };
 
 const mutations = {
-
+    SET_ALBUMS(state, albums) {
+        state.albums = albums
+    }
 };
 
 const actions = {
+
+    getAlbums({commit}) {
+        API.get('albums').then(response => {
+            commit('SET_ALBUMS', response.data);
+        })
+    },
+
     // eslint-disable-next-line no-unused-vars
     geAlbumsByArtist({commit}, id) {
         return new Promise(resolve => {

@@ -13,9 +13,11 @@
                 <h2>Pays d'origine</h2>
                 <p class="text">{{ artist.origin }}</p>
                 <br><br>
-                <h2>Genre</h2>
-                <p v-if="genre">{{ genre }}</p>
-                <br><br>
+                <div v-if="genre">
+                    <h2>Genre</h2>
+                    <p>{{ genre.name }}</p>
+                    <br><br>
+                </div>
                 <h2>Biographie</h2>
                 <p class="text">{{ artist.description }}</p>
                 <div v-if="albums && albums.length">
@@ -54,6 +56,7 @@
 
 <script>
 
+    import {mapState, mapActions} from 'vuex';
     import IconHeart from "../../components/Icons/IconHeart";
 
     export default {
@@ -61,59 +64,60 @@
         components: { IconHeart },
         data() {
             return {
-                id: Number(this.$route.params.id),
-                artist: undefined,
-                genre: undefined,
-                albums: undefined,
-                articles: undefined
+                id: Number(this.$route.params.id)
             }
         },
-        mounted() {
-            this.getArtist()
+        computed: {
+            ...mapState({
+                artist(state) {
+                    const artist = state.artists.find(n => n.id === this.id);
+                    return artist ? artist : {}
+                },
+                articles(state) {
+                    return state.news.filter(n => n.artistesId.includes(this.artist.id));
+                },
+                genre(state) {
+                    return this.artist && this.artist.genreId? state.genres.find(n => n.id === this.artist.genreId) : ''
+                },
+                albums(state) {
+                    return state.albums.filter(n => n.artistId === this.id)
+                },
+                all_articles: state => state.news,
+                artists: state => state.artists,
+                genres: state => state.genres,
+                all_albums: state => state.albums
+            })
         },
         methods: {
-            getArtist() {
-                this.$store.dispatch('getArtist', this.id).then(res => {
-                    this.artist = res;
-                    this.getGenre();
-                    this.getAlbums();
-                    this.getArticles();
-                })
-            },
-            getGenre() {
-                this.$store.dispatch('getGenre', this.artist.genreId).then(res => {
-                    this.genre = res.name
-                })
-            },
-            getAlbums() {
-                this.$store.dispatch('geAlbumsByArtist', this.artist.id).then(res => {
-                    this.albums = res
-                })
-            },
-            getArticles() {
-                this.$store.dispatch('getNewsByArtist', this.artist.id).then(res => {
-                    this.articles = res
-                })
-            },
+            ...mapActions(['getArtists', 'getNews', 'getGenres', 'getAlbums']),
             like() {
                 console.log('like')
             },
             resetData(id) {
                 this.id = id;
-                this.artist = undefined;
-                this.genre = undefined;
-                this.albums = undefined;
-                this.articles = undefined;
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth',
                 });
             }
         },
+        mounted() {
+            if(!Object.keys(this.artists).length) {
+                this.getArtists();
+            }
+            if(!Object.keys(this.articles).length) {
+                this.getNews();
+            }
+            if(!Object.keys(this.genres).length) {
+                this.getGenres();
+            }
+            if(!Object.keys(this.all_albums).length) {
+                this.getAlbums();
+            }
+        },
         watch: {
             '$route.params.id'(id) {
                 this.resetData(id);
-                this.getArtist();
             }
         }
     }
