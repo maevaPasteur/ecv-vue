@@ -25,6 +25,7 @@
     "json-server-auth": "^2.0.2",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.0.0",
+    "moment": "^2.29.1",
     "mongoose": "^5.10.13",
     "node-sass": "^5.0.0",
     "sass": "^1.28.0",

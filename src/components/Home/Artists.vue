@@ -18,13 +18,13 @@
 <script>
 
     import Flickity from 'vue-flickity'
-    // import IconHeart from "../Icons/IconHeart";
+    import IconHeart from "../Icons/IconHeart";
 
     export default {
         name: 'Artists',
         components: {
             Flickity,
-            // IconHeart
+            IconHeart
         },
         data() {
             return {

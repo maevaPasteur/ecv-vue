@@ -10,12 +10,10 @@ const mutations = {
     },
     SET_NEW(state, newItem) {
         const newNews = [ ...state.news];
-        
         newNews.map(function (n, index) {
             if (n.id === newItem.id) return newNews[index] = newItem;
             return n;
         });
-
         state.news = [ ...newNews ];
     }
 };
@@ -28,17 +26,9 @@ const actions = {
     getNews({commit}) {
         API.get('news')
             .then(response => {
-                let articles = response.data;
-
-                // Trier du + au - récent
-                articles.sort(function (a, b) {
-                    let date = a.published.split('/');
-                    const c = new Date(`${date[1]}/${date[0]}/${date[2]}`);
-                    date = b.published.split('/');
-                    const d = new Date(`${date[1]}/${date[0]}/${date[2]}`);
-                    return d - c;
+                let articles = response.data.sort((a,b) => {
+                    return new Date(b.published) - new Date(a.published)
                 });
-
                 commit('SET_NEWS', articles)
             })
     },
