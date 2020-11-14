@@ -18,17 +18,9 @@ const actions = {
     getConcerts({ commit }) {
         API.get('concerts')
             .then(response => {
-                let concerts = response.data;
-
-                // Trier du + au - récent
-                concerts.sort(function (a, b) {
-                    let date = a.date.split('/');
-                    const c = new Date(`${date[1]}/${date[0]}/${date[2]}`);
-                    date = b.date.split('/');
-                    const d = new Date(`${date[1]}/${date[0]}/${date[2]}`);
-                    return d - c;
+                let concerts = response.data.sort((a,b) => {
+                    return new Date(b.date) - new Date(a.date)
                 });
-
                 commit('SET_CONCERTS', concerts);
             })
     },
