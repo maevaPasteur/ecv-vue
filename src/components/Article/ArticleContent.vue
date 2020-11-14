@@ -7,7 +7,7 @@
             <img :src="article.image" :alt="article.title">
         </div>
 
-        <div class="small-artists" v-if="artistsLoad">
+        <div class="small-artists" v-if="artists && artists.length">
             <ul>
                 <li v-for="(artist, index) in artists" :key="'artist' + index">
                     <router-link :to="{ name: 'artist', params: { id: artist.id }}">
@@ -41,33 +41,41 @@
 </template>
 
 <script>
+
+    import {mapState, mapActions} from 'vuex';
+
     export default {
         name: 'ArticleContent',
         data() {
             return {
-                id: Number(this.$route.params.id),
-                article: null,
-                artistsLoad: false,
-                artists: []
+                id: Number(this.$route.params.id)
             }
         },
         methods: {
-            getArtists(ids) {
-                ids.forEach(async (id, index) => {
-                    this.artists[index] = await this.$store.dispatch('getArtist', id);
-                    if (index === ids.length - 1) {
-                        this.artistsLoad = true
+            ...mapActions(['getNews', 'getArtists']),
+
+        },
+        computed: {
+            ...mapState({
+                article(state) {
+                    return state.news.find(n => n.id === this.id)
+                },
+                news: state => state.news,
+                artists(state) {
+                    if(this.article && this.article.artistesId.length && state.artists) {
+                        return state.artists.filter(e => this.article.artistesId.includes(e.id))
                     }
-                })
-            }
+                },
+                all_artists: state => state.artists
+            })
         },
         mounted() {
-            this.$store.dispatch('getNew', this.id).then(res => {
-                this.article = res;
-                if (res && res.artistesId) {
-                    this.getArtists(res.artistesId)
-                }
-            })
+            if(!Object.keys(this.news).length) {
+                this.getNews()
+            }
+            if(!Object.keys(this.all_artists).length) {
+                this.getArtists()
+            }
         }
     }
 </script>
@@ -109,8 +117,8 @@
             text-transform: uppercase;
             font-weight: 500;
             cursor: pointer;
-            color: #fff;
-            margin: 5px 10px 0;
+            color: #000;
+            margin: 20px 10px 0 0;
 
             &:hover {
                 border-bottom: solid 1px #fff;
@@ -126,6 +134,7 @@
             border: solid 1px #fff;
             color: #fff;
             background: transparent;
+            min-height: 100px;
 
             &::placeholder {
                 font-size: 14px;
