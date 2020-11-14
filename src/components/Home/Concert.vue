@@ -13,6 +13,8 @@
 
 <script>
 
+    import { mapState, mapActions } from 'vuex';
+
     export default {
         name: 'Concert',
         props: {
@@ -20,19 +22,23 @@
             count: Number,
             index: Number
         },
-        data() {
-            return {
-                artist: null
-            }
+        computed: {
+            ...mapState({
+                artist(state) {
+                    return state.artists.find(n => n.id === this.concert.artistId);
+                },
+                artists(state) {
+                    return state.artists
+                }
+            })
+        },
+        methods: {
+            ...mapActions(['getArtists']),
         },
         mounted() {
-            this.$store.dispatch('getArtist', this.concert.artistId).then(res => {
-                this.artist = res;
-                if(this.index === 0) {
-                    this.$emit('ready')
-                }
-
-            })
+            if(!Object.keys(this.artists).length) {
+                this.getArtists();
+            }
         }
     }
 </script>

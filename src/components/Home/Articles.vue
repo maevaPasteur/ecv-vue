@@ -19,12 +19,17 @@
 
 <script>
 
+    import {mapState, mapActions} from 'vuex';
+
     export default {
         name: 'Articles',
         computed: {
-            news() {
-                return this.$store.state.news
-            }
+            ...mapState({
+                news: state => state.news
+            })
+        },
+        methods: {
+            ...mapActions(['getNews'])
         },
         mounted() {
             this.$store.dispatch('getNews')

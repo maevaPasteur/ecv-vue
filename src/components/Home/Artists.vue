@@ -1,14 +1,17 @@
 <template>
-    <section class="artists section-item">
+    <section class="artists section-item" v-if="artists && artists.length">
         <h2>Tous nos artistes du moment</h2>
-        <flickity class="slider" :class="{'is-dragging': isDragging}" v-if="artists && artists.length" :options="flickityOptions" ref="flickity" @init="initSlider">
-            <router-link :to="{ name: 'artist', params: { id: artist.id }}" v-for="(artist, index) in artists" :key="index + artist.name" class="slide">
+        <flickity class="slider" :class="{'is-dragging': isDragging}" :options="flickityOptions" ref="flickity" @init="initSlider">
+            <router-link :to="{ name: 'artist', params: { id: artist.id }}" v-for="(artist, index) in artists"
+                         :key="index + artist.name" class="slide">
                 <div class="img">
                     <img :src="artist.avatar" :alt="artist.name">
                 </div>
                 <div class="content">
                     <h3>{{ artist.name }}</h3>
-                    <p>{{ artist.likes | splitNumber }} <icon-heart @click.native.prevent="like"/></p>
+                    <p>{{ artist.likes | splitNumber }}
+                        <icon-heart @click.native.prevent="like"/>
+                    </p>
                 </div>
             </router-link>
         </flickity>
@@ -17,6 +20,7 @@
 
 <script>
 
+    import {mapState, mapActions} from 'vuex';
     import Flickity from 'vue-flickity'
     import IconHeart from "../Icons/IconHeart";
 
@@ -39,14 +43,12 @@
             }
         },
         computed: {
-            artists() {
-                return this.$store.state.artists
-            }
-        },
-        mounted() {
-            this.$store.dispatch('getArtists');
+            ...mapState({
+                artists: state => state.artists
+            })
         },
         methods: {
+            ...mapActions(['getArtists']),
             like() {
                 console.log('like')
             },
@@ -54,6 +56,9 @@
                 this.$refs.flickity.on('dragStart', () => this.isDragging = true);
                 this.$refs.flickity.on('dragEnd', () => this.isDragging = false);
             }
+        },
+        mounted() {
+            this.getArtists();
         }
     }
 </script>

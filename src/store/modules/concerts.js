@@ -31,35 +31,6 @@ const actions = {
                 resolve(response.data)
             })
         })
-    },
-    getNextConcerts({ commit }) {
-        API.get('concerts')
-            .then(response => {
-
-                let concerts = response.data;
-                let nextConcerts = [];
-                const today = new Date();
-
-                // On récupère les concerts aux dates non passées
-                concerts.forEach(concert => {
-                    let date = concert.date.split('/');
-                    date = new Date(`${date[1]}/${date[0]}/${date[2]}`);
-                    if(date >= today) {
-                        nextConcerts.push(concert)
-                    }
-                });
-
-                // Trier par date par ordre croissant
-                nextConcerts.sort(function (a, b) {
-                    let date = a.date.split('/');
-                    const c = new Date(`${date[1]}/${date[0]}/${date[2]}`);
-                    date = b.date.split('/');
-                    const d = new Date(`${date[1]}/${date[0]}/${date[2]}`);
-                    return d - c;
-                });
-
-                commit('SET_NEXT_CONCERTS', nextConcerts)
-            })
     }
 };
 

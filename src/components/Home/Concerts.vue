@@ -1,15 +1,15 @@
 <template>
-    <section class="next-concerts section-item">
+    <section class="next-concerts section-item" v-if="concerts && concerts.length">
         <h2>Les prochains concerts</h2>
         <div class="sliders">
             <div class="slider1">
-                <flickity :class="{'is-dragging': isDragging}" v-if="concerts && concerts.length" :options="flickityOptions1" ref="slider1">
+                <flickity :class="{'is-dragging': isDragging}" :options="flickityOptions1" ref="slider1">
                     <concert v-for="(concert, index) in concerts" :key="index + concert.name" :concert="concert"/>
                 </flickity>
             </div>
            <div class="slider2">
-               <flickity :class="{'is-dragging': isDragging}" v-if="concerts && concerts.length" :options="flickityOptions2" ref="slider2" @init="onInitSliders">
-                   <concert v-for="(concert, index) in concerts" :key="index + concert.name" :concert="concert" :count="concerts.length" :index="index" @ready="childReady"/>
+               <flickity :class="{'is-dragging': isDragging}" :options="flickityOptions2" ref="slider2" @init="onInitSliders">
+                   <concert v-for="(concert, index) in concerts" :key="index + concert.name" :concert="concert" :count="concerts.length"/>
                </flickity>
            </div>
         </div>
@@ -53,7 +53,7 @@
         },
         computed: {
             ...mapState({
-                concerts (state) {
+                concerts(state) {
                     if (state.concerts.length === 0) return {};
                     let concerts = [];
                     const today = new Date();
@@ -63,23 +63,18 @@
                         }
                     });
                     return concerts
-                }
+                },
+                all_concerts: state => state.concerts
             })
         },
         methods: {
             ...mapActions(['getConcerts']),
 
-            // Initialisation des sliders quand le composant enfant a fini de charger
-            childReady() {
-                [this.$refs.slider1, this.$refs.slider2].forEach(slider => {
-                    slider.resize();
-                    slider.on('dragStart', () => this.isDragging = true);
-                    slider.on('dragEnd', () => this.isDragging = false);
-                })
-            },
-
-            // Lier les 2 sliders
             onInitSliders() {
+                this.$refs.slider1.on('dragStart', () => this.isDragging = true);
+                this.$refs.slider2.on('dragStart', () => this.isDragging = true);
+                this.$refs.slider1.on('dragEnd', () => this.isDragging = false);
+                this.$refs.slider2.on('dragEnd', () => this.isDragging = false);
                 this.$refs.slider1.on('select', index => {
                     const slider2Index = this.$refs.slider2.selectedIndex();
                     let newIndex = (index + 1) === this.concerts.length ? 0 : index + 1;
@@ -107,7 +102,9 @@
             }
         },
         mounted() {
-            this.getConcerts()
+            if(!Object.keys(this.all_concerts).length) {
+                this.getConcerts()
+            }
         }
     }
 </script>
