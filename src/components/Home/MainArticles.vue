@@ -34,8 +34,7 @@
                 news(state) {
                     if (state.news.length === 0) return {};
                     return state.news.slice(0, 5)
-                },
-                all_news: state => state.news
+                }
             })
         },
         methods: {
@@ -47,7 +46,7 @@
             }
         },
         mounted() {
-            if(!Object.keys(this.all_news).length) {
+            if(!Object.keys(this.news).length) {
                 this.getNews();
             }
         }

@@ -58,7 +58,9 @@
             }
         },
         mounted() {
-            this.getArtists();
+            if(!Object.keys(this.artists).length) {
+                this.getArtists()
+            }
         }
     }
 </script>

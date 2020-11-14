@@ -81,43 +81,36 @@
                 },
                 albums(state) {
                     return state.albums.filter(n => n.artistId === this.id)
-                },
-                all_articles: state => state.news,
-                artists: state => state.artists,
-                genres: state => state.genres,
-                all_albums: state => state.albums
+                }
             })
         },
         methods: {
             ...mapActions(['getArtists', 'getNews', 'getGenres', 'getAlbums']),
             like() {
                 console.log('like')
-            },
-            resetData(id) {
-                this.id = id;
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth',
-                });
             }
         },
         mounted() {
-            if(!Object.keys(this.artists).length) {
+            if(!Object.keys(this.artist).length) {
                 this.getArtists();
             }
             if(!Object.keys(this.articles).length) {
                 this.getNews();
             }
-            if(!Object.keys(this.genres).length) {
+            if(!Object.keys(this.genre)) {
                 this.getGenres();
             }
-            if(!Object.keys(this.all_albums).length) {
+            if(!Object.keys(this.albums).length) {
                 this.getAlbums();
             }
         },
         watch: {
             '$route.params.id'(id) {
-                this.resetData(id);
+                this.id = id;
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                });
             }
         }
     }

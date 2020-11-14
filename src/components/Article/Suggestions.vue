@@ -1,7 +1,7 @@
 <template>
     <section class="section-item section-suggestions">
         <h2>Suggestions</h2>
-        <flickity v-if="news && news.length" class="suggestion-articles" :options="flickityOptions">
+        <flickity v-if="news && news.length" :class="{'is-dragging': isDragging}" class="suggestion-articles" :options="flickityOptions" ref="slider" @init="sliderReady">
             <div class="slide" v-for="article in news" :key="article.title">
                 <router-link :to="{ name: 'article', params: { id: article.id }}">
                     <img :src="article.image" :alt="article.title"/>
@@ -17,6 +17,7 @@
 
 <script>
 
+    import {mapState, mapActions} from 'vuex';
     import Flickity from 'vue-flickity';
 
     export default {
@@ -24,6 +25,8 @@
         components: {Flickity},
         data() {
             return {
+                isDragging: false,
+                id: Number(this.$route.params.id),
                 flickityOptions: {
                     prevNextButtons: true,
                     pageDots: false,
@@ -32,13 +35,26 @@
                 }
             }
         },
+
         computed: {
-            news() {
-                return this.$store.state.news.slice(0, 10)
+            ...mapState({
+                news(state) {
+                    const news = state.news.filter(e => e.id !== this.id);
+                    return news ? news : {}
+                }
+            })
+        },
+        methods: {
+            ...mapActions(['getNews']),
+            sliderReady() {
+                this.$refs.slider.on('dragStart', () => this.isDragging = true);
+                this.$refs.slider.on('dragEnd', () => this.isDragging = false);
             }
         },
         mounted() {
-            this.$store.dispatch('getNews')
+            if(!Object.keys(this.news).length) {
+                this.getNews()
+            }
         }
     }
 
@@ -47,6 +63,15 @@
 <style lang="scss">
 
     .section-suggestions {
+
+        .suggestion-articles {
+            outline: 0;
+
+            &.is-dragging a {
+                pointer-events: none;
+            }
+        }
+
         .slide {
             width: calc((100% - 40px) / 3);
             margin-right: 20px;

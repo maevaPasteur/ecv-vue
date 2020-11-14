@@ -32,7 +32,9 @@
             ...mapActions(['getNews'])
         },
         mounted() {
-            this.$store.dispatch('getNews')
+            if(!Object.keys(this.news).length) {
+                this.getNews()
+            }
         }
     }
 

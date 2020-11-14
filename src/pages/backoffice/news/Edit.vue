@@ -59,10 +59,12 @@
             })
         },
         mounted() {
-            if (Object.keys(this.article).length) return;
-
-            this.getNews();
-            this.getArtists();
+            if(!Object.keys(this.article).length) {
+                this.getNews()
+            }
+            if(!Object.keys(this.artists).length) {
+                this.getArtists()
+            }
         }
     }
 

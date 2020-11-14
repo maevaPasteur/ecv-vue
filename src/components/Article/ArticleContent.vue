@@ -58,23 +58,32 @@
         computed: {
             ...mapState({
                 article(state) {
-                    return state.news.find(n => n.id === this.id)
+                    const article = state.news.find(n => n.id === this.id);
+                    return article ? article : {}
                 },
-                news: state => state.news,
                 artists(state) {
-                    if(this.article && this.article.artistesId.length && state.artists) {
+                    if (this.article && this.article.artistesId && this.article.artistesId.length && state.artists) {
                         return state.artists.filter(e => this.article.artistesId.includes(e.id))
                     }
-                },
-                all_artists: state => state.artists
+                    return {}
+                }
             })
         },
         mounted() {
-            if(!Object.keys(this.news).length) {
+            if (!Object.keys(this.article)) {
                 this.getNews()
             }
-            if(!Object.keys(this.all_artists).length) {
+            if (!Object.keys(this.artists).length) {
                 this.getArtists()
+            }
+        },
+        watch: {
+            '$route.params.id'(id) {
+                this.id = id;
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                });
             }
         }
     }
