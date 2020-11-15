@@ -2,8 +2,7 @@
     <section class="section-item top-artists">
         <h2>Vos chouchous</h2>
         <ul v-if="artists && artists.length">
-            <top-artist v-for="(artist, index) in artists" :key="'top-' + index + artist.name" :index="index"
-                        :artist="artist"/>
+            <top-artist v-for="(artist, index) in artists" :key="'top-' + index + artist.name" :index="index" :artist="artist"/>
         </ul>
     </section>
 </template>

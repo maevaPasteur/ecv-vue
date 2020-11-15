@@ -380,7 +380,7 @@
       "origin": "Etats-Unis",
       "genreId": 3,
       "likes": 9845942,
-      "description": "Travis Scott, anciennement stylisé Travi$ Scott, de son vrai nom Jacques Berman Webster II, né le 30 avril 1992 à Houston au Texas, est un rappeur, chanteur, producteur, musicien, acteur, mannequin et réalisateur américain."
+      "description": "Travis Scott, anciennement stylisé Travi$ Scott, de son vrai nom Jacques Berman Webster II, né le 30 avril 1992 à Houston au Texas, est un rappeur, chanteur, producteur, musicien, acteur, mannequin et réalisateur américain. Il est signé sur les labels Grand Hustle et Epic, ainsi que sur le label de Kanye West, GOOD Music mais seulement comme producteur. Il publie sa première mixtape intitulée Owl Pharaoh le 21 mai 2013, suivi par une deuxième mixtape, Days Before Rodeo, le 18 août 2014. Son premier album, Rodeo, est publié le 4 septembre 2015 et son deuxième, Birds in the Trap Sing McKnight, sort le 2 septembre 2016. ASTROWORLD qui est le nom de son troisième et dernier album à ce jour est quant à lui publié le 3 août 2018. \n\n Jacques Berman Webster II est né le 30 avril 1992 à Houston, au Texas, et a grandi à Missouri City, une banlieue au sud-ouest de Houston. Issu d'une fratrie de quatre enfants, il a un grand frère autiste, qui est son mentor, et un frère et une sœur plus jeunes. Il étudie à l'Elkins High School de Missouri City. Scott restait habituellement avec sa grand-mère, tandis que sa mère travaillait en tant que vendeuse chez AT&T2 et son père dirigeait ses propres affaires. Scott étudie à l'Université du Texas à Austin et à l'Université du Texas à San Antonio avant d'abandonner ses études3. Son nom d’artiste vient du prénom de son oncle Travis et de sa passion pour le rappeur Kid Cudi, de son vrai nom Scott Mescudi."
     },
     {
       "id": 1,
@@ -593,11 +593,35 @@
     },
     {
       "id": 10,
-      "name": "Weekend Wins",
+      "name": "Astroworld",
       "released": 2018,
+      "tracks": 14,
+      "artistId": 0,
+      "cover": "https://images-na.ssl-images-amazon.com/images/I/81hMEx3kLqL._SL1200_.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Jackboys",
+      "released": 2019,
       "tracks": 12,
-      "artistId": 6,
-      "cover": "https://static.qobuz.com/images/covers/ha/bi/jwjdg7r0ubiha_600.jpg"
+      "artistId": 0,
+      "cover": "https://images-na.ssl-images-amazon.com/images/I/81iQT%2BOkKPL._SY800_.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Black Panther: The Albums",
+      "released": 2018,
+      "tracks": 13,
+      "artistId": 0,
+      "cover": "https://images-na.ssl-images-amazon.com/images/I/61DqlsKO22L._SL1400_.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Days Before Birds",
+      "released": 2016,
+      "tracks": 11,
+      "artistId": 0,
+      "cover": "https://static.hiphopdx.com/2016/10/161014-Travis-Scott-Days-Before-Birds-800x600.jpg"
     }
   ],
   "concerts": [
@@ -658,7 +682,7 @@
     {
       "id": 10,
       "name": "Stade de France",
-      "date": "2021-02-29",
+      "date": "2021-02-12",
       "artistId": 8
     },
     {

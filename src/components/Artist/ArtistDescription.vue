@@ -20,8 +20,18 @@
                 </div>
                 <h2>Biographie</h2>
                 <p class="text">{{ artist.description }}</p>
-                <div v-if="albums && albums.length">
+                <br><br>
+                <div v-if="concerts && concerts.length">
+                    <h2>Concerts</h2>
+                    <ul class="list-concerts">
+                        <li v-for="(concert, index) in concerts" :key="'concert-artist-' + index">
+                            <p>{{ concert.date | date }}</p>
+                            <p class="text">{{ concert.name }}</p>
+                        </li>
+                    </ul>
                     <br><br>
+                </div>
+                <div v-if="albums && albums.length">
                     <h2>Albums</h2>
                     <ul class="text albums">
                         <li v-for="(album, index) in albums" :key="'album-' + index">
@@ -33,9 +43,9 @@
                             </div>
                         </li>
                     </ul>
+                    <br><br>
                 </div>
                 <div v-if="articles && articles.length">
-                    <br><br>
                     <h2>Articles</h2>
                     <ul class="list-articles">
                         <li v-for="(article, index) in articles" :key="'article-artist-' + index">
@@ -43,7 +53,7 @@
                                 <img :src="article.image" :alt="article.title">
                                 <p>
                                     {{ article.title }}<br>
-                                    <span>{{ article.published }}</span>
+                                    <span>{{ article.published | date }}</span>
                                 </p>
                             </router-link>
                         </li>
@@ -77,15 +87,22 @@
                     return state.news.filter(n => n.artistesId.includes(this.artist.id));
                 },
                 genre(state) {
-                    return this.artist && this.artist.genreId? state.genres.find(n => n.id === this.artist.genreId) : ''
+                    return this.artist && this.artist.genreId ? state.genres.find(n => n.id === this.artist.genreId) : {}
                 },
                 albums(state) {
                     return state.albums.filter(n => n.artistId === this.id)
+                },
+                concerts(state) {
+                    const concerts = state.concerts.filter(n => n.artistId === this.id);
+                    if(!concerts) return {};
+                    return concerts.sort((a,b) => {
+                        return new Date(b.date) - new Date(a.date)
+                    });
                 }
             })
         },
         methods: {
-            ...mapActions(['getArtists', 'getNews', 'getGenres', 'getAlbums']),
+            ...mapActions(['getArtists', 'getNews', 'getGenres', 'getAlbums', 'getConcerts']),
             like() {
                 console.log('like')
             }
@@ -97,11 +114,14 @@
             if(!Object.keys(this.articles).length) {
                 this.getNews();
             }
-            if(!Object.keys(this.genre)) {
+            if(!this.genre || !Object.keys(this.genre).length) {
                 this.getGenres();
             }
             if(!Object.keys(this.albums).length) {
                 this.getAlbums();
+            }
+            if(!Object.keys(this.concerts).length) {
+                this.getConcerts();
             }
         },
         watch: {
@@ -231,6 +251,20 @@
                 font-size: 30px;
                 margin-top: 10px;
                 display: block;
+            }
+        }
+
+        .list-concerts {
+            li {
+                display: flex;
+                margin-top: 10px;
+            }
+            p:first-of-type {
+                -webkit-text-fill-color: transparent;
+                -webkit-text-stroke-width: 1px;
+                -webkit-text-stroke-color: #fff;
+                color: transparent;
+                margin-right: 10px;
             }
         }
     }

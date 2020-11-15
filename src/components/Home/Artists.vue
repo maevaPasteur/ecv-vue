@@ -75,6 +75,7 @@
 
         .slider {
             outline: 0;
+            position: relative;
         }
 
         .slide {

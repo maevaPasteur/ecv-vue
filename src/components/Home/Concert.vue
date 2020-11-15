@@ -5,8 +5,8 @@
         </div>
         <div class="content">
             <h3 v-if="artist">{{ artist.name }}</h3>
-            <p>{{concert.name}}</p>
-            <p>{{concert.date}}</p>
+            <p>{{ concert.name }}</p>
+            <p>{{ concert.date | date }}</p>
         </div>
     </router-link>
 </template>

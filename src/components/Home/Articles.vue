@@ -7,7 +7,7 @@
                 <router-link :to="{name: 'article', params: { id: article.id }}">
                     <div class="image">
                         <img :src="article.image" :alt="article.title">
-                        <span>{{ article.published }}</span>
+                        <span>{{ article.published | date }}</span>
                     </div>
                     <h3>{{ article.title }}</h3>
                 </router-link>

@@ -13,6 +13,9 @@ import Backoffice from "../pages/backoffice/Index";
 Vue.use(Router);
 
 const router = new Router({
+    scrollBehavior() {
+        return { x: 0, y: 0 };
+    },
     mode: 'history',
     base: '/',
     routes: [
