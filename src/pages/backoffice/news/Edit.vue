@@ -13,7 +13,7 @@
             <label>Titre</label>
             <input required type="text" v-model="article.title"/>
             <label>Date</label>
-            <input required type="text" v-model="article.published"/>
+            <input required type="date" v-model="article.published"/>
             <label>Lien de l'image</label>
             <input required type="text" v-model="article.image"/>
             <img :src="article.image">
@@ -38,22 +38,21 @@
 
         data() {
             return {
-                id: this.$route.params.id,
+                id: Number(this.$route.params.id)
             }
         },
         methods: {
             ...mapActions(['getNews', 'getArtists', 'updateNew']),
             save() {
                 this.updateNew(this.article);
+                this.$router.push({name: 'news.show', params: {id: this.id}})
             }
         },
         computed: {
             ...mapState({
                 article(state) {
                     if (state.news.length === 0) return {};
-
-                    const urlId = parseInt(this.$route.params.id);
-                    return state.news.find(n => n.id === urlId);
+                    return state.news.find(n => n.id === this.id);
                 },
                 artists: state => state.artists
             })

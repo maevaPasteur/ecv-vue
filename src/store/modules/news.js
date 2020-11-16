@@ -15,6 +15,12 @@ const mutations = {
             return n;
         });
         state.news = [ ...newNews ];
+    },
+    DELETE_NEW(state, id) {
+        state.news = [...state.news].filter(e => e.id !== id);
+    },
+    CREATE_NEW(state, article) {
+        state.news.push(article)
     }
 };
 
@@ -22,6 +28,19 @@ const actions = {
     async updateNew({commit}, news) {
         const newArticle = await API.patch(`news/${news.id}`, { ...news });
         commit('SET_NEW', newArticle.data);
+    },
+    deleteNew({commit}, id) {
+        API.delete(`news/${id}`).then(() => {
+            commit('DELETE_NEW', id);
+        })
+    },
+    createNew({commit}, article) {
+        return new Promise((resolve, reject) => {
+            API.post('news', article).then(res => {
+                commit('CREATE_NEW', res.data);
+                resolve(res.data.id)
+            }).catch(() => reject("Une erreur est survenue lors de la création de l'article. Veuillez recommencer"))
+        });
     },
     getNews({commit}) {
         API.get('news')
@@ -37,14 +56,6 @@ const actions = {
         return new Promise(resolve => {
             API.get(`news/${id}`).then(response => {
                 resolve(response.data)
-            })
-        })
-    },
-    // eslint-disable-next-line no-unused-vars
-    getNewsByArtist({commit}, id) {
-        return new Promise(resolve => {
-            API.get(`news`).then(response => {
-                resolve(response.data.filter(e => e.artistesId.includes(id)))
             })
         })
     }

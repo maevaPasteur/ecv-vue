@@ -332,6 +332,16 @@
           "date": "2020-11-03"
         }
       ]
+    },
+    {
+      "title": "helooooo",
+      "content": "dkyru",
+      "published": "2020-10-01",
+      "image": "dt,",
+      "artistesId": [
+        2
+      ],
+      "id": 20
     }
   ],
   "genres": [
