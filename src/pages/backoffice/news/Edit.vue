@@ -1,44 +1,36 @@
 <template>
-    <div class="backoffice" v-if="article">
-
-        <div class="breadcrumb">
-            <router-link :to="{ name: 'admin' }">Admin</router-link>
-            <router-link :to="{ name: 'news.index' }">Tous les articles</router-link>
-            <router-link :to="{ name: 'news.show', params: { id: article.id } }">Voir l'article</router-link>
-            <a href="#">Modifier</a>
-        </div>
-
-        <h1>Modifier l'article</h1>
-        <form @submit.prevent='save'>
-            <label>Titre</label>
-            <input required type="text" v-model="article.title"/>
-            <label>Date</label>
-            <input required type="date" v-model="article.published"/>
-            <label>Lien de l'image</label>
-            <input required type="text" v-model="article.image"/>
-            <img :src="article.image">
-            <label>Contenu</label>
-            <textarea required v-model="article.content"></textarea>
-            <p class="label">Les artistes taggés</p>
-            <div class="list-checkbox">
-                <div v-for="(artist, index) in artists" :key="'artis-create-new'+index">
-                    <input type="checkbox" :id="'artist'+artist.id" :value="artist.id" v-model="article.artistesId"/>
-                    <label :for="'artist'+artist.id">{{ artist.name }}</label>
-                </div>
-            </div>
-            <button type="submit">Valider</button>
-        </form>
-    </div>
+    <edit
+        :activeObject="article"
+        :title="title"
+        :routes="routes"
+        :fields="fields"
+        :states="states"
+        @save="save"
+    />
 </template>
 
 <script>
+
+    import Edit from '@/components/Backoffice/Edit';
     import {mapState, mapActions} from 'vuex';
 
     export default {
-
+        components: { Edit },
         data() {
             return {
-                id: Number(this.$route.params.id)
+                id: Number(this.$route.params.id),
+                title: "Modifier l'article",
+                routes: [
+                    { title: "Tous les articles", link: { name: 'news.index' } },
+                    { title: "Voir l'article", link: { name: 'news.show', params: { id: this.id } } }
+                ],
+                fields: [
+                    { label: "Titre", param: "title", type: "text" },
+                    { label: "Date", param: "published", type: "text" },
+                    { label: "Lien de l'image", param: "image", type: "image" },
+                    { label: "Contenu", param: "content", type: "textarea" },
+                    { label: "Les artistes taggés", param: "artistesId", type: "checkbox", options: 'artists' },
+                ]
             }
         },
         methods: {
@@ -55,7 +47,12 @@
                     return state.news.find(n => n.id === this.id);
                 },
                 artists: state => state.artists
-            })
+            }),
+            states() {
+                return {
+                    artists: this.artists
+                }
+            }
         },
         mounted() {
             if(!Object.keys(this.article).length) {

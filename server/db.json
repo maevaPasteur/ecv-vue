@@ -339,7 +339,9 @@
       "published": "2020-10-01",
       "image": "dt,",
       "artistesId": [
-        2
+        2,
+        9,
+        15
       ],
       "id": 20
     }
