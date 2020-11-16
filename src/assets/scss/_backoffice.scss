@@ -240,11 +240,10 @@
     }
   }
 
-  form {
-    & > img {
-      width: 400px;
-      height: auto;
-    }
+  .show-image {
+    width: 400px;
+    height: auto;
+    margin-top: 20px;
   }
 
   .list-checkbox {

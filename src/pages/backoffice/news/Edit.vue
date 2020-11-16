@@ -22,11 +22,11 @@
                 title: "Modifier l'article",
                 routes: [
                     { title: "Tous les articles", link: { name: 'news.index' } },
-                    { title: "Voir l'article", link: { name: 'news.show', params: { id: this.id } } }
+                    { title: "Voir l'article", link: { name: 'news.show', params: { id: Number(this.$route.params.id) } } }
                 ],
                 fields: [
                     { label: "Titre", param: "title", type: "text" },
-                    { label: "Date", param: "published", type: "text" },
+                    { label: "Date", param: "published", type: "date" },
                     { label: "Lien de l'image", param: "image", type: "image" },
                     { label: "Contenu", param: "content", type: "textarea" },
                     { label: "Les artistes taggés", param: "artistesId", type: "checkbox", options: 'artists' },

@@ -6,6 +6,7 @@
            :cols="cols"
            :items="news"
            :routes="routes"
+           :button="button"
            @remove="remove"
     />
 </template>
@@ -23,26 +24,15 @@
                 link: "Tous les articles",
                 confirmSentence: 'Êtes-vous certain de vouloir supprimer cet article ?',
                 cols: [
-                    {
-                        title: "Titre",
-                        param: "title"
-                    },
-                    {
-                        title: "Date",
-                        param: "published"
-                    },
-                    {
-                        title: "Likes",
-                        param: "likes"
-                    },
-                    {
-                        title: "Commentaires",
-                        param: "comments"
-                    }
+                    { title: "Titre", param: "title" },
+                    { title: "Date", param: "published" },
+                    { title: "Likes", param: "likes" },
+                    { title: "Commentaires", param: "comments" }
                 ],
-                routes: {
-                    show: 'news.show',
-                    edit: 'news.edit'
+                routes: { show: 'news.show', edit: 'news.edit' },
+                button: {
+                    title: "Créer un article",
+                    link: { name: 'news.create' }
                 }
             }
         },

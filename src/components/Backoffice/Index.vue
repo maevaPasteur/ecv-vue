@@ -14,10 +14,19 @@
             </tr>
             <tr v-for="(item, index) in items" :key="'item-index-' + index">
                 <td>
-                    <router-link class="id" :to="{ name: routes.show, params: { id: item.id } }">{{ item.id }}</router-link>
+                    <router-link class="id" :to="{ name: routes.show, params: { id: item.id } }">{{ item.id }}
+                    </router-link>
                 </td>
                 <td v-for="(col, index) in cols" :key="'field-col-index-'+index">
-                    {{ getValue(item, col.param) }}
+                    <div v-if="col.param === 'artistId'">
+                        <div v-if="states.artists" :set="data[index] = states.artists.find(e => e.id === item.artistId)">
+                            <router-link v-if="data[index]" :to="{ name: 'artists.show', params: { id: data[index].id } }">
+                                <img class="avatar" :src="data[index].avatar" :alt="data[index].name">
+                                <span>{{ data[index].name }}</span>
+                            </router-link>
+                        </div>
+                    </div>
+                    <span v-else>{{ getValue(item, col.param) }}</span>
                 </td>
                 <td>
                     <router-link class="edit" :to="{ name: routes.edit, params: { id: item.id } }">
@@ -31,6 +40,9 @@
                 </td>
             </tr>
         </table>
+        <div class="btn-actions">
+            <router-link :to="button.link" class="create">{{ button.title }}</router-link>
+        </div>
         <transition name="fade">
             <div v-if="showPopin" class="popin-confirm" @click="showPopin = false">
                 <div @click.stop="">
@@ -53,6 +65,7 @@
         name: 'Index',
         data() {
             return {
+                data: [],
                 showPopin: false,
                 deleteId: null
             }
@@ -63,7 +76,9 @@
             cols: Array,
             routes: Object,
             items: Array,
-            confirmSentence: String
+            confirmSentence: String,
+            button: Object,
+            states: Object
         },
         methods: {
             getValue(item, param) {

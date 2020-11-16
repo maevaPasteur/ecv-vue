@@ -1,20 +1,20 @@
 <template>
-    <div class="backoffice" v-if="activeObject">
+    <div class="backoffice">
 
         <div class="breadcrumb">
             <router-link :to="{ name: 'admin' }">Admin</router-link>
-            <router-link v-for="(route, index) in routes" :key="'route-'+index" :to="route.link">{{ route.title }}</router-link>
-            <a href="#">Modifier</a>
+            <router-link :to="route.link">{{ route.title }}</router-link>
+            <a href="#">Nouveau</a>
         </div>
 
         <h1>{{ title }}</h1>
 
-        <form @submit.prevent='save'>
+        <form @submit.prevent='create'>
             <div v-for="(field, index) in fields" :key="'edit-field-'+index">
 
                 <div v-if="field.type === 'text' || field.type === 'date'">
                     <label>{{ field.title }}</label>
-                    <input required :type="field.type" v-model="activeObject[field.param]"/>
+                    <input required type="field.type" v-model="activeObject[field.param]"/>
                 </div>
 
                 <div v-else-if="field.type === 'image'">
@@ -42,25 +42,26 @@
             <button type="submit">Valider</button>
 
         </form>
+
     </div>
 </template>
 
 <script>
 
+
     export default {
-        name: 'Edit',
+        name: "Create",
         props: {
-            activeObject: Object,
             title: String,
-            routes: Array,
+            route: Object,
+            activeObject: Object,
             fields: Array,
             states: Object
         },
         methods: {
-            save() {
-                this.$emit('save')
+            create() {
+                this.$emit('create')
             }
         }
     }
-
 </script>
