@@ -7,10 +7,18 @@ const state = {
 const mutations = {
     SET_CONCERTS(state, concerts) {
         state.concerts = concerts
-    }
+    },
+    DELETE_CONCERT(state, id) {
+        state.concerts = [...state.concerts].filter(e => e.id !== id);
+    },
 };
 
 const actions = {
+    deleteConcert({commit}, id) {
+        API.delete(`concert/${id}`).then(() => {
+            commit('DELETE_CONCERT', id);
+        })
+    },
     getConcerts({ commit }) {
         API.get('concerts')
             .then(response => {

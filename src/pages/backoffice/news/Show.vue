@@ -48,7 +48,6 @@
 <script>
 
     import {mapState, mapActions} from 'vuex';
-
     import Show from "@/components/Backoffice/Show";
 
     export default {
@@ -66,8 +65,7 @@
             ...mapState({
                 article(state) {
                     if (state.news.length === 0) return {};
-                    const urlId = parseInt(this.$route.params.id);
-                    return state.news.find(n => n.id === urlId);
+                    return state.news.find(n => n.id === this.id);
                 },
                 artists(state) {
                     if (this.article && this.article.artistesId && this.article.artistesId.length && state.artists) {
