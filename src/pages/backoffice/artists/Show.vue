@@ -83,14 +83,11 @@
         computed: {
             ...mapState({
                 artist(state) {
-                    if (state.artists.length === 0) return {};
-                    return state.artists.find(item => item.id === this.id);
+                    const artist = state.artists.find(item => item.id === this.id);
+                    return artist ? artist : {}
                 },
                 genre(state) {
-                    if (this.artist && this.artist.genreId && state.genres) {
-                        return state.genres.find(genre => this.artist.genreId === genre.id)
-                    }
-                    return {}
+                    return this.artist && this.artist.genreId ? state.genres.find(n => n.id === this.artist.genreId) : {}
                 },
                 articles(state) {
                     return state.news.filter(n => n.artistesId.includes(this.artist.id));
@@ -118,7 +115,7 @@
             if (!Object.keys(this.artist).length) {
                 this.getArtists()
             }
-            if (!Object.keys(this.genre).length) {
+            if (!this.genre || !Object.keys(this.genre).length) {
                 this.getGenres()
             }
             if (!Object.keys(this.articles).length) {
