@@ -1,5 +1,5 @@
 <template>
-    <edit
+    <edit v-if="article"
         :activeObject="article"
         :title="title"
         :routes="routes"
@@ -29,7 +29,7 @@
                     { label: "Date", param: "published", type: "date" },
                     { label: "Lien de l'image", param: "image", type: "image" },
                     { label: "Contenu", param: "content", type: "textarea" },
-                    { label: "Les artistes taggés", param: "artistesId", type: "checkbox", options: 'artists' },
+                    { label: "Les artistes taggés", param: "artistesId", type: "checkbox", options: 'artists' }
                 ]
             }
         },

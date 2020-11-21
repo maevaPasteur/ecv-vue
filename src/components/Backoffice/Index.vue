@@ -26,6 +26,10 @@
                             </router-link>
                         </div>
                     </div>
+                    <div v-else-if="col.param === 'avatar'">
+                        <img class="avatar" :src="item.avatar" :alt="item.name">
+                        <span>{{ item.name }}</span>
+                    </div>
                     <span v-else>{{ getValue(item, col.param) }}</span>
                 </td>
                 <td>

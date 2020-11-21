@@ -7,7 +7,7 @@
                     <img :src="article.image" :alt="article.title"/>
                     <div>
                         <h3>{{ article.title }}</h3>
-                        <p>{{ article.published }}</p>
+                        <p>{{ article.published | date }}</p>
                     </div>
                 </router-link>
             </div>

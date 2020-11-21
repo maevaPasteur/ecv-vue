@@ -6,6 +6,7 @@
         :activeObject="article"
         :fields="fields"
         :states="states"
+        :error="error"
         @create="create"
     />
 

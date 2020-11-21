@@ -2,7 +2,7 @@
     <section class="section-item detail-article" v-if="article">
 
         <h1>{{ article.title }}</h1>
-        <span class="date">{{ article.published }}</span>
+        <span class="date">{{ article.published | date }}</span>
         <div class="image">
             <img :src="article.image" :alt="article.title">
         </div>

@@ -20,6 +20,16 @@
     font-size: 30px;
   }
 
+  .details {
+    h1 {
+      margin: 20px 0;
+    }
+    svg {
+      width: 15px;
+      height: auto;
+    }
+  }
+
   details {
     margin-top: 20px;
 
@@ -278,6 +288,22 @@
     &:hover {
       background-color: transparent !important;
       color: #fff;
+    }
+  }
+
+  .button {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 14px;
+    display: block;
+    margin-top: 40px;
+    width: fit-content;
+    border: solid 1px #fff;
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: border-color ease .3s;
+    &:hover {
+      border-color: #888888;
     }
   }
 }

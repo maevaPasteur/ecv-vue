@@ -13,13 +13,6 @@
                     </div>
                 </details>
                 <details open>
-                    <summary><h2>Les utilisateurs</h2></summary>
-                    <div class="text">
-                        <router-link :to="{ name: 'register' }">Voir tous les utilisateurs</router-link>
-                        <router-link :to="{ name: 'register' }">Ajouter un utilisateur</router-link>
-                    </div>
-                </details>
-                <details open>
                     <summary><h2>Les concerts</h2></summary>
                     <div class="text">
                         <router-link :to="{ name: 'concerts.index' }">Voir tous les concerts</router-link>
@@ -29,8 +22,8 @@
                 <details open>
                     <summary><h2>Les albums</h2></summary>
                     <div class="text">
-                        <router-link :to="{ name: 'register' }">Voir tous les albums</router-link>
-                        <router-link :to="{ name: 'register' }">Ajouter un album</router-link>
+                        <router-link :to="{ name: 'albums.index' }">Voir tous les albums</router-link>
+                        <router-link :to="{ name: 'albums.create' }">Ajouter un album</router-link>
                     </div>
                 </details>
                 <details open>

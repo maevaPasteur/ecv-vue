@@ -1,48 +1,71 @@
 <template>
-  <div>
-    <label> Title </label>
-    <input type="text" v-model="title" />
-    <label> Content </label>
-    <input type="text" v-model="content" />
-    <button @click="create"> Create </button>
-  </div>
+
+    <create
+            :title="title"
+            :route="route"
+            :activeObject="artist"
+            :fields="fields"
+            :states="states"
+            :error="error"
+            @create="create"
+    />
+
 </template>
 
 <script>
 
-//import { mapActions } from 'vuex'
+    import Create from '@/components/Backoffice/Create'
+    import {mapState, mapActions} from 'vuex'
 
-export default {
-  data () {
-    return {
-      title: '',
-      content: '',
-      published: '',
-      image: '',
-      artistesId: '',
-      error: null
+    export default {
+        components: {Create},
+        data() {
+            return {
+                title: "Ajouter un artiste",
+                route: {title: "Tous les artistes", link: {name: 'artists.index'}},
+                fields: [
+                    {label: "Nom", param: "name", type: "text"},
+                    {label: "Lien de l'avatar", param: "avatar", type: "image"},
+                    {label: "Pays d'origine", param: "origin", type: "text"},
+                    {label: "Description", param: "description", type: "textarea"},
+                    {label: "Likes", param: "likes", type: "number"},
+                    {label: "Le genre", param: "genreId", type: "radio", options: 'genres'}
+                ],
+                artist: {
+                    name: '',
+                    avatar: '',
+                    origin: '',
+                    genreId: '',
+                    likes: 0,
+                    description: ''
+                },
+                error: null
+            }
+        },
+        computed: {
+            ...mapState({
+                genres: state => state.genres
+            }),
+            states() {
+                return {
+                    'genres': this.genres
+                }
+            }
+        },
+        methods: {
+            ...mapActions(['getGenres', 'createArtist']),
+            create() {
+                this.createArtist(this.artist).then(id => {
+                    this.$router.push({name: 'artists.show', params: {id: id}})
+                }).catch(err => {
+                    this.error = err
+                })
+            }
+        },
+        mounted() {
+            if (!Object.keys(this.genres).length) {
+                this.getGenres()
+            }
+        }
     }
-  },
-  computed: {
-    artists() {
-      return this.$store.state.artists
-    }
-  },
-  mounted() {
-    this.$store.dispatch('getArtists')
-  },
-  methods: {
-    /*
-    ...mapActions({
-      createNews: 'news/createNews'
-    }),
-    create () {
-      const payload = { title: this.title, content: this.content }
-      this.createNews(payload)
-      this.$router.push({ name: 'news.index' })
-    }
-
-     */
-  },
-}
 </script>

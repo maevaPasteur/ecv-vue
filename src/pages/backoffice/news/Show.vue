@@ -10,7 +10,7 @@
         <div v-if="article" class="details">
             <p class="id">#{{ article.id }}</p>
             <h1>{{ article.title }}</h1>
-            <p>{{ article.published }}</p>
+            <p>{{ article.published | date }}</p>
             <p class="text">{{ article.content }}</p>
             <img :src="article.image" :alt="article.title">
             <div v-if="artists && artists.length">
@@ -41,6 +41,7 @@
                     <td>{{ comment.message }}</td>
                 </tr>
             </table>
+            <router-link :to="{name: 'article', params: { id: article.id }}" class="button">Voir la page de l'article</router-link>
         </div>
     </show>
 </template>

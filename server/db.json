@@ -385,7 +385,7 @@
     {
       "id": 1,
       "name": "Coldplay",
-      "country": "Great Britain",
+      "origin": "Great Britain",
       "avatar": "https://cdn-rfm.lanmedia.fr/var/rfm/storage/images/news/coldplay-l-album-everyday-life-decroche-un-disque-d-or-18253/261372-1-fre-FR/Coldplay-L-album-Everyday-Life-decroche-un-disque-d-or.jpg",
       "genreId": 1,
       "likes": 100310,
@@ -430,7 +430,7 @@
     {
       "id": 6,
       "name": "Shawn Mendes",
-      "avatar": "https://i0.wp.com/www.fr24news.com/fr/a1/wp-content/uploads/2020/06/shawn-mendes-nov-24-2019-billboard-1548-1585083743-1024x677.jpg?fit=1024%2C677&ssl=1",
+      "avatar": "https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZjiuum2iWGLWqLm_a2HlrCmIA5jNh4Q2h3DuVrizN09bd9DlyMzvYZ_NFDaFtnB9rrP_NaMWVEo_4QoHcV9t8VBqzuL.jpg?r=87a",
       "origin": "Canada",
       "genreId": 9,
       "likes": 1371428,
@@ -502,7 +502,7 @@
     {
       "id": 14,
       "name": "Kendji Girac",
-      "avatar": "https://suis-nous.com/wp-content/uploads/2020/06/kendji.jpg",
+      "avatar": "https://t1.ldh.be/nIdJhpMv9JF2YA8aZvnclv3I4Xo=/0x0:2560x1280/1920x960/5f3ff2e1d8ad586219ade296.jpg",
       "origin": "France",
       "genreId": 9,
       "likes": 536866,
@@ -516,6 +516,15 @@
       "genreId": 9,
       "likes": 387654,
       "description": "Yseult, née Yseult Onguenet le 18 août 1994 à Paris, est une auteure-compositeure-interprète et mannequin française."
+    },
+    {
+      "name": "Booba",
+      "avatar": "https://cdn.radiofrance.fr/s3/cruiser-production/2020/07/35360c91-a56f-40e4-925c-0daab28cdf27/1200x680_booba_01072020_miami_gqfrance_paridukovic_0460.jpg",
+      "origin": "France",
+      "genreId": 3,
+      "likes": "67893",
+      "description": "Booba, de son vrai nom Élie Yaffa, né le 9 décembre 1976 à Boulogne-Billancourt dans les Hauts-de-Seine, est un rappeur français. Il est le fondateur de 92i, collectif regroupant initialement des rappeurs issus des Hauts-de-Seine, tels Mala et Bram's (ce dernier est mort le 21 mai 2011) ; il fut également membre du groupe de rap français Lunatic, avec son ancien acolyte Ali, au sein duquel ils se sont fait connaître au milieu des années 1990. Homme d'affaires très actif, il lance en 2004 sa marque de vêtements streetwear et un parfum nommés Ünkut, la marque de whisky D.U.C ainsi qu'un site web, une chaîne de télévision et une webradio, tous trois autour de la marque OKLM.\n\nConsidéré comme l'un des plus grands rappeurs français de sa génération, il est le premier rappeur solo français à remplir le Palais omnisports de Paris-Bercy1 et le second artiste rap à remplir Bercy après NTM5. Le groupe Lunatic, avec son compère Ali originaire d'Issy-les-Moulineaux, recueille à la fois les suffrages de la critique et du public6. Leur album Mauvais œil entre dans l'histoire du rap français en obtenant un disque d'or : c'est le premier album en indépendant à obtenir une telle récompense7,8.\n\nBooba a produit neuf albums9 et en a vendu plus de 2,7 millions10. Le premier, Temps mort, est publié en 2002 ; en 2005 sort la mixtape, Autopsie Vol. 1. Son cinquième album, Lunatic, publié le 22 novembre 201011, reprend le nom de son ancien groupe. Certifié disque d'or dès la première semaine12, Lunatic est aujourd'hui double disque de platine13. Le 26 novembre 2012, Booba publie son sixième opus, intitulé Futur. Certifié disque d'or en une seule semaine avec plus de 51 000 exemplaires vendus, il constitue à ce jour le meilleur démarrage de ventes de sa carrière. Futur bat également le record français d'albums numériques vendus sur iTunes, toutes catégories musicales confondues, avec plus de 17 000 exemplaires en une seule semaine14, détrôné depuis 2013 par les Daft Punk15.",
+      "id": 16
     }
   ],
   "albums": [
@@ -696,6 +705,24 @@
       "name": "Stade de France",
       "date": "2020-09-15",
       "artistId": 4
+    },
+    {
+      "name": "The Town Hall",
+      "date": "2020-11-21",
+      "artistId": 13,
+      "id": 13
+    },
+    {
+      "name": "The Town Hall",
+      "date": "2021-02-26",
+      "artistId": 12,
+      "id": 14
+    },
+    {
+      "name": "sbn !",
+      "date": "2020-11-21",
+      "artistId": 7,
+      "id": 15
     }
   ]
 }

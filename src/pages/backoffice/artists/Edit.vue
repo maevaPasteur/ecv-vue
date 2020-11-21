@@ -1,62 +1,71 @@
 <template>
-  <div class="backoffice" v-if="article">
 
-    <div class="breadcrumb">
-      <router-link :to="{ name: 'admin' }">Admin</router-link>
-      <router-link :to="{ name: 'news.index' }">Tous les articles</router-link>
-      <router-link :to="{ name: 'news.show', params: { id: article.id } }">Voir l'article</router-link>
-      <a href="#">Modifier</a>
-    </div>
+    <edit v-if="artist"
+          :activeObject="artist"
+          :title="title"
+          :routes="routes"
+          :fields="fields"
+          :states="states"
+          @save="save"
+    />
 
-    <h1>Modifier l'article</h1>
-    <form>
-      <label>Titre</label>
-      <input required type="text" v-model="article.title" />
-      <label>Date</label>
-      <input required type="text" v-model="article.published"/>
-      <label>Lien de l'image</label>
-      <input required type="text" v-model="article.image"/>
-      <img :src="article.image">
-      <label>Contenu</label>
-      <textarea required v-model="article.content"></textarea>
-      <p class="label">Les artistes taggés</p>
-      <div class="list-checkbox">
-        <div v-for="(artist, index) in artists" :key="'artis-create-new'+index">
-          <input type="checkbox" :id="'artist'+artist.id" :value="artist.id" v-model="article.artistesId"/>
-          <label :for="'artist'+artist.id">{{ artist.name }}</label>
-        </div>
-      </div>
-      <button @submit="save">Valider</button>
-    </form>
-  </div>
 </template>
 
 <script>
 
-export default {
+    import Edit from '@/components/Backoffice/Edit';
+    import {mapState, mapActions} from 'vuex';
 
-  data() {
-    return {
-      id: this.$route.params.id,
-      article: null
+    export default {
+        components: {Edit},
+        data() {
+            return {
+                id: Number(this.$route.params.id),
+                title: "Modifier l'artiste",
+                routes: [
+                    {title: "Tous les artistes", link: {name: 'artists.index'}},
+                    {title: "Voir l'artiste", link: {name: 'artists.show', params: {id: Number(this.$route.params.id)}}}
+                ],
+                fields: [
+                    {label: "Nom", param: "name", type: "text"},
+                    {label: "Lien de l'avatar", param: "avatar", type: "image"},
+                    {label: "Pays d'origine", param: "origin", type: "text"},
+                    {label: "Description", param: "description", type: "textarea"},
+                    {label: "Likes", param: "likes", type: "number"},
+                    {label: "Le genre", param: "genreId", type: "radio", options: 'genres'}
+                ]
+            }
+        },
+        methods: {
+            ...mapActions(['getGenres', 'getArtists', 'updateArtist']),
+            save() {
+                this.updateArtist(this.artist);
+                this.$router.push({name: 'artists.show', params: {id: this.id}})
+            }
+        },
+        computed: {
+            ...mapState({
+                artist(state) {
+                    if (state.artists.length === 0) return {};
+                    return state.artists.find(n => n.id === this.id);
+                },
+                genres: state => state.genres
+            }),
+            states() {
+                return {
+                    genres: this.genres
+                }
+            }
+        },
+        mounted() {
+            if (!Object.keys(this.artist).length) {
+                this.getArtists()
+            }
+            if (!Object.keys(this.genres).length) {
+                this.getGenres()
+            }
+        }
     }
-  },
-  methods: {
-    save() {
 
-    }
-  },
-  computed: {
-    artists() {
-      return this.$store.state.artists
-    }
-  },
-  mounted () {
-    this.$store.dispatch('getNew', this.id).then(res => {
-      this.article = res;
-    });
-    this.$store.dispatch('getArtists')
-  }
-}
 
 </script>
