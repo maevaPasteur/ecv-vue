@@ -12,12 +12,7 @@
         <form @submit.prevent='save'>
             <div v-for="(field, index) in fields" :key="'edit-field-'+index">
 
-                <div v-if="field.type === 'text' || field.type === 'date'">
-                    <label>{{ field.label }}</label>
-                    <input required :type="field.type" v-model="activeObject[field.param]"/>
-                </div>
-
-                <div v-else-if="field.type === 'image'">
+                <div v-if="field.type === 'image'">
                     <label>{{ field.label }}</label>
                     <input required type="text" v-model="activeObject[field.param]"/>
                     <img class="show-image" :src="activeObject[field.param]">
@@ -37,6 +32,12 @@
                         </div>
                     </div>
                 </div>
+
+                <div v-else>
+                    <label>{{ field.label }}</label>
+                    <input required :type="field.type" v-model="activeObject[field.param]"/>
+                </div>
+
             </div>
 
             <button type="submit">Valider</button>

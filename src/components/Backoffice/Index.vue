@@ -14,7 +14,8 @@
             </tr>
             <tr v-for="(item, index) in items" :key="'item-index-' + index">
                 <td>
-                    <router-link class="id" :to="{ name: routes.show, params: { id: item.id } }">{{ item.id }}
+                    <router-link class="id" :to="{ name: routes.show, params: { id: item.id } }">
+                        {{ item.id }}
                     </router-link>
                 </td>
                 <td v-for="(col, index) in cols" :key="'field-col-index-'+index">
@@ -28,6 +29,10 @@
                     </div>
                     <div v-else-if="col.param === 'avatar'">
                         <img class="avatar" :src="item.avatar" :alt="item.name">
+                        <span>{{ item.name }}</span>
+                    </div>
+                    <div v-else-if="col.isAlbum">
+                        <img class="cover" :alt="item.name" :src="item.cover">
                         <span>{{ item.name }}</span>
                     </div>
                     <span v-else>{{ getValue(item, col.param) }}</span>

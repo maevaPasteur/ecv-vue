@@ -27,7 +27,7 @@
                     <p class="label">{{ field.label }}</p>
                     <div class="list-checkbox">
                         <div v-for="(option, index) in states[field.options]" :key="'artis-create-new'+index">
-                            <input :required="field.type === 'radio'" :type="field.type" :id="'option'+option.id" :value="option.id" v-model="activeObject[field.param]"/>
+                            <input :required="field.type === 'radio'" :name="field.param" :type="field.type" :id="'option'+option.id" :value="option.id" v-model="activeObject[field.param]"/>
                             <label :for="'option'+option.id">{{ option.name }}</label>
                         </div>
                     </div>
