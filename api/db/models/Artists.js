@@ -1,35 +1,30 @@
 const mongoose = require('mongoose');
 
 module.exports = mongoose.model(
-    'News',
+    'Artists',
     new mongoose.Schema({
-        title: {
+        name: {
             type: String,
             required: true
         },
-        published: {
+        avatar: {
             type: String,
             required: true
         },
-        image: {
+        origin: {
             type: String,
             required: true
         },
-        content: {
-            type: String,
-            required: true
+        genreId: {
+            type: String
         },
-        artistesId: {
-            type: Array,
-            required: true
-        },
-        like: {
+        likes: {
             type: Number,
             default: 0
         },
-        comments: {
-            type: Array,
-            default: []
+        description: {
+            type: String,
+            required: true
         },
-    }, {timestamps: true})
+    }, {timestamps: true, strict: false})
 );

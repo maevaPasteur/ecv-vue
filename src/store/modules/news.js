@@ -6,6 +6,7 @@ const state = {
 
 const mutations = {
     SET_NEWS(state, news) {
+        news.forEach(article => article.id = article._id);
         state.news = news
     },
     SET_NEW(state, newItem) {
@@ -20,6 +21,7 @@ const mutations = {
         state.news = [...state.news].filter(e => e.id !== id);
     },
     CREATE_NEW(state, article) {
+        article.id = article._id;
         state.news.push(article)
     }
 };

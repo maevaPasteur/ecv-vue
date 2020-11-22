@@ -20,11 +20,11 @@
         components: { Edit },
         data() {
             return {
-                id: Number(this.$route.params.id),
+                id: this.$route.params.id,
                 title: "Modifier l'article",
                 routes: [
                     { title: "Tous les albums", link: { name: 'albums.index' } },
-                    { title: "Voir l'album", link: { name: 'albums.show', params: { id: Number(this.$route.params.id) } } }
+                    { title: "Voir l'album", link: { name: 'albums.show', params: { id: this.$route.params.id } } }
                 ],
                 fields: [
                     {label: "Nom", param: "name", type: "text"},
@@ -48,7 +48,10 @@
                     if (state.albums.length === 0) return {};
                     return state.albums.find(n => n.id === this.id);
                 },
-                artists: state => state.artists
+                artists: state => {
+                    if(!state.artists || !state.artists.length) return {};
+                    return state.artists.sort((a,b) => a.name < b.name ? -1 : 1)
+                }
             }),
             states() {
                 return {

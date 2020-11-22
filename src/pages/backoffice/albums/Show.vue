@@ -27,7 +27,6 @@
                     <td>
                         <router-link :to="{ name: 'artists.show', params: { id: artist.id } }">
                             <img class="avatar" :src="artist.avatar" :alt="artist.name">
-                            <span class="small-id">#{{ artist.id }}</span>
                             <span>{{ artist.name }}</span>
                         </router-link>
                     </td>
@@ -48,7 +47,7 @@
         },
         data() {
             return {
-                id: Number(this.$route.params.id),
+                id: this.$route.params.id,
                 editRouteName: 'albums.edit',
                 confirmSentence: 'Êtes-vous certain de vouloir supprimer ce concert ?'
             }

@@ -48,7 +48,7 @@
         name: 'ArticleContent',
         data() {
             return {
-                id: Number(this.$route.params.id)
+                id: this.$route.params.id
             }
         },
         methods: {
@@ -70,8 +70,9 @@
             })
         },
         mounted() {
-            if (!Object.keys(this.article)) {
-                this.getNews()
+            if (!Object.keys(this.article).length) {
+                this.getNews();
+                console.log('get news')
             }
             if (!Object.keys(this.artists).length) {
                 this.getArtists()

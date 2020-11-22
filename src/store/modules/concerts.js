@@ -6,6 +6,7 @@ const state = {
 
 const mutations = {
     SET_CONCERTS(state, concerts) {
+        concerts.forEach(concert => concert.id = concert._id);
         state.concerts = concerts
     },
     SET_CONCERT(state, concert) {
@@ -19,6 +20,7 @@ const mutations = {
         state.concerts = [...state.concerts].filter(concert => concert.id !== id);
     },
     CREATE_CONCERT(state, concert) {
+        concert.id = concert._id;
         state.concerts.push(concert)
     }
 };

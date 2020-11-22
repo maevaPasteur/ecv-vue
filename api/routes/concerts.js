@@ -1,20 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const Albums = require('../db/models/Albums');
+const Concerts = require('../db/models/Concerts');
 
 router.get('/', async (req,res) => {
     try {
-        const albums = await Albums.find();
-        res.json(albums);
+        const concerts = await Concerts.find();
+        res.json(concerts);
     } catch(err) {
         res.status(500).json({message: err.message})
     }
 });
 
 router.post('/', async (req, res) => {
-    const album = new Albums(req.body);
+    const concert = new Concerts(req.body);
     try {
-        const data = await album.save();
+        const data = await concert.save();
         res.status(201).json(data);
     } catch(err) {
         res.status(400).json(err);
@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
     try {
-        await Albums.updateOne({ _id: req.params.id }, { $set: req.body }).then(() => res.json(req.body))
+        await Concerts.updateOne({ _id: req.params.id }, { $set: req.body }).then(() => res.json(req.body))
     } catch(err) {
         res.json({ message: err })
     }
@@ -31,11 +31,10 @@ router.patch('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        await Albums.deleteOne({ _id: req.params.id }).then(() => res.json(req.body))
+        await Concerts.deleteOne({ _id: req.params.id }).then(() => res.json(req.body))
     } catch(err) {
         res.json({ message: err })
     }
 });
-
 
 module.exports = router;

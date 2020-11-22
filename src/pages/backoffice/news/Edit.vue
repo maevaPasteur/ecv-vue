@@ -18,11 +18,11 @@
         components: { Edit },
         data() {
             return {
-                id: Number(this.$route.params.id),
+                id: this.$route.params.id,
                 title: "Modifier l'article",
                 routes: [
                     { title: "Tous les articles", link: { name: 'news.index' } },
-                    { title: "Voir l'article", link: { name: 'news.show', params: { id: Number(this.$route.params.id) } } }
+                    { title: "Voir l'article", link: { name: 'news.show', params: { id: this.$route.params.id } } }
                 ],
                 fields: [
                     { label: "Titre", param: "title", type: "text" },

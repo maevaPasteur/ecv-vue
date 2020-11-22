@@ -6,6 +6,7 @@ const state = {
 
 const mutations = {
     SET_ARTISTS(state, artists) {
+        artists.forEach(artist => artist.id = artist['_id']);
         state.artists = artists
     },
     SET_ARTIST(state, artist) {
@@ -19,6 +20,7 @@ const mutations = {
         state.artists = [...state.artists].filter(artist => artist.id !== id);
     },
     CREATE_ARTIST(state, artist) {
+        artist.id = artist._id;
         state.artists.push(artist)
     }
 };
@@ -33,8 +35,13 @@ const actions = {
         })
     },
     updateArtist({commit}, artist) {
-        API.patch(`artists/${artist.id}`, {...artist})
-            .then(response => commit('SET_ARTIST', response.data))
+        return new Promise(resolve => {
+            API.patch(`artists/${artist._id}`, artist)
+                .then(response => {
+                    commit('SET_ARTIST', response.data);
+                    resolve(response.data)
+                })
+        })
     },
     createArtist({commit}, artist) {
         return new Promise((resolve, reject) => {

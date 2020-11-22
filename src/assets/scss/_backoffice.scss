@@ -151,6 +151,7 @@
       border-radius: 10px;
       font-size: 12px;
       transition: background-color ease .3s;
+      width: fit-content;
 
       &:hover {
         background-color: #44C6E0;
@@ -315,6 +316,26 @@
       img {
         margin-right: 0;
         max-width: none;
+      }
+    }
+  }
+
+  .sort {
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      &:after {
+        content: '';
+        display: block;
+        border-bottom: solid 2px #000;
+        border-right: solid 2px #000;
+        transform: rotate(45deg);
+        transform-origin: top;
+        width: 6px;
+        height: 6px;
+        margin-left: 15px;
       }
     }
   }

@@ -26,7 +26,7 @@
         data() {
             return {
                 isDragging: false,
-                id: Number(this.$route.params.id),
+                id: this.$route.params.id,
                 flickityOptions: {
                     prevNextButtons: true,
                     pageDots: false,

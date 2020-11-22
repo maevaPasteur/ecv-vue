@@ -74,7 +74,7 @@
         components: { IconHeart },
         data() {
             return {
-                id: Number(this.$route.params.id)
+                id: this.$route.params.id
             }
         },
         computed: {

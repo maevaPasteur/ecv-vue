@@ -26,9 +26,6 @@
             ...mapState({
                 artist(state) {
                     return state.artists.find(n => n.id === this.concert.artistId);
-                },
-                artists(state) {
-                    return state.artists
                 }
             })
         },
@@ -36,7 +33,7 @@
             ...mapActions(['getArtists']),
         },
         mounted() {
-            if(!Object.keys(this.artists).length) {
+            if(!Object.keys(this.artist).length) {
                 this.getArtists();
             }
         }

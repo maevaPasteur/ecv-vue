@@ -6,6 +6,7 @@ const state = {
 
 const mutations = {
     SET_GENRES(state, genres) {
+        genres.forEach(genre => genre.id = genre._id);
         state.genres = genres
     },
 };
@@ -15,16 +16,6 @@ const actions = {
     getGenres({commit}) {
         API.get('genres').then(response => {
             commit('SET_GENRES', response.data);
-        })
-    },
-
-    // eslint-disable-next-line no-unused-vars
-    getGenre({commit}, id) {
-        return new Promise(resolve => {
-            API.get(`genres/${id}`)
-                .then(response => {
-                    resolve(response.data)
-                })
         })
     }
 };

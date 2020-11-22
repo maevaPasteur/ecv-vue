@@ -20,11 +20,11 @@
         components: {Edit},
         data() {
             return {
-                id: Number(this.$route.params.id),
+                id: this.$route.params.id,
                 title: "Modifier l'artiste",
                 routes: [
                     {title: "Tous les artistes", link: {name: 'artists.index'}},
-                    {title: "Voir l'artiste", link: {name: 'artists.show', params: {id: Number(this.$route.params.id)}}}
+                    {title: "Voir l'artiste", link: {name: 'artists.show', params: {id: this.$route.params.id}}}
                 ],
                 fields: [
                     {label: "Nom", param: "name", type: "text"},
@@ -39,8 +39,8 @@
         methods: {
             ...mapActions(['getGenres', 'getArtists', 'updateArtist']),
             save() {
-                this.updateArtist(this.artist);
-                this.$router.push({name: 'artists.show', params: {id: this.id}})
+                this.updateArtist(this.artist)
+                    .then(() => this.$router.push({ name: 'artists.show', params: {id: this.id} }))
             }
         },
         computed: {

@@ -1,6 +1,6 @@
 <template>
 
-    <index v-if="artists"
+    <index v-if="artists && artists.length"
            :title="title"
            :link="link"
            :confirmSentence="confirmSentence"

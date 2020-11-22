@@ -20,7 +20,7 @@ module.exports = mongoose.model(
             required: true
         },
         artistId: {
-            type: Number,
+            type: String,
             required: true
         },
     }, {timestamps: true})

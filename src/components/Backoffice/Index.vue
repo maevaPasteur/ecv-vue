@@ -7,12 +7,12 @@
         <h1>{{ title }}</h1>
         <table>
             <tr>
-                <th>ID</th>
-                <th v-for="(col, index) in cols" :key="'col-index-'+index">{{ col.title }}</th>
+                <th @click="sort('id')" class="sort"><span>ID</span></th>
+                <th v-for="(col, index) in cols" :key="'col-index-'+index" @click="sort(col.param)" :class="{'sort' : !['artistId', 'genreId'].includes(col.param)}"><span>{{ col.title }}</span></th>
                 <th></th>
                 <th></th>
             </tr>
-            <tr v-for="(item, index) in items" :key="'item-index-' + index">
+            <tr v-for="(item, index) in sortedItems" :key="'item-index-' + index">
                 <td>
                     <router-link class="id" :to="{ name: routes.show, params: { id: item.id } }">
                         {{ item.id }}
@@ -76,7 +76,9 @@
             return {
                 data: [],
                 showPopin: false,
-                deleteId: null
+                deleteId: null,
+                currentSort:'name',
+                currentSortDir:'asc'
             }
         },
         props: {
@@ -89,18 +91,35 @@
             button: Object,
             states: Object
         },
+        computed: {
+            sortedItems() {
+                // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+                return this.items.sort((a,b) => {
+                    let modifier = 1;
+                    if(this.currentSortDir === 'desc') modifier = -1;
+                    if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+                    if(a[this.currentSort] > b[this.currentSort]) return modifier;
+                    return 0;
+                });
+            }
+        },
         methods: {
+            sort(s) {
+                if(s === 'avatar') s = 'name';
+                if(s === this.currentSort) this.currentSortDir = this.currentSortDir==='asc' ? 'desc' : 'asc';
+                this.currentSort = s;
+            },
             getValue(item, param) {
                 const value = item[param];
 
                 switch (param) {
                     case 'comments':
-                        return value ? value.length : 0;
+                        return value && value.length ? Vue.filter('splitNumber')(value.length) : 0;
                         // eslint-disable-next-line no-unreachable
                         break;
 
                     case 'likes':
-                        return value ? value : 0;
+                        return value ? Vue.filter('splitNumber')(value) : 0;
                         // eslint-disable-next-line no-unreachable
                         break;
 

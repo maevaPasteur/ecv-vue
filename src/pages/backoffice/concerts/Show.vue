@@ -29,7 +29,7 @@
         },
         data() {
             return {
-                id: Number(this.$route.params.id),
+                id: this.$route.params.id,
                 editRouteName: 'concerts.edit',
                 confirmSentence: 'Êtes-vous certain de vouloir supprimer ce concert ?'
             }

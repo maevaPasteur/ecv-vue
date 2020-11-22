@@ -17,15 +17,14 @@
                 <h2>Les artistes</h2>
                 <ul>
                     <li v-for="(artist, index) in artists" :key="'artist-show-'+index">
-                        <router-link :to="{ name: '' }">
+                        <router-link :to="{name: 'artists.show', params: { id: artist.id }}">
                             <img class="avatar" :src="artist.avatar" :alt="artist.name">
-                            <span class="small-id">#{{ artist.id }}</span>
                             <span>{{ artist.name }}</span>
                         </router-link>
                     </li>
                 </ul>
             </div>
-            <table v-if="article.comments">
+            <table v-if="article.comments && article.comments.length">
                 <tr>
                     <th>Utilisateur</th>
                     <th>Commentaire</th>
@@ -57,7 +56,7 @@
         },
         data() {
             return {
-                id: Number(this.$route.params.id),
+                id: this.$route.params.id,
                 editRouteName: 'news.edit',
                 confirmSentence: 'Êtes-vous certain de vouloir supprimer cet article ?'
             }

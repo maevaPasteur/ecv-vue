@@ -6,6 +6,7 @@ const state = {
 
 const mutations = {
     SET_ALBUMS(state, albums) {
+        albums.forEach(album => album.id = album._id);
         state.albums = albums
     },
     SET_ALBUM(state, album) {
@@ -19,6 +20,7 @@ const mutations = {
         state.albums = [...state.albums].filter(album => album.id !== id);
     },
     CREATE_ALBUM(state, album) {
+        album.id = album._id;
         state.albums.push(album)
     }
 };

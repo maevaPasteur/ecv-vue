@@ -20,11 +20,11 @@
         components: { Edit },
         data() {
             return {
-                id: Number(this.$route.params.id),
+                id: this.$route.params.id,
                 title: "Modifier l'article",
                 routes: [
                     { title: "Tous les concerts", link: { name: 'concerts.index' } },
-                    { title: "Voir le concert", link: { name: 'concerts.show', params: { id: Number(this.$route.params.id) } } }
+                    { title: "Voir le concert", link: { name: 'concerts.show', params: { id: this.$route.params.id } } }
                 ],
                 fields: [
                     {label: "Lieu du concert", param: "name", type: "text"},
