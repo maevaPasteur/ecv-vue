@@ -11,7 +11,7 @@ module.exports = mongoose.model(
             required: true,
             type: Number
         },
-        track: {
+        tracks: {
             type: Number,
             required: true
         },
