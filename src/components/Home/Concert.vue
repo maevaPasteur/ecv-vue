@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{ name: 'artist', params: { id: concert.artistId } }" class="slide">
+    <router-link v-if="concert" :to="{ name: 'artist', params: { id: concert.artistId } }" class="slide concert-item">
         <div class="img">
             <img v-if="artist" :src="artist.avatar" :alt="artist.name">
         </div>
@@ -19,7 +19,6 @@
         name: 'Concert',
         props: {
             concert: Object,
-            count: Number,
             index: Number
         },
         computed: {
@@ -39,4 +38,37 @@
         }
     }
 </script>
+
+<style lang="scss">
+
+    .concert-item {
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            object-fit: cover;
+        }
+
+        .img {
+            position: relative;
+            padding-bottom: 130%;
+        }
+
+        h3 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            width: calc(100% - 40px);
+            text-shadow: 0 0 20px #424242;
+        }
+    }
+
+</style>
 

@@ -9,7 +9,7 @@
             </div>
            <div class="slider2">
                <flickity :class="{'is-dragging': isDragging}" :options="flickityOptions2" ref="slider2" @init="onInitSliders">
-                   <concert v-for="(concert, index) in concerts" :key="index + concert.name" :concert="concert" :count="concerts.length"/>
+                   <concert v-for="(concert, index) in concerts" :key="index + concert.name" :concert="concert"/>
                </flickity>
            </div>
         </div>
@@ -138,33 +138,6 @@
             width: 100%;
         }
 
-        img {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            object-fit: cover;
-        }
-
-        .img {
-            position: relative;
-            padding-bottom: 130%;
-        }
-
-
-        h3 {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-
-        .content {
-            position: absolute;
-            bottom: 10px;
-            left: 20px;
-            width: calc(100% - 40px);
-            text-shadow: 0 0 20px #424242;
-        }
     }
 
 </style>

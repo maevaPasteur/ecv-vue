@@ -27,11 +27,14 @@ const mutations = {
 
 const actions = {
     getConcerts({commit}) {
-        API.get('concerts').then(response => {
-            let concerts = response.data.sort((a, b) => {
-                return new Date(b.date) - new Date(a.date)
-            });
-            commit('SET_CONCERTS', concerts);
+        new Promise(resolve => {
+            API.get('concerts').then(response => {
+                let concerts = response.data.sort((a, b) => {
+                    return new Date(b.date) - new Date(a.date)
+                });
+                commit('SET_CONCERTS', concerts);
+                resolve(concerts)
+            })
         })
     },
     updateConcert({commit}, concert) {

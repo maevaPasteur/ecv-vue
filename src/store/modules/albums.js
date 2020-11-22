@@ -27,8 +27,13 @@ const mutations = {
 
 const actions = {
     getAlbums({commit}) {
-        API.get('albums')
-            .then(response => commit('SET_ALBUMS', response.data))
+        new Promise(resolve => {
+            API.get('albums')
+                .then(response => {
+                    commit('SET_ALBUMS', response.data);
+                    resolve(response.data)
+                })
+        })
     },
     updateAlbum({commit}, album) {
         API.patch(`albums/${album.id}`, {...album})

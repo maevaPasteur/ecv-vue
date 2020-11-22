@@ -3,6 +3,7 @@
         <header>
             <div class="bar">
                 <a href="/"><h1>News APP</h1></a>
+                <router-link class="search-icon" :to="{name: 'search'}"><icon-search/></router-link>
                 <button @click="toggleMenu" :class="{'open' : menuVisible}"></button>
             </div>
         </header>
@@ -21,8 +22,11 @@
 
 <script>
 
+    import IconSearch from "./Icons/IconSearch";
+
     export default {
         name: 'Header',
+        components: {IconSearch},
         data() {
             return {
                 menuVisible: false
@@ -44,6 +48,17 @@
     }
     .fade-enter, .fade-leave-to {
         opacity: 0;
+    }
+
+    .search-icon {
+        margin-right: 30px;
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        svg {
+            width: 30px;
+            height: auto;
+        }
     }
 
     .menu {

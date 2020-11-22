@@ -27,11 +27,14 @@ const mutations = {
 
 const actions = {
     getArtists({commit}) {
-        API.get('artists').then(response => {
-            const artists = response.data.sort((a, b) => {
-                return b.likes - a.likes
-            });
-            commit('SET_ARTISTS', artists)
+        new Promise(resolve => {
+            API.get('artists').then(response => {
+                const artists = response.data.sort((a, b) => {
+                    return b.likes - a.likes
+                });
+                commit('SET_ARTISTS', artists);
+                resolve(artists)
+            })
         })
     },
     updateArtist({commit}, artist) {

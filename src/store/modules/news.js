@@ -28,11 +28,14 @@ const mutations = {
 
 const actions = {
     getNews({commit}) {
-        API.get('news').then(response => {
-            let articles = response.data.sort((a, b) => {
-                return new Date(b.published) - new Date(a.published)
-            });
-            commit('SET_NEWS', articles)
+        new Promise(resolve => {
+            API.get('news').then(response => {
+                let articles = response.data.sort((a, b) => {
+                    return new Date(b.published) - new Date(a.published)
+                });
+                commit('SET_NEWS', articles);
+                resolve(articles)
+            })
         })
     },
     updateNew({commit}, article) {
@@ -43,6 +46,7 @@ const actions = {
         return new Promise((resolve, reject) => {
             API.post('news', article)
                 .then(res => {
+
                     commit('CREATE_NEW', res.data);
                     resolve(res.data.id)
                 })
