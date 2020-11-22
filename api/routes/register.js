@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-
 const response = require('../utils/response');
 const registerController = require('../db/register');
 
 router.post('/', async function (req, res) {
+
   const bodyArray = Object.keys(req.body);
 
   if (bodyArray.length >= 5) {
