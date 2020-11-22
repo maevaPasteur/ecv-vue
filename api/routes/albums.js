@@ -37,17 +37,5 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-router.patch('/all/:id', async (req, res) => {
-
-    const artists = await Albums.find();
-
-    await artists.forEach(async artist => {
-        let a = await Albums.findOneAndUpdate({_id: artist._id}, {$unset: {artistId: ''}});
-        console.log("a")
-        console.log(a)
-    });
-    res.json(artists)
-});
-
 
 module.exports = router;

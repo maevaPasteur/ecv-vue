@@ -3,7 +3,7 @@
         <header>
             <div class="bar">
                 <a href="/"><h1>News APP</h1></a>
-                <button @click="toggleMenu" :class="{menuVisible : 'open'}"></button>
+                <button @click="toggleMenu" :class="{'open' : menuVisible}"></button>
             </div>
         </header>
         <transition name="fade">
@@ -113,6 +113,16 @@
 
             &:before {
                 bottom: 0;
+            }
+
+            &.open {
+                &:after {
+                    transform: translate(-5px, 0px) rotate(45deg);
+                }
+                &:before {
+                    transform: rotate(-45deg);
+                    transform-origin: left;
+                }
             }
         }
     }

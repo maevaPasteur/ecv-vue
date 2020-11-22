@@ -155,7 +155,7 @@
 
         .image {
             position: relative;
-            padding-bottom: 40%;
+            padding-bottom: 60%;
             margin-bottom: 40px;
             flex-shrink: 1;
 
