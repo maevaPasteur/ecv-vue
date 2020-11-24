@@ -14,8 +14,8 @@
 </template>
 
 <script>
-
-    import API from '../../api/config'
+import API from '../../api/config';
+import {mapMutations} from 'vuex';
 
     export default {
         data() {
@@ -29,6 +29,7 @@
             }
         },
         methods: {
+            ...mapMutations(['POPULATE_SESSION_DATA']),
             async login() {
                 try {
                     const res = await API.post('login', {
@@ -36,8 +37,9 @@
                         password: this.user.password
                     });
                     
-                    console.log(res.data);
+                    this.POPULATE_SESSION_DATA(res.data.userData);
                     localStorage.setItem('token', res.data.token);
+                    this.$router.push('/');
                 } catch (error) {
                     this.error = error.response.data.message
                 }

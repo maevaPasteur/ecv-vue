@@ -18,8 +18,7 @@ module.exports = async function Login(data) {
   if (await compare(data.password, user.password)) {
     const d = await createSessionAndLog(user);
 
-    console.log(user);
-    delete user.password;
+    user.password = null;
     d.forClient.userData = user;
 
     return {
