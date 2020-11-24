@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Albums = require('../db/models/Albums');
 
-router.get('/', async (req,res) => {
+router.get('/', async (req, res) => {
     try {
         const albums = await Albums.find();
         res.json(albums);

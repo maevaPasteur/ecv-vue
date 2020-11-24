@@ -2,8 +2,8 @@
     <div class="page-login">
         <form @submit.prevent="login">
             <h1>Je me connecte</h1>
-            <label>Pseudo</label>
-            <input type="text" required v-model="user.username"/>
+            <label>Mail</label>
+            <input type="email" required v-model="user.email"/>
             <label>Mot de passe</label>
             <input type="password" required v-model="user.password"/>
             <p class="error" v-if="error">{{ error }}</p>
@@ -29,13 +29,18 @@
             }
         },
         methods: {
-            login() {
-                API.post('login', this.user).then(res => {
-                    localStorage.setItem('token', res.data.accessToken)
-                    this.$router.push({name: 'profile'})
-                }).catch(() => {
-                    this.error = 'Une erreur est survenue'
-                })
+            async login() {
+                try {
+                    const res = await API.post('login', {
+                        email: this.user.email,
+                        password: this.user.password
+                    });
+                    
+                    console.log(res.data);
+                    localStorage.setItem('token', res.data.token);
+                } catch (error) {
+                    this.error = error.response.data.message
+                }
             }
         }
 
