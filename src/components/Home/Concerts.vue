@@ -1,15 +1,15 @@
 <template>
-    <section class="next-concerts section-item">
+    <section class="next-concerts section-item" v-if="concerts && concerts.length">
         <h2>Les prochains concerts</h2>
         <div class="sliders">
             <div class="slider1">
-                <flickity v-if="concerts && concerts.length" :options="flickityOptions1" ref="slider1">
+                <flickity :class="{'is-dragging': isDragging}" :options="flickityOptions1" ref="slider1">
                     <concert v-for="(concert, index) in concerts" :key="index + concert.name" :concert="concert"/>
                 </flickity>
             </div>
            <div class="slider2">
-               <flickity v-if="concerts && concerts.length" :options="flickityOptions2" ref="slider2" @init="onInitSliders">
-                   <concert v-for="(concert, index) in concerts" :key="index + concert.name" :concert="concert" :count="concerts.length" :index="index" @ready="childReady"/>
+               <flickity :class="{'is-dragging': isDragging}" :options="flickityOptions2" ref="slider2" @init="onInitSliders">
+                   <concert v-for="(concert, index) in concerts" :key="index + concert.name" :concert="concert"/>
                </flickity>
            </div>
         </div>
@@ -18,6 +18,7 @@
 
 <script>
 
+    import { mapState, mapActions } from 'vuex';
     import Flickity from 'vue-flickity'
     import Concert from "./Concert";
 
@@ -29,6 +30,7 @@
         },
         data() {
             return {
+                isDragging: false,
                 flickityOptions1: {
                     initialIndex: 0,
                     prevNextButtons: false,
@@ -50,17 +52,29 @@
             }
         },
         computed: {
-            concerts() {
-                return this.$store.state.nextConcerts
-            }
+            ...mapState({
+                concerts(state) {
+                    if (state.concerts.length === 0) return {};
+                    let concerts = [];
+                    const today = new Date();
+                    state.concerts.forEach(concert => {
+                        if(new Date(concert.date) >= today) {
+                            concerts.push(concert)
+                        }
+                    });
+                    return concerts
+                },
+                all_concerts: state => state.concerts
+            })
         },
         methods: {
-            // Initialisation des sliders quand le composant enfant a fini de charger
-            childReady() {
-                this.$refs.slider1.resize();
-                this.$refs.slider2.resize();
-            },
+            ...mapActions(['getConcerts']),
+
             onInitSliders() {
+                this.$refs.slider1.on('dragStart', () => this.isDragging = true);
+                this.$refs.slider2.on('dragStart', () => this.isDragging = true);
+                this.$refs.slider1.on('dragEnd', () => this.isDragging = false);
+                this.$refs.slider2.on('dragEnd', () => this.isDragging = false);
                 this.$refs.slider1.on('select', index => {
                     const slider2Index = this.$refs.slider2.selectedIndex();
                     let newIndex = (index + 1) === this.concerts.length ? 0 : index + 1;
@@ -81,13 +95,16 @@
                     }
                 })
             },
+
             restartPlayer() {
                 this.$refs.slider1.stopPlayer();
                 this.$refs.slider1.playPlayer();
             }
         },
         mounted() {
-            this.$store.dispatch('getNextConcerts');
+            if(!Object.keys(this.all_concerts).length) {
+                this.getConcerts()
+            }
         }
     }
 </script>
@@ -96,12 +113,20 @@
 
     .next-concerts {
 
+        .is-dragging a {
+            pointer-events: none;
+        }
+
         .sliders {
             display: flex;
             justify-content: space-between;
 
             & > div {
                 width: calc((100% - 40px) / 2);
+
+                & > div {
+                    outline: 0;
+                }
             }
         }
 
@@ -113,33 +138,6 @@
             width: 100%;
         }
 
-        img {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            object-fit: cover;
-        }
-
-        .img {
-            position: relative;
-            padding-bottom: 130%;
-        }
-
-
-        h3 {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-
-        .content {
-            position: absolute;
-            bottom: 10px;
-            left: 20px;
-            width: calc(100% - 40px);
-            text-shadow: 0 0 20px #424242;
-        }
     }
 
 </style>

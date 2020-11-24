@@ -7,8 +7,8 @@
 
 <script>
 
-    import Suggestions from "../../components/Article/Suggestions";
-    import ArticleContent from "../../components/Article/ArticleContent";
+    import Suggestions from "@/components/Article/Suggestions";
+    import ArticleContent from "@/components/Article/ArticleContent";
 
     export default {
         name: 'Article',

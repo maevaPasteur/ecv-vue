@@ -1,64 +1,65 @@
 <template>
-    <div class="backoffice">
-        <div class="breadcrumb">
-            <router-link :to="{ name: 'admin' }">Admin</router-link>
-            <a href="#">Tous les concerts</a>
-        </div>
-        <h1>Les concerts</h1>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Lieu</th>
-                <th>Date</th>
-                <th>Artiste</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr v-for="concert in concerts" :key="'concert-' + concert.id">
-                <td>
-                    <router-link class="id" :to="{ name: 'concerts.show', params: { id: concert.id } }">{{ concert.id }}</router-link>
-                </td>
-                <td>{{ concert.name }}</td>
-                <td>{{ concert.date }}</td>
-                <td :set="concert.artist = getArtist(concert.artistId)">
-                    <router-link v-if="concert.artist" :to="{ name: 'artists.show', params: { id: concert.artist.id } }">
-                        <img class="avatar" :src="concert.artist.avatar" :alt="concert.artist.name">
-                        <span>{{ concert.artist.name }}</span>
-                    </router-link>
-                </td>
-                <td>
-                    <router-link class="edit" :to="{ name: 'concerts.edit', params: { id: concert.id } }"><img src="@/assets/images/pen.svg" alt="modifier le concert"></router-link>
-                </td>
-                <td>
-                    <router-link class="delete" :to="{ name: 'concerts.delete', params: { id: concert.id } }"><img src="@/assets/images/delete.svg" alt="supprimer le concert"></router-link>
-                </td>
-            </tr>
-        </table>
-        <div class="btn-actions">
-            <router-link :to="{ name: 'concerts.create' }" class="create">Créer un concert</router-link>
-        </div>
-    </div>
+    <index v-if="concerts"
+           :title="title"
+           :link="link"
+           :confirmSentence="confirmSentence"
+           :cols="cols"
+           :items="concerts"
+           :routes="routes"
+           :button="button"
+           :states="states"
+           @remove="remove"
+    />
 </template>
 
 <script>
 
+    import Index from '@/components/Backoffice/Index';
+    import {mapState, mapActions} from 'vuex';
+
     export default {
+        components: {Index},
+        data() {
+            return {
+                title: "Les concerts",
+                link: "Tous les concerts",
+                confirmSentence: 'Êtes-vous certain de vouloir supprimer ce concert ?',
+                cols: [
+                    { title: "Lieu", param: "name" },
+                    { title: "Date", param: "date" },
+                    { title: "Artiste", param: "artistId" }
+                ],
+                routes: { show: 'concerts.show', edit: 'concerts.edit' },
+                button: {
+                    title: "Ajouter un concert",
+                    link: { name: 'concerts.create' }
+                }
+            }
+        },
         computed: {
-            concerts() {
-                return this.$store.state.concerts
-            },
-            artists() {
-                return this.$store.state.artists
+            ...mapState({
+                concerts: state => state.concerts,
+                artists: state => state.artists
+            }),
+            states() {
+                return {
+                    artists: this.artists
+                }
             }
         },
         methods: {
-            getArtist(id) {
-                return this.artists.find(e => e.id === id)
+            ...mapActions(['getConcerts', 'getArtists', 'deleteConcert']),
+            remove(id) {
+                this.deleteConcert(id);
             }
         },
         mounted() {
-            this.$store.dispatch('getConcerts');
-            this.$store.dispatch('getArtists');
+            if(!Object.keys(this.concerts).length) {
+                this.getConcerts()
+            }
+            if(!Object.keys(this.artists).length) {
+                this.getArtists()
+            }
         }
     }
 </script>

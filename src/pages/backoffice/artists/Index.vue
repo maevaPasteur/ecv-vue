@@ -1,53 +1,57 @@
 <template>
-    <div class="backoffice">
-        <div class="breadcrumb">
-            <router-link :to="{ name: 'admin' }">Admin</router-link>
-            <a href="#">Tous les artistes</a>
-        </div>
-        <h1>Les Artistes</h1>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>Pays</th>
-                <th>Likes</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr v-for="artist in artists" :key="'new-' + artist.id">
-                <td>
-                    <router-link class="id" :to="{ name: 'news.show', params: { id: artist.id } }">{{ artist.id }}</router-link>
-                </td>
-                <td>
-                    <img class="avatar" :src="artist.avatar" :alt="artist.name">
-                    <span>{{ artist.name }}</span>
-                </td>
-                <td>{{ artist.origin }}</td>
-                <td>{{ artist.likes }}</td>
-                <td>
-                    <router-link class="edit" :to="{ name: 'artists.edit', params: { id: artist.id } }"><img src="@/assets/images/pen.svg" alt="modifier l'article"></router-link>
-                </td>
-                <td>
-                    <router-link class="delete" :to="{ name: 'artists.delete', params: { id: artist.id } }"><img src="@/assets/images/delete.svg" alt="supprimer l'article"></router-link>
-                </td>
-            </tr>
-        </table>
-        <div class="btn-actions">
-            <router-link :to="{ name: 'artists.create' }" class="create">Ajouter un artiste</router-link>
-        </div>
-    </div>
+
+    <index v-if="artists && artists.length"
+           :title="title"
+           :link="link"
+           :confirmSentence="confirmSentence"
+           :cols="cols"
+           :items="artists"
+           :routes="routes"
+           :button="button"
+           @remove="remove"
+    />
+
 </template>
 
 <script>
 
+    import Index from '@/components/Backoffice/Index';
+    import {mapState, mapActions} from 'vuex';
+
     export default {
+        components: {Index},
+        data() {
+            return {
+                title: "Les artistes",
+                link: "Tous les artistes",
+                confirmSentence: 'Êtes-vous certain de vouloir supprimer cet artiste ?',
+                cols: [
+                    { title: "Nom", param: "avatar" },
+                    { title: "Pays", param: "origin" },
+                    { title: "Likes", param: "likes" }
+                ],
+                routes: { show: 'artists.show', edit: 'artists.edit' },
+                button: {
+                    title: "Créer un artiste",
+                    link: { name: 'artists.create' }
+                }
+            }
+        },
         computed: {
-            artists() {
-                return this.$store.state.artists
+            ...mapState({
+                artists: state => state.artists
+            })
+        },
+        methods: {
+            ...mapActions(['getArtists', 'deleteArtist']),
+            remove(id) {
+                this.deleteArtist(id);
             }
         },
         mounted() {
-            this.$store.dispatch('getArtists')
+            if(!Object.keys(this.artists).length) {
+                this.getArtists()
+            }
         }
     }
 </script>

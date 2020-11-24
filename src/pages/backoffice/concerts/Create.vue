@@ -1,57 +1,66 @@
 <template>
-    <div class="backoffice">
-        <div class="breadcrumb">
-            <router-link :to="{ name: 'admin' }">Admin</router-link>
-            <router-link :to="{ name: 'concerts.index' }">Tous les concerts</router-link>
-            <a href="#">Nouveau</a>
-        </div>
-        <h1>Créer un concert</h1>
-        <form>
-            <label>Lieu du concert</label>
-            <input required type="text" v-model="name"/>
-            <label>Date</label>
-            <input required type="text" v-model="date" placeholder="jj/mm/aaaa"/>
-            <p class="label">L'artiste</p>
-            <div class="list-checkbox">
-                <div v-for="(artist, index) in artists" :key="'artis-create-new'+index">
-                    <input required type="radio" :id="'artist'+artist.id" :value="artist.id" v-model="artistId"/>
-                    <label :for="'artist'+artist.id">{{ artist.name }}</label>
-                </div>
-            </div>
-            <p class="error" v-if="error">{{ error }}</p>
-            <button @submit="save">Valider</button>
-        </form>
-    </div>
+
+    <create
+        :title="title"
+        :route="route"
+        :activeObject="concert"
+        :fields="fields"
+        :states="states"
+        :error="error"
+        @create="create"
+    />
+
 </template>
 
 <script>
 
 
+    import Create from '@/components/Backoffice/Create'
+    import {mapActions, mapState} from 'vuex'
+
     export default {
+        components: {Create},
         data() {
             return {
-                id: Number(this.$route.params.id),
-                error: null,
-                name: '',
-                date: null,
-                artistId: null
+                title: "Ajouter un concert",
+                route: {title: "Tous les concerts", link: {name: 'concerts.index'}},
+                fields: [
+                    {label: "Lieu du concert", param: "name", type: "text"},
+                    {label: "Date", param: "date", type: "date"},
+                    {label: "Les artistes taggés", param: "artistId", type: "radio", options: 'artists'},
+                ],
+                concert: {
+                    name: '',
+                    date: '',
+                    artistId: null
+                },
+                error: null
             }
         },
         computed: {
-            artists() {
-                return this.$store.state.artists
+            ...mapState({
+                artists: state => state.artists
+            }),
+            states() {
+                return {
+                    'artists': this.artists
+                }
             }
         },
         methods: {
-            getArtist(id) {
-                return this.artists.find(e => e.id === id)
-            },
-            save() {
-                console.log('save')
+            ...mapActions(['getArtists', 'createConcert']),
+            create() {
+                this.createConcert(this.concert).then(id => {
+                    this.$router.push({name: 'concerts.show', params: {id: id}})
+                }).catch(err => {
+                    this.error = err
+                })
             }
         },
         mounted() {
-            this.$store.dispatch('getArtists');
+            if (!Object.keys(this.artists).length) {
+                this.getArtists()
+            }
         }
     }
 </script>

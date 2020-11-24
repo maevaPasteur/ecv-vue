@@ -10,22 +10,21 @@
         <div v-if="article" class="details">
             <p class="id">#{{ article.id }}</p>
             <h1>{{ article.title }}</h1>
-            <p>{{ article.published }}</p>
+            <p>{{ article.published | date }}</p>
             <p class="text">{{ article.content }}</p>
             <img :src="article.image" :alt="article.title">
-            <div v-if="artistsLoad">
+            <div v-if="artists && artists.length">
                 <h2>Les artistes</h2>
                 <ul>
                     <li v-for="(artist, index) in artists" :key="'artist-show-'+index">
-                        <router-link :to="{ name: '' }">
+                        <router-link :to="{name: 'artists.show', params: { id: artist.id }}">
                             <img class="avatar" :src="artist.avatar" :alt="artist.name">
-                            <span class="small-id">#{{ artist.id }}</span>
                             <span>{{ artist.name }}</span>
                         </router-link>
                     </li>
                 </ul>
             </div>
-            <table>
+            <table v-if="article.comments && article.comments.length">
                 <tr>
                     <th>Utilisateur</th>
                     <th>Commentaire</th>
@@ -41,13 +40,14 @@
                     <td>{{ comment.message }}</td>
                 </tr>
             </table>
+            <router-link :to="{name: 'article', params: { id: article.id }}" class="button">Voir la page de l'article</router-link>
         </div>
     </show>
 </template>
 
 <script>
-    import {mapState} from 'vuex';
 
+    import {mapState, mapActions} from 'vuex';
     import Show from "@/components/Backoffice/Show";
 
     export default {
@@ -56,42 +56,39 @@
         },
         data() {
             return {
-                id: Number(this.$route.params.id),
-                article: null,
-                artistsLoad: false,
-                artists: [],
+                id: this.$route.params.id,
                 editRouteName: 'news.edit',
                 confirmSentence: 'Êtes-vous certain de vouloir supprimer cet article ?'
             }
         },
         computed: {
             ...mapState({
-                a (state) {
-                    // console.log(this.$route, state.news);
-                    return state.news;
+                article(state) {
+                    if (state.news.length === 0) return {};
+                    return state.news.find(n => n.id === this.id);
+                },
+                artists(state) {
+                    if (this.article && this.article.artistesId && this.article.artistesId.length && state.artists) {
+                        return state.artists.filter(e => this.article.artistesId.includes(e.id))
+                    }
+                    return {}
                 }
             })
         },
         methods: {
-            getArtists(ids) {
-                ids.forEach(async (id, index) => {
-                    this.artists[index] = await this.$store.dispatch('getArtist', id);
-                    if (index === ids.length - 1) {
-                        this.artistsLoad = true
-                    }
-                })
-            },
+            ...mapActions(['getNews', 'getArtists', 'deleteNew']),
             remove() {
-                console.log('supp')
+                this.deleteNew(this.id);
+                this.$router.push({name: 'news.index'})
             }
         },
         mounted() {
-            this.$store.dispatch('getNew', this.id).then(res => {
-                this.article = res;
-                if (res && res.artistesId) {
-                    this.getArtists(res.artistesId)
-                }
-            });
+            if(!Object.keys(this.article).length) {
+                this.getNews()
+            }
+            if(!Object.keys(this.artists).length) {
+                this.getArtists()
+            }
         }
     }
 

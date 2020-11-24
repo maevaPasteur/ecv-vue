@@ -2,12 +2,12 @@
     <section class="section-item detail-article" v-if="article">
 
         <h1>{{ article.title }}</h1>
-        <span class="date">{{ article.published }}</span>
+        <span class="date">{{ article.published | date }}</span>
         <div class="image">
             <img :src="article.image" :alt="article.title">
         </div>
 
-        <div class="small-artists" v-if="artistsLoad">
+        <div class="small-artists" v-if="artists && artists.length">
             <ul>
                 <li v-for="(artist, index) in artists" :key="'artist' + index">
                     <router-link :to="{ name: 'artist', params: { id: artist.id }}">
@@ -41,33 +41,51 @@
 </template>
 
 <script>
+
+    import {mapState, mapActions} from 'vuex';
+
     export default {
         name: 'ArticleContent',
         data() {
             return {
-                id: Number(this.$route.params.id),
-                article: null,
-                artistsLoad: false,
-                artists: []
+                id: this.$route.params.id
             }
         },
         methods: {
-            getArtists(ids) {
-                ids.forEach(async (id, index) => {
-                    this.artists[index] = await this.$store.dispatch('getArtist', id);
-                    if (index === ids.length - 1) {
-                        this.artistsLoad = true
-                    }
-                })
-            }
+            ...mapActions(['getNews', 'getArtists']),
+
         },
-        mounted() {
-            this.$store.dispatch('getNew', this.id).then(res => {
-                this.article = res;
-                if (res && res.artistesId) {
-                    this.getArtists(res.artistesId)
+        computed: {
+            ...mapState({
+                article(state) {
+                    const article = state.news.find(n => n.id === this.id);
+                    return article ? article : {}
+                },
+                artists(state) {
+                    if (this.article && this.article.artistesId && this.article.artistesId.length && state.artists) {
+                        return state.artists.filter(e => this.article.artistesId.includes(e.id))
+                    }
+                    return {}
                 }
             })
+        },
+        mounted() {
+            if (!Object.keys(this.article).length) {
+                this.getNews();
+                console.log('get news')
+            }
+            if (!Object.keys(this.artists).length) {
+                this.getArtists()
+            }
+        },
+        watch: {
+            '$route.params.id'(id) {
+                this.id = id;
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                });
+            }
         }
     }
 </script>
@@ -109,8 +127,8 @@
             text-transform: uppercase;
             font-weight: 500;
             cursor: pointer;
-            color: #fff;
-            margin: 5px 10px 0;
+            color: #000;
+            margin: 20px 10px 0 0;
 
             &:hover {
                 border-bottom: solid 1px #fff;
@@ -126,6 +144,7 @@
             border: solid 1px #fff;
             color: #fff;
             background: transparent;
+            min-height: 100px;
 
             &::placeholder {
                 font-size: 14px;
@@ -136,7 +155,7 @@
 
         .image {
             position: relative;
-            padding-bottom: 40%;
+            padding-bottom: 60%;
             margin-bottom: 40px;
             flex-shrink: 1;
 

@@ -12,9 +12,9 @@
 
     import MainArticles from "@/components/Home/MainArticles";
     import Concerts from "@/components/Home/Concerts";
-    import Artists from "../../components/Home/Artists";
-    import TopArtists from "../../components/Home/TopArtists";
-    import Articles from "../../components/Home/Articles";
+    import Artists from "@/components/Home/Artists";
+    import TopArtists from "@/components/Home/TopArtists";
+    import Articles from "@/components/Home/Articles";
 
     export default {
         name: 'Home',

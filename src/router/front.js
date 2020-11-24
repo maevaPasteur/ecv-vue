@@ -4,6 +4,7 @@ import Artist from "@/pages/front/Artist";
 import Login from "@/pages/front/Login";
 import Register from "@/pages/front/Register";
 import Profile from "@/pages/front/Profile";
+import Search from "@/pages/front/Search";
 
 const frontRoutes = [
     {
@@ -35,6 +36,11 @@ const frontRoutes = [
         path: '/mon-compte',
         name: 'profile',
         component: Profile
+    },
+    {
+        path: '/rechercher',
+        name: 'search',
+        component: Search
     }
 ];
 

@@ -3,86 +3,130 @@
 
         <div class="breadcrumb">
             <router-link :to="{ name: 'admin' }">Admin</router-link>
-            <router-link :to="{ name: 'news.index' }">Tous les articles</router-link>
-            <a href="#">Voir l'article</a>
+            <router-link :to="{ name: 'artists.index' }">Tous les artistes</router-link>
+            <a href="#">Voir l'artiste</a>
         </div>
 
-        <div v-if="article" class="details">
-            <p class="id">#{{ article.id }}</p>
-            <h1>{{ article.title }}</h1>
-            <p>{{ article.published }}</p>
-            <p class="text">{{ article.content }}</p>
-            <img :src="article.image" :alt="article.title">
-            <div v-if="artistsLoad">
-                <h2>Les artistes</h2>
-                <ul>
-                    <li v-for="(artist, index) in artists" :key="'artist-show-'+index">
-                        <router-link :to="{ name: '' }">
-                            <img class="avatar" :src="artist.avatar" :alt="artist.name">
-                            <span class="small-id">#{{ artist.id }}</span>
-                            <span>{{ artist.name }}</span>
-                        </router-link>
-                    </li>
-                </ul>
-            </div>
+        <div v-if="artist" class="details">
+            <p class="id">#{{ artist.id }}</p>
+            <h1>{{ artist.name }}</h1>
+            <p class="text">{{ artist.description }}</p>
+            <img :src="artist.avatar" :alt="artist.name">
             <table>
                 <tr>
-                    <th>Utilisateur</th>
-                    <th>Commentaire</th>
+                    <th colspan="2">Informations</th>
                 </tr>
-                <tr v-for="(comment, index) in article.comments" :key="'com-'+index">
-                    <td>
-                        <a href="#">
-                            <img class="avatar" :src="comment.avatar" :alt="comment.username">
-                            <span class="small-id">#{{ comment.userId }}</span>
-                            <span>{{ comment.username }}</span>
-                        </a>
+                <tr>
+                    <td>Likes</td>
+                    <td>{{ artist.likes | splitNumber }}
+                        <icon-heart/>
                     </td>
-                    <td>{{ comment.message }}</td>
+                </tr>
+                <tr>
+                    <td>Pays</td>
+                    <td>{{ artist.origin }}</td>
+                </tr>
+                <tr v-if="genre">
+                    <td>Genre</td>
+                    <td>{{ genre.name | capitalize }}</td>
+                </tr>
+                <tr v-if="albums && albums.length">
+                    <th colspan="2">Albums</th>
+                </tr>
+                <tr v-for="(album, index) in albums" :key="'artist-alb'+index">
+                    <td>
+                        <router-link :to="{ name: 'albums.show', params: { id: album.id }}">
+                            <img class="avatar" :src="album.cover" :alt="album.name"/>
+                            <span>{{ album.name }}</span>
+                        </router-link>
+                    </td>
+                    <td>{{ album.released }}</td>
+                </tr>
+                <tr v-if="articles && articles.length">
+                    <th colspan="2">Articles</th>
+                </tr>
+                <tr v-for="(article, index) in articles" :key="'artist-article'+index">
+                    <td><router-link :to="{ name: 'news.show', params: { id: article.id }}">{{ article.title }}</router-link></td>
+                    <td>{{ article.published | date }}</td>
+                </tr>
+                <tr v-if="concerts && concerts.length">
+                    <th colspan="2">Concerts</th>
+                </tr>
+                <tr v-for="(concert, index) in concerts" :key="'artist-concert'+index">
+                    <td><router-link :to="{ name: 'concerts.show', params: { id: concert.id }}">{{ concert.name }}</router-link></td>
+                    <td>{{ concert.date | date }}</td>
                 </tr>
             </table>
+            <router-link :to="{name: 'artist', params: { id: artist.id }}" class="button">Voir la page de l'artiste</router-link>
         </div>
     </show>
 </template>
 
 <script>
 
+    import {mapState, mapActions} from 'vuex';
     import Show from "@/components/Backoffice/Show";
+    import IconHeart from "@/components/Icons/IconHeart";
 
     export default {
         components: {
-            Show
+            Show,
+            IconHeart
         },
         data() {
             return {
-                id: Number(this.$route.params.id),
-                article: null,
-                artistsLoad: false,
-                artists: [],
-                editRouteName: 'news.edit',
-                confirmSentence: 'Êtes-vous certain de vouloir supprimer cet article ?'
+                id: this.$route.params.id,
+                editRouteName: 'artists.edit',
+                confirmSentence: 'Êtes-vous certain de vouloir supprimer cet artiste ?'
             }
         },
+        computed: {
+            ...mapState({
+                artist(state) {
+                    const artist = state.artists.find(item => item.id === this.id);
+                    return artist ? artist : {}
+                },
+                genre(state) {
+                    return this.artist && this.artist.genreId ? state.genres.find(n => n.id === this.artist.genreId) : {}
+                },
+                articles(state) {
+                    return state.news.filter(n => n.artistesId.includes(this.artist.id));
+                },
+                albums(state) {
+                    return state.albums.filter(n => n.artistId === this.id)
+                },
+                concerts(state) {
+                    const concerts = state.concerts.filter(n => n.artistId === this.id);
+                    if (!concerts) return {};
+                    return concerts.sort((a, b) => {
+                        return new Date(b.date) - new Date(a.date)
+                    });
+                }
+            })
+        },
         methods: {
-            getArtists(ids) {
-                ids.forEach(async (id, index) => {
-                    this.artists[index] = await this.$store.dispatch('getArtist', id);
-                    if (index === ids.length - 1) {
-                        this.artistsLoad = true
-                    }
-                })
-            },
+            ...mapActions(['getGenres', 'getArtists', 'deleteArtist', 'getNews', 'getConcerts', 'getAlbums']),
             remove() {
-                console.log('supp')
+                this.deleteArtist(this.id);
+                this.$router.push({name: 'artists.index'})
             }
         },
         mounted() {
-            this.$store.dispatch('getNew', this.id).then(res => {
-                this.article = res;
-                if (res && res.artistesId) {
-                    this.getArtists(res.artistesId)
-                }
-            });
+            if (!Object.keys(this.artist).length) {
+                this.getArtists()
+            }
+            if (!this.genre || !Object.keys(this.genre).length) {
+                this.getGenres()
+            }
+            if (!Object.keys(this.articles).length) {
+                this.getNews();
+            }
+            if (!Object.keys(this.albums).length) {
+                this.getAlbums();
+            }
+            if (!Object.keys(this.concerts).length) {
+                this.getConcerts();
+            }
         }
     }
 

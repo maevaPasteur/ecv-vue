@@ -1,11 +1,11 @@
 <template>
     <section class="main-article" v-if="news && news.length">
-        <flickity class="main-slider" ref="mainSlider" :options="flickityOptions">
+        <flickity class="main-slider" ref="slider" :options="flickityOptions" @init="initSlider">
             <div class="slide" v-for="article in news" :key="article.title">
                 <img :src="article.image" :alt="article.title"/>
-                <router-link :to="{name: article, params: { id: article.id }}" class="container">
+                <router-link :to="{name: 'article', params: { id: article.id }}" class="container">
                     <h2>{{ article.title }}</h2>
-                    <p>{{ article.published }}</p>
+                    <p>{{ article.published | date }}</p>
                 </router-link>
             </div>
         </flickity>
@@ -14,6 +14,7 @@
 
 <script>
 
+    import { mapState, mapActions } from 'vuex';
     import Flickity from 'vue-flickity'
 
     export default {
@@ -29,12 +30,25 @@
             }
         },
         computed: {
-            news() {
-                return this.$store.state.news.slice(0, 5)
+            ...mapState({
+                news(state) {
+                    if (state.news.length === 0) return {};
+                    return state.news.slice(0, 5)
+                }
+            })
+        },
+        methods: {
+            ...mapActions(['getNews']),
+            initSlider() {
+                window.addEventListener('resize', () => {
+                    this.$refs.slider.resize()
+                })
             }
         },
         mounted() {
-            this.$store.dispatch('getNews')
+            if(!Object.keys(this.news).length) {
+                this.getNews();
+            }
         }
     }
 

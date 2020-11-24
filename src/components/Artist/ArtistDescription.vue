@@ -13,13 +13,25 @@
                 <h2>Pays d'origine</h2>
                 <p class="text">{{ artist.origin }}</p>
                 <br><br>
-                <h2>Genre</h2>
-                <p v-if="genre">{{ genre }}</p>
-                <br><br>
+                <div v-if="genre">
+                    <h2>Genre</h2>
+                    <p>{{ genre.name }}</p>
+                    <br><br>
+                </div>
                 <h2>Biographie</h2>
                 <p class="text">{{ artist.description }}</p>
-                <div v-if="albums && albums.length">
+                <br><br>
+                <div v-if="concerts && concerts.length">
+                    <h2>Concerts</h2>
+                    <ul class="list-concerts">
+                        <li v-for="(concert, index) in concerts" :key="'concert-artist-' + index">
+                            <p>{{ concert.date | date }}</p>
+                            <p class="text">{{ concert.name }}</p>
+                        </li>
+                    </ul>
                     <br><br>
+                </div>
+                <div v-if="albums && albums.length">
                     <h2>Albums</h2>
                     <ul class="text albums">
                         <li v-for="(album, index) in albums" :key="'album-' + index">
@@ -31,9 +43,9 @@
                             </div>
                         </li>
                     </ul>
+                    <br><br>
                 </div>
                 <div v-if="articles && articles.length">
-                    <br><br>
                     <h2>Articles</h2>
                     <ul class="list-articles">
                         <li v-for="(article, index) in articles" :key="'article-artist-' + index">
@@ -41,7 +53,7 @@
                                 <img :src="article.image" :alt="article.title">
                                 <p>
                                     {{ article.title }}<br>
-                                    <span>{{ article.published }}</span>
+                                    <span>{{ article.published | date }}</span>
                                 </p>
                             </router-link>
                         </li>
@@ -54,66 +66,71 @@
 
 <script>
 
-    // import IconHeart from "../../components/Icons/IconHeart";
+    import {mapState, mapActions} from 'vuex';
+    import IconHeart from "@/components/Icons/IconHeart";
 
     export default {
         name: 'ArtistDescription',
-        // components: { IconHeart },
+        components: { IconHeart },
         data() {
             return {
-                id: Number(this.$route.params.id),
-                artist: undefined,
-                genre: undefined,
-                albums: undefined,
-                articles: undefined
+                id: this.$route.params.id
+            }
+        },
+        computed: {
+            ...mapState({
+                artist(state) {
+                    const artist = state.artists.find(n => n.id === this.id);
+                    return artist ? artist : {}
+                },
+                articles(state) {
+                    return state.news.filter(n => n.artistesId.includes(this.artist.id));
+                },
+                genre(state) {
+                    return this.artist && this.artist.genreId ? state.genres.find(n => n.id === this.artist.genreId) : {}
+                },
+                albums(state) {
+                    return state.albums.filter(n => n.artistId === this.id)
+                },
+                concerts(state) {
+                    const concerts = state.concerts.filter(n => n.artistId === this.id);
+                    if(!concerts) return {};
+                    return concerts.sort((a,b) => {
+                        return new Date(b.date) - new Date(a.date)
+                    });
+                }
+            })
+        },
+        methods: {
+            ...mapActions(['getArtists', 'getNews', 'getGenres', 'getAlbums', 'getConcerts']),
+            like() {
+                console.log('like')
             }
         },
         mounted() {
-            this.getArtist()
-        },
-        methods: {
-            getArtist() {
-                this.$store.dispatch('getArtist', this.id).then(res => {
-                    this.artist = res;
-                    this.getGenre();
-                    this.getAlbums();
-                    this.getArticles();
-                })
-            },
-            getGenre() {
-                this.$store.dispatch('getGenre', this.artist.genreId).then(res => {
-                    this.genre = res.name
-                })
-            },
-            getAlbums() {
-                this.$store.dispatch('geAlbumsByArtist', this.artist.id).then(res => {
-                    this.albums = res
-                })
-            },
-            getArticles() {
-                this.$store.dispatch('getNewsByArtist', this.artist.id).then(res => {
-                    this.articles = res
-                })
-            },
-            like() {
-                console.log('like')
-            },
-            resetData(id) {
-                this.id = id;
-                this.artist = undefined;
-                this.genre = undefined;
-                this.albums = undefined;
-                this.articles = undefined;
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth',
-                });
+            if(!Object.keys(this.artist).length) {
+                this.getArtists();
+            }
+            if(!Object.keys(this.articles).length) {
+                this.getNews();
+            }
+            if(!this.genre || !Object.keys(this.genre).length) {
+                this.getGenres();
+            }
+            if(!Object.keys(this.albums).length) {
+                this.getAlbums();
+            }
+            if(!Object.keys(this.concerts).length) {
+                this.getConcerts();
             }
         },
         watch: {
             '$route.params.id'(id) {
-                this.resetData(id);
-                this.getArtist();
+                this.id = id;
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                });
             }
         }
     }
@@ -234,6 +251,20 @@
                 font-size: 30px;
                 margin-top: 10px;
                 display: block;
+            }
+        }
+
+        .list-concerts {
+            li {
+                display: flex;
+                margin-top: 10px;
+            }
+            p:first-of-type {
+                -webkit-text-fill-color: transparent;
+                -webkit-text-stroke-width: 1px;
+                -webkit-text-stroke-color: #fff;
+                color: transparent;
+                margin-right: 10px;
             }
         }
     }

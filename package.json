@@ -6,10 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "back": "nodemon api-2/index.js",
+    "server": "nodemon api/index.js",
     "style": "prettier -c './api-2/**/*'",
-    "style:fix": "prettier --c --write './api-2/**/*'",
-    "server": "json-server -p 3001 server/db.json -m ./node_modules/json-server-auth -r server/routes.json && nodemon api-2/index.js"
+    "style:fix": "prettier --c --write './api-2/**/*'"
   },
   "dependencies": {
     "axios": "^0.21.0",
@@ -25,6 +24,7 @@
     "json-server-auth": "^2.0.2",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.0.0",
+    "moment": "^2.29.1",
     "mongoose": "^5.10.13",
     "node-sass": "^5.0.0",
     "sass": "^1.28.0",

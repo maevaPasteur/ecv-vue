@@ -3,16 +3,19 @@ import Vue from 'vue'
 import userApi from '@/api/users'
 
 import newsRoutes from "./news";
-import concertsRoutes from "./concerts"
-import artistsRoutes from "./artists"
-
+import concertsRoutes from "./concerts";
+import artistsRoutes from "./artists";
+import albumsRoutes from "./albums";
 import frontRoutes from "./front";
 
-import Backoffice from "../pages/backoffice/Index";
+import Backoffice from "@/pages/backoffice/Index";
 
 Vue.use(Router);
 
 const router = new Router({
+    scrollBehavior() {
+        return { x: 0, y: 0 };
+    },
     mode: 'history',
     base: '/',
     routes: [
@@ -24,7 +27,8 @@ const router = new Router({
         ...frontRoutes,
         ...newsRoutes,
         ...concertsRoutes,
-        ...artistsRoutes
+        ...artistsRoutes,
+        ...albumsRoutes
     ]
 });
 

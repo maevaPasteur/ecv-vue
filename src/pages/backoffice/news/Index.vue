@@ -1,52 +1,56 @@
 <template>
-    <div class="backoffice">
-        <div class="breadcrumb">
-            <router-link :to="{ name: 'admin' }">Admin</router-link>
-            <a href="#">Tous les articles</a>
-        </div>
-        <h1>Les articles</h1>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Titre</th>
-                <th>Date</th>
-                <th>Likes</th>
-                <th>Commentaires</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr v-for="article in news" :key="'new-' + article.id">
-                <td>
-                    <router-link class="id" :to="{ name: 'news.show', params: { id: article.id } }">{{ article.id }}</router-link>
-                </td>
-                <td>{{ article.title }}</td>
-                <td>{{ article.published }}</td>
-                <td>{{ article.likes }}</td>
-                <td>{{ article.comments.length }}</td>
-                <td>
-                    <router-link class="edit" :to="{ name: 'news.edit', params: { id: article.id } }"><img src="@/assets/images/pen.svg" alt="modifier l'article"></router-link>
-                </td>
-                <td>
-                    <router-link class="delete" :to="{ name: 'news.delete', params: { id: article.id } }"><img src="@/assets/images/delete.svg" alt="supprimer l'article"></router-link>
-                </td>
-            </tr>
-        </table>
-        <div class="btn-actions">
-            <router-link :to="{ name: 'news.create' }" class="create">Créer un article</router-link>
-        </div>
-    </div>
+    <index v-if="news"
+           :title="title"
+           :link="link"
+           :confirmSentence="confirmSentence"
+           :cols="cols"
+           :items="news"
+           :routes="routes"
+           :button="button"
+           @remove="remove"
+    />
 </template>
 
 <script>
 
+    import Index from '@/components/Backoffice/Index';
+    import {mapState, mapActions} from 'vuex';
+
     export default {
+        components: {Index},
+        data() {
+            return {
+                title: "Les articles",
+                link: "Tous les articles",
+                confirmSentence: 'Êtes-vous certain de vouloir supprimer cet article ?',
+                cols: [
+                    { title: "Titre", param: "title" },
+                    { title: "Date", param: "published" },
+                    { title: "Likes", param: "likes" },
+                    { title: "Commentaires", param: "comments" }
+                ],
+                routes: { show: 'news.show', edit: 'news.edit' },
+                button: {
+                    title: "Créer un article",
+                    link: { name: 'news.create' }
+                }
+            }
+        },
         computed: {
-            news() {
-                return this.$store.state.news
+            ...mapState({
+                news: state => state.news
+            })
+        },
+        methods: {
+            ...mapActions(['getNews', 'deleteNew']),
+            remove(id) {
+                this.deleteNew(id);
             }
         },
         mounted() {
-            this.$store.dispatch('getNews')
+            if(!Object.keys(this.news).length) {
+                this.getNews()
+            }
         }
     }
 </script>

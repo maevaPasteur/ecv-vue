@@ -2,25 +2,34 @@
     <section class="section-item top-artists">
         <h2>Vos chouchous</h2>
         <ul v-if="artists && artists.length">
-            <top-artist v-for="(artist, index) in artists" :key="'top-' + index + artist.name" :index="index"
-                        :artist="artist"/>
+            <top-artist v-for="(artist, index) in artists" :key="'top-' + index + artist.name" :index="index" :artist="artist"/>
         </ul>
     </section>
 </template>
 
 <script>
 
+    import {mapState, mapActions} from 'vuex';
     import TopArtist from "./TopArtist";
 
     export default {
         name: 'TopArtists',
         components: {TopArtist},
         computed: {
-            artists() {
-                return this.$store.state.artists.slice(0, 5)
+            ...mapState({
+                artists: state => state.artists.slice(0, 5)
+            })
+        },
+        methods: {
+            ...mapActions(['getArtists'])
+        },
+        mounted() {
+            if(!Object.keys(this.artists).length) {
+                this.getArtists()
             }
         }
     }
+
 </script>
 
 <style lang="scss">
