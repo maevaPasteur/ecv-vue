@@ -15,6 +15,7 @@
     import Artists from "@/components/Home/Artists";
     import TopArtists from "@/components/Home/TopArtists";
     import Articles from "@/components/Home/Articles";
+    import Loader from "@/components/Loader";
 
     export default {
         name: 'Home',
