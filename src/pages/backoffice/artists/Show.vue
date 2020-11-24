@@ -57,8 +57,12 @@
                     <td>{{ concert.date | date }}</td>
                 </tr>
             </table>
+            <p v-if="error" class="error">{{ error }}</p>
             <router-link :to="{name: 'artist', params: { id: artist.id }}" class="button">Voir la page de l'artiste</router-link>
         </div>
+
+        <loader :visible="showLoader"/>
+
     </show>
 </template>
 
@@ -67,9 +71,11 @@
     import {mapState, mapActions} from 'vuex';
     import Show from "@/components/Backoffice/Show";
     import IconHeart from "@/components/Icons/IconHeart";
+    import Loader from "@/components/Loader";
 
     export default {
         components: {
+            Loader,
             Show,
             IconHeart
         },
@@ -77,7 +83,9 @@
             return {
                 id: this.$route.params.id,
                 editRouteName: 'artists.edit',
-                confirmSentence: 'Êtes-vous certain de vouloir supprimer cet artiste ?'
+                confirmSentence: 'Êtes-vous certain de vouloir supprimer cet artiste ?',
+                showLoader: false,
+                error: false
             }
         },
         computed: {
@@ -107,8 +115,14 @@
         methods: {
             ...mapActions(['getGenres', 'getArtists', 'deleteArtist', 'getNews', 'getConcerts', 'getAlbums']),
             remove() {
-                this.deleteArtist(this.id);
-                this.$router.push({name: 'artists.index'})
+                this.showLoader = true;
+                this.deleteArtist(this.id).then(() => {
+                    this.showLoader = false;
+                    this.$router.push({name: 'artists.index'})
+                }).catch(err => {
+                    this.showLoader = false;
+                    this.error = err
+                })
             }
         },
         mounted() {

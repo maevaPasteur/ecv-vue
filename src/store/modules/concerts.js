@@ -52,8 +52,14 @@ const actions = {
         });
     },
     deleteConcert({commit}, id) {
-        API.delete(`concerts/${id}`)
-            .then(() => commit('DELETE_CONCERT', id))
+        return new Promise(((resolve, reject) => {
+            API.delete(`concerts/${id}`)
+                .then(() => {
+                    commit('DELETE_CONCERT', id);
+                    resolve()
+                })
+                .catch(err => reject(err))
+        }))
     }
 };
 

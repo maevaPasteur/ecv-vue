@@ -50,8 +50,14 @@ const actions = {
         });
     },
     deleteAlbum({commit}, id) {
-        API.delete(`albums/${id}`)
-            .then(() => commit('DELETE_ALBUM', id))
+        return new Promise((resolve, reject) => {
+            API.delete(`albums/${id}`)
+                .then(() => {
+                    commit('DELETE_ALBUM', id);
+                    resolve()
+                })
+                .catch(err => reject(err))
+        })
     }
 };
 

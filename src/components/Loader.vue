@@ -1,5 +1,5 @@
 <template>
-    <transition name="fade">
+    <transition name="loader-fade">
         <div v-if="visible" class="loader" aria-hidden="true">
             <div>
                 <span></span>
@@ -26,10 +26,10 @@
 
 <style lang="scss">
 
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s;
+    .loader-fade-enter-active, .fade-leave-active {
+        transition: opacity ease .3s;
     }
-    .fade-enter, .fade-leave-to {
+    .loader-fade-enter, .fade-leave-to {
         opacity: 0;
     }
 

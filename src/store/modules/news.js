@@ -46,7 +46,6 @@ const actions = {
         return new Promise((resolve, reject) => {
             API.post('news', article)
                 .then(res => {
-
                     commit('CREATE_NEW', res.data);
                     resolve(res.data.id)
                 })
@@ -54,8 +53,14 @@ const actions = {
         });
     },
     deleteNew({commit}, id) {
-        API.delete(`news/${id}`)
-            .then(() => commit('DELETE_NEW', id))
+        return new Promise(((resolve, reject) => {
+            API.delete(`news/${id}`)
+                .then(() => {
+                    commit('DELETE_NEW', id);
+                    resolve()
+                })
+                .catch(err => reject(err))
+        }))
     }
 };
 
