@@ -41,12 +41,14 @@
             ...mapActions(['getNews']),
             initSlider() {
                 window.addEventListener('resize', () => {
-                    this.$refs.slider.resize()
+                    if(this.$refs && this.$refs.slider) {
+                        this.$refs.slider.resize()
+                    }
                 })
             }
         },
         mounted() {
-            if(!Object.keys(this.news).length) {
+            if(!this.news.length) {
                 this.getNews();
             }
         }

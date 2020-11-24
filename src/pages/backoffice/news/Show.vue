@@ -86,7 +86,7 @@
             if(!Object.keys(this.article).length) {
                 this.getNews()
             }
-            if(!Object.keys(this.artists).length) {
+            if(!this.artists.length) {
                 this.getArtists()
             }
         }

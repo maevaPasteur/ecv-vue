@@ -57,10 +57,10 @@
             }
         },
         mounted() {
-            if(!Object.keys(this.artists).length) {
+            if(!this.artists.length) {
                 this.getArtists()
             }
-            if(!Object.keys(this.albums).length) {
+            if(!this.albums.length) {
                 this.getAlbums()
             }
         }

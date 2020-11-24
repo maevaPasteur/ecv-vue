@@ -63,7 +63,7 @@
             if(!Object.keys(this.album).length) {
                 this.getAlbums()
             }
-            if(!Object.keys(this.artists).length) {
+            if(!this.artists.length) {
                 this.getArtists()
             }
         }

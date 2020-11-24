@@ -54,10 +54,10 @@
             }
         },
         mounted() {
-            if(!Object.keys(this.concerts).length) {
+            if(!this.concerts.length) {
                 this.getConcerts()
             }
-            if(!Object.keys(this.artists).length) {
+            if(!this.artists.length) {
                 this.getArtists()
             }
         }

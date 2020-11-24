@@ -2,7 +2,7 @@
     <div>
         <header>
             <div class="bar">
-                <a href="/"><h1>News APP</h1></a>
+                <router-link :to="{ name: 'home' }"><h1>News APP</h1></router-link>
                 <router-link class="search-icon" :to="{name: 'search'}"><icon-search/></router-link>
                 <button @click="toggleMenu" :class="{'open' : menuVisible}"></button>
             </div>

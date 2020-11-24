@@ -61,7 +61,7 @@
             if (!Object.keys(this.artist).length) {
                 this.getArtists()
             }
-            if (!Object.keys(this.genres).length) {
+            if (!this.genres.length) {
                 this.getGenres()
             }
         }

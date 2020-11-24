@@ -48,7 +48,7 @@
             }
         },
         mounted() {
-            if(!Object.keys(this.news).length) {
+            if(!this.news.length) {
                 this.getNews()
             }
         }
