@@ -74,7 +74,7 @@
                 this.getNews();
                 console.log('get news')
             }
-            if (!Object.keys(this.artists).length) {
+            if (!this.artists.length) {
                 this.getArtists()
             }
         },

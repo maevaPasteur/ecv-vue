@@ -118,13 +118,13 @@
             if (!this.genre || !Object.keys(this.genre).length) {
                 this.getGenres()
             }
-            if (!Object.keys(this.articles).length) {
+            if (!this.articles.length) {
                 this.getNews();
             }
-            if (!Object.keys(this.albums).length) {
+            if (!this.albums.length) {
                 this.getAlbums();
             }
-            if (!Object.keys(this.concerts).length) {
+            if (!this.concerts.length) {
                 this.getConcerts();
             }
         }

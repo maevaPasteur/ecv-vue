@@ -102,7 +102,7 @@
             }
         },
         mounted() {
-            if(!Object.keys(this.all_concerts).length) {
+            if(!this.all_concerts.length) {
                 this.getConcerts()
             }
         }

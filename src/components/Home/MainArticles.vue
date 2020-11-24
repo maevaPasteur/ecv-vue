@@ -32,7 +32,7 @@
         computed: {
             ...mapState({
                 news(state) {
-                    if (state.news.length === 0) return {};
+                    if (!state.news.length) return {};
                     return state.news.slice(0, 5)
                 }
             })
@@ -41,12 +41,14 @@
             ...mapActions(['getNews']),
             initSlider() {
                 window.addEventListener('resize', () => {
-                    this.$refs.slider.resize()
+                    if(this.$refs && this.$refs.slider) {
+                        this.$refs.slider.resize()
+                    }
                 })
             }
         },
         mounted() {
-            if(!Object.keys(this.news).length) {
+            if(!this.news.length) {
                 this.getNews();
             }
         }

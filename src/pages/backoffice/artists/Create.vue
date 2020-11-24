@@ -63,7 +63,7 @@
             }
         },
         mounted() {
-            if (!Object.keys(this.genres).length) {
+            if (!this.genres.length) {
                 this.getGenres()
             }
         }

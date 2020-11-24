@@ -49,7 +49,7 @@
             }
         },
         mounted() {
-            if(!Object.keys(this.artists).length) {
+            if(!this.artists.length) {
                 this.getArtists()
             }
         }

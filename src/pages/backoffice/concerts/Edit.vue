@@ -58,7 +58,7 @@
             if(!Object.keys(this.concert).length) {
                 this.getConcerts()
             }
-            if(!Object.keys(this.artists).length) {
+            if(!this.artists.length) {
                 this.getArtists()
             }
         }
