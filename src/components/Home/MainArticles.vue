@@ -32,7 +32,7 @@
         computed: {
             ...mapState({
                 news(state) {
-                    if (state.news.length === 0) return {};
+                    if (!state.news.length) return {};
                     return state.news.slice(0, 5)
                 }
             })

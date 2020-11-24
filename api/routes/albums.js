@@ -23,7 +23,8 @@ router.post('/', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
     try {
-        await Albums.updateOne({ _id: req.params.id }, { $set: req.body }).then(() => res.json(req.body))
+        const data = await Albums.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body });
+        res.status(201).json(data)
     } catch(err) {
         res.json({ message: err })
     }
@@ -31,7 +32,7 @@ router.patch('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        await Albums.deleteOne({ _id: req.params.id }).then(() => res.json(req.body))
+        Albums.deleteOne({ _id: req.params.id }).then(() => res.json(req.body))
     } catch(err) {
         res.json({ message: err })
     }
