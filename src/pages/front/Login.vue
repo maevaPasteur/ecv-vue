@@ -1,13 +1,13 @@
 <template>
     <div class="page-login">
-        <form>
+        <form @submit.prevent="login">
             <h1>Je me connecte</h1>
             <label>Email</label>
             <input type="email" required v-model="email"/>
             <label>Mot de passe</label>
             <input type="password" required v-model="password"/>
             <p class="error" v-if="error">{{ error }}</p>
-            <button type="submit" @submit.prevent="login">Connexion</button>
+            <button type="submit">Connexion</button>
             <router-link class="text" :to="{ name: 'register' }">Je n'ai pas encore de compte</router-link>
         </form>
     </div>
