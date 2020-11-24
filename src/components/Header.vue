@@ -22,7 +22,7 @@
 
 <script>
 
-    import IconSearch from "./Icons/IconSearch";
+    import IconSearch from "./icons/IconSearch";
 
     export default {
         name: 'Header',

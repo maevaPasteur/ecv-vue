@@ -13,7 +13,7 @@
 
     import {mapState, mapActions} from 'vuex';
     import Flickity from 'vue-flickity'
-    import IconHeart from "@/components/Icons/IconHeart";
+    import IconHeart from "@/components/icons/IconHeart";
     import Artist from "@/components/Home/Artist";
 
     export default {

@@ -2,7 +2,14 @@ const state = {
     session: null
 };
 
-const mutations = {};
+const mutations = {
+    POPULATE_SESSION_DATA(state, sessionData) {
+        state.session = { ...sessionData };
+    },
+    UNPOPULATE_SESSION_DATA(state) {
+        state.session = null;
+    }
+};
 
 const actions = {
 

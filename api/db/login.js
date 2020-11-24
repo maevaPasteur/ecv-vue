@@ -7,7 +7,7 @@ const createSessionAndLog = require("../utils/createSessionAndLog");
  * @param {Object} data - The data send in the body by the client.
  */
 module.exports = async function Login(data) {
-  const user = await usersCol.findOne({ email: data.email }).exec();
+  const user = await usersCol.findOne({ email: data.email }, 'username avatar email password').exec();
 
   if (!user) {
     return {
@@ -17,6 +17,9 @@ module.exports = async function Login(data) {
 
   if (await compare(data.password, user.password)) {
     const d = await createSessionAndLog(user);
+
+    user.password = null;
+    d.forClient.userData = user;
 
     return {
       code: 200,

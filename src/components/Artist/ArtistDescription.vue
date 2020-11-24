@@ -67,7 +67,7 @@
 <script>
 
     import {mapState, mapActions} from 'vuex';
-    import IconHeart from "@/components/Icons/IconHeart";
+    import IconHeart from "@/components/icons/IconHeart";
 
     export default {
         name: 'ArtistDescription',

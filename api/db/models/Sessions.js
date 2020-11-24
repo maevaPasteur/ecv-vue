@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 module.exports = mongoose.model(
   'Sessions',
   new mongoose.Schema({
-    userId: mongoose.Schema.Types.ObjectId,
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    },
     key: {
       required: true,
       type: String,
