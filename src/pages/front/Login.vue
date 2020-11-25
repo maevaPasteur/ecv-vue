@@ -38,7 +38,6 @@ import {mapMutations} from 'vuex';
                     });
                     
                     this.POPULATE_SESSION_DATA(res.data.userData);
-                    localStorage.setItem('token', res.data.token);
                     this.$router.push('/');
                 } catch (error) {
                     this.error = error.response.data.message
