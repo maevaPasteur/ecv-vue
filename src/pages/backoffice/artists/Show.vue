@@ -70,7 +70,7 @@
 
     import {mapState, mapActions} from 'vuex';
     import Show from "@/components/Backoffice/Show";
-    import IconHeart from "@/components/Icons/IconHeart";
+    import IconHeart from "@/components/icons/IconHeart";
     import Loader from "@/components/Loader";
 
     export default {
