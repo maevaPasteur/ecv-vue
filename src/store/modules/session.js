@@ -8,6 +8,17 @@ const mutations = {
     },
     UNPOPULATE_SESSION_DATA(state) {
         state.session = null;
+    },
+    UPDATE_SESSION_FIELDS (state, fieldsToupdate) {
+        const newtState = { ...state.session};
+
+        Object.keys(fieldsToupdate).forEach(function (key) {
+            if (key === '_id' || key === 'password') return;
+
+            newtState[key] = fieldsToupdate[key];
+        })
+
+        state.session = { ...newtState };
     }
 };
 
