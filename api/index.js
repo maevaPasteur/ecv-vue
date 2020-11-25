@@ -13,6 +13,8 @@ const concertsRouter = require('./routes/concerts');
 const albumsRouter = require('./routes/albums');
 const artistsRouter = require('./routes/artists');
 const genresRouter = require('./routes/genres');
+const adminRouter = require('./routes/admin');
+
 const initDb = require('./middlewares/initDb');
 
 app.use(compression());
@@ -34,5 +36,6 @@ app.use('/api/concerts', concertsRouter);
 app.use('/api/albums', albumsRouter);
 app.use('/api/artists', artistsRouter);
 app.use('/api/genres', genresRouter);
+app.use('/api/admin', adminRouter);
 
 app.listen(3002);
