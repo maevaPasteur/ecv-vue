@@ -4,6 +4,7 @@
             <div class="bar">
                 <router-link :to="{ name: 'home' }"><h1>News APP</h1></router-link>
                 <router-link class="search-icon" :to="{name: 'search'}"><icon-search/></router-link>
+                <router-link v-if="session" :to="{name: 'home'}"><p>bievenue {{session.username}}</p></router-link>
                 <button @click="toggleMenu" :class="{'open' : menuVisible}"></button>
             </div>
         </header>
@@ -13,6 +14,7 @@
                     <li><router-link @click.native="toggleMenu" :to="{ name: 'home' }">Accueil</router-link></li>
                     <li><router-link @click.native="toggleMenu" :to="{ name: 'login' }">Connexion</router-link></li>
                     <li><router-link @click.native="toggleMenu" :to="{ name: 'register' }">Inscription</router-link></li>
+                    <li @click.prevent="logout" v-if="session">Logout</li>
                 </ul>
             </nav>
         </transition>
@@ -21,20 +23,36 @@
 
 
 <script>
-
     import IconSearch from "./icons/IconSearch";
+    import {mapState, mapMutations} from 'vuex';
+    import API from '../api/config';
 
     export default {
         name: 'Header',
         components: {IconSearch},
         data() {
             return {
-                menuVisible: false
+                menuVisible: false,
+                errorLogout: ''
             }
         },
+        computed: {
+            ...mapState(['session'])
+        },
         methods: {
+            ...mapMutations(['UNPOPULATE_SESSION_DATA']),
             toggleMenu() {
                 this.menuVisible = !this.menuVisible
+            },
+            async logout () {
+                try {
+                    await API.delete('logout', {withCredentials: true});
+
+                    localStorage.removeItem('token');
+                    this.UNPOPULATE_SESSION_DATA();
+                } catch (error) {
+                    this.errorLogout = error.data.message;
+                }
             }
         }
     }
