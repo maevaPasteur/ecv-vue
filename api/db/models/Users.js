@@ -24,5 +24,11 @@ module.exports = mongoose.model(
     role: {
       type: Boolean,
     },
+    artistLiked: {
+      type: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Artists'
+      }]
+    }
   }, {timestamps: true})
 );
