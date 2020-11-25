@@ -1,5 +1,4 @@
 <template>
-
     <div class="backoffice">
         <section>
             <h1>Back Office</h1>
@@ -40,9 +39,18 @@
 </template>
 
 <script>
+import API from '../../api/config';
 
     export default {
-        name: 'Backoffice'
+        name: 'Backoffice',
+        async mounted() {
+            try {
+                    await API.head('admin');
+                } catch (error) {
+                    console.log('ERRORRR');
+                    this.$router.push('/');
+                }
+        }
     }
 
 </script>
