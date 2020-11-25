@@ -15,7 +15,7 @@
             },
             color: {
                 type: String,
-                default: "#fff"
+                default: "#df0428"
             },
             stroke: {
                 type: String,
