@@ -7,7 +7,11 @@
             <div>
                 <h1>{{ artist.name }}</h1>
                 <p class="like">{{ artist.likes | splitNumber }}
-                    <icon-heart @click.native.prevent="like"/>
+                    <icon-heart 
+                        @click.native.prevent="like" 
+                        v-if="session" 
+                        :like="session.artistLiked.includes(id)"
+                    />
                 </p>
                 <br><br>
                 <h2>Pays d'origine</h2>
@@ -66,15 +70,17 @@
 
 <script>
 
-    import {mapState, mapActions} from 'vuex';
+    import {mapState, mapActions, mapMutations} from 'vuex';
     import IconHeart from "@/components/icons/IconHeart";
+    import API from '../../api/config';
 
     export default {
         name: 'ArtistDescription',
         components: { IconHeart },
         data() {
             return {
-                id: this.$route.params.id
+                id: this.$route.params.id,
+                errorLike: ''
             }
         },
         computed: {
@@ -98,13 +104,27 @@
                     return concerts.sort((a,b) => {
                         return new Date(b.date) - new Date(a.date)
                     });
-                }
+                },
+                session: state => state.session,
+                // isLiked (state) {
+                // }
             })
         },
         methods: {
+            ...mapMutations(['UPDATE_SESSION_FIELDS']),
             ...mapActions(['getArtists', 'getNews', 'getGenres', 'getAlbums', 'getConcerts']),
-            like() {
-                console.log('like')
+            async like() {
+                try {
+                    const res = await API.patch(
+                        `artists/like/${this.id}`, 
+                        { 
+                            shouldLiked: this.session.artistLiked.includes(this.id) ? false : true 
+                        }
+                    );
+                    this.UPDATE_SESSION_FIELDS({artistLiked: res.data.newArtistLiked});
+                } catch (error) {
+                    this.errorLike = error.data.message
+                }
             }
         },
         mounted() {
