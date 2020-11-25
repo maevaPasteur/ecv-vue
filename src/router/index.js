@@ -39,7 +39,7 @@ router.beforeEach(async (to, from, next) => {
             return next()
         } catch (e) {
             localStorage.removeItem('token');
-            return next('/login')
+            return next('/connexion')
         }
     } else {
         return next()
