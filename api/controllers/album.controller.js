@@ -2,8 +2,8 @@ const AlbumsModel = require('../models/albums.model');
 
 exports.getAlbums = async (req, res) => {
     try {
-        const AlbumsModel = await AlbumsModel.find();
-        res.json(AlbumsModel);
+        const albums = await AlbumsModel.find();
+        res.json(albums);
     } catch(err) {
         res.status(500).json({message: err.message})
     }
