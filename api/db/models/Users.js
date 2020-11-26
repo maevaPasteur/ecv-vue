@@ -20,6 +20,7 @@ module.exports = mongoose.model(
     },
     avatar: {
       type: String,
+      default: 'https://s3.amazonaws.com/realtalktime.com/wp-content/uploads/2020/10/03195814/apple-masked-emoji-1.jpg'
     },
     role: {
       type: Boolean,
