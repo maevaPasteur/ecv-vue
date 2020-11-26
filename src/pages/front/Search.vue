@@ -62,7 +62,7 @@
                 fields: [
                     {value: 'artists', title: "Artistes"},
                     {value: 'albums', title: 'Albums'},
-                    {value: 'concerts', title: 'Concerts'},
+                    {value: 'concerts', title: 'ConcertsRoute'},
                     {value: 'news', title: 'Articles'}
                 ],
                 actions: {

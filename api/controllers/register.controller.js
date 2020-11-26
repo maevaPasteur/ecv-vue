@@ -1,5 +1,5 @@
 const { hash } = require('bcrypt');
-const usersCol = require('./models/Users');
+const usersCol = require('../models/user.model');
 const createSessionAndLog = require('../utils/createSessionAndLog');
 
 /**

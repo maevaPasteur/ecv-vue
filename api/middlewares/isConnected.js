@@ -3,7 +3,7 @@ const { compare } = require("bcrypt");
 
 const response = require("../utils/response");
 const createSessionAndLog = require("../utils/createSessionAndLog");
-const sessionsCol = require("../db/models/Sessions");
+const sessionsCol = require("../models/sessions.model");
 
 module.exports = async function (req, res, next) {
     if (!req.headers.authorization) return response(res, 400);

@@ -50,7 +50,7 @@
                     <td>{{ article.published | date }}</td>
                 </tr>
                 <tr v-if="concerts && concerts.length">
-                    <th colspan="2">Concerts</th>
+                    <th colspan="2">ConcertsRoute</th>
                 </tr>
                 <tr v-for="(concert, index) in concerts" :key="'artist-concert'+index">
                     <td><router-link :to="{ name: 'concerts.show', params: { id: concert.id }}">{{ concert.name }}</router-link></td>
@@ -70,7 +70,7 @@
 
     import {mapState, mapActions} from 'vuex';
     import Show from "@/components/Backoffice/Show";
-    import IconHeart from "@/components/icons/IconHeart";
+    import IconHeart from "@/components/Icons/IconHeart";
     import Loader from "@/components/Loader";
 
     export default {
