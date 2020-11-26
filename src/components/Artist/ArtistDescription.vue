@@ -26,7 +26,7 @@
                 <p class="text">{{ artist.description }}</p>
                 <br><br>
                 <div v-if="concerts && concerts.length">
-                    <h2>Concerts</h2>
+                    <h2>ConcertsRoute</h2>
                     <ul class="list-concerts">
                         <li v-for="(concert, index) in concerts" :key="'concert-artist-' + index">
                             <p>{{ concert.date | date }}</p>
@@ -71,7 +71,7 @@
 <script>
 
     import {mapState, mapActions, mapMutations} from 'vuex';
-    import IconHeart from "@/components/icons/IconHeart";
+    import IconHeart from "@/components/Icons/IconHeart";
     import API from '../../api/config';
 
     export default {

@@ -5,15 +5,15 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const compression = require('compression');
 
-const loginRouter = require('./routes/login');
-const registerRouter = require('./routes/register');
-const logoutRouter = require('./routes/logout');
-const newsRouter = require('./routes/news');
-const concertsRouter = require('./routes/concerts');
-const albumsRouter = require('./routes/albums');
-const artistsRouter = require('./routes/artists');
-const genresRouter = require('./routes/genres');
-const adminRouter = require('./routes/admin');
+const loginRouter = require('./routes/login.route');
+const registerRouter = require('./routes/register.route');
+const logoutRouter = require('./routes/logout.route');
+const newsRouter = require('./routes/news.route');
+const concertsRouter = require('./routes/concerts.route');
+const albumsRouter = require('./routes/albums.route');
+const artistsRouter = require('./routes/artists.route');
+const genresRouter = require('./routes/genres.route');
+const adminRouter = require('./routes/admin.route');
 
 const initDb = require('./middlewares/initDb');
 

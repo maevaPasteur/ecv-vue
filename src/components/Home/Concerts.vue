@@ -23,7 +23,7 @@
     import Concert from "./Concert";
 
     export default {
-        name: 'Concerts',
+        name: 'ConcertsRoute',
         components: {
             Flickity,
             Concert

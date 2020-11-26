@@ -1,4 +1,4 @@
-const UsersModel = require('../db/models/Users');
+const UsersModel = require('../models/user.model');
 
 const response = require('../utils/response');
 

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const sessionsCol = require('../db/models/Sessions');
+const sessionsCol = require('../models/sessions.model');
 const isConnected = require("../middlewares/isConnected");
 const response = require("../utils/response");
 

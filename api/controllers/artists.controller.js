@@ -1,4 +1,41 @@
-const UsersModel = require('../db/models/Users');
+const UsersModel = require('../models/user.model');
+const ArtistsModel = require('../models/artists.model');
+
+exports.getArtists = async (req, res) => {
+    try {
+        const artists = await ArtistsModel.find();
+        res.json(artists);
+    } catch (err) {
+        res.status(500).json({message: err.message})
+    }
+};
+
+exports.createArtist = async (req, res) => {
+    const artist = new ArtistsModel(req.body);
+    try {
+        const data = await artist.save();
+        res.status(201).json(data);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+};
+
+exports.updateArtist = async (req, res) => {
+    try {
+        const data = await ArtistsModel.updateOne({_id: req.params.id}, {$set: req.body});
+        res.status(201).json(data)
+    } catch (err) {
+        res.json({message: err})
+    }
+};
+
+exports.deleteArtist = async (req, res) => {
+    try {
+        Artists.deleteOne({_id: req.params.id}).then(() => res.json(req.body))
+    } catch (err) {
+        res.json({message: err})
+    }
+};
 
 /**
  * Like or not depends of `shouldLike` parameter an artist for a specific user
@@ -45,4 +82,4 @@ exports.likeArtistById = async function (id, userId, shouldLike) {
             newArtistLiked: [...user.artistLiked]
         }
     }
-}
+};

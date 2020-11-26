@@ -4,7 +4,7 @@ const { hash } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 const { serialize } = require("cookie");
 
-const sessionsCol = require("../db/models/Sessions");
+const sessionsCol = require("../models/sessions.model");
 
 const createKey = promisify(randomFill);
 const jwtPromisify = promisify(sign);

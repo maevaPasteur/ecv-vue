@@ -2,9 +2,9 @@
     <div>
         <header>
             <div class="bar">
-                <router-link :to="{ name: 'home' }"><h1>News APP</h1></router-link>
+                <router-link :to="{ name: 'home' }"><h1>NEWS APP</h1></router-link>
                 <router-link class="search-icon" :to="{name: 'search'}"><icon-search/></router-link>
-                <router-link v-if="session" :to="{name: 'home'}"><p>bievenue {{session.username}}</p></router-link>
+                <router-link v-if="session" :to="{name: 'home'}"><p>Bienvenue {{session.username}}</p></router-link>
                 <button @click="toggleMenu" :class="{'open' : menuVisible}"></button>
             </div>
         </header>
@@ -23,9 +23,9 @@
 
 
 <script>
-    import IconSearch from "./icons/IconSearch";
+    import IconSearch from "@/components/Icons/IconSearch";
     import {mapState, mapMutations} from 'vuex';
-    import API from '../api/config';
+    import API from '@/api/config';
 
     export default {
         name: 'Header',
@@ -47,7 +47,6 @@
             async logout () {
                 try {
                     await API.delete('logout', {withCredentials: true});
-
                     localStorage.removeItem('token');
                     this.UNPOPULATE_SESSION_DATA();
                 } catch (error) {
