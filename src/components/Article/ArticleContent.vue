@@ -23,37 +23,55 @@
             <p>Commentaires</p>
             <ul class="text" v-if="article.comments && article.comments.length">
                 <li v-for="(comment, index) in article.comments" :key="'comment-' + index">
-                    <img :src="comment.avatar" :alt="comment.username">
+                    <img :src="comment.userId.avatar" :alt="comment.userId.username">
                     <div>
-                        <p>{{ comment.username }}</p>
-                        <p>{{ comment.message }}</p>
+                        <p>{{ comment.userId.username }}</p>
+                        <p>{{ comment.content }}</p>
                     </div>
                 </li>
             </ul>
             <p class="no-comment" v-else>Aucun commentaire pour le moment</p>
-            <form>
-                <label class="text"><textarea placeholder="Mon commentaire..."></textarea></label>
+            <form @submit.prevent="addComment" v-if="session">
+                <label class="text"><textarea placeholder="Mon commentaire..." v-model="textarea"></textarea></label>
                 <button class="text" type="submit">Publier</button>
             </form>
+            <div class="comments" v-else>
+                <router-link :to="{name: 'login'}">Connnectez-vous pour ajouter un commentaire</router-link>
+            </div>
         </div>
 
     </section>
 </template>
 
 <script>
-
-    import {mapState, mapActions} from 'vuex';
+    import {mapState, mapActions, mapMutations} from 'vuex';
+    import API from '../../api/config';
 
     export default {
         name: 'ArticleContent',
         data() {
             return {
-                id: this.$route.params.id
+                id: this.$route.params.id,
+                textarea: '',
+                errorApi: ''
             }
         },
         methods: {
+            ...mapMutations(['ADD_NEW_COMMENT']),
             ...mapActions(['getNews', 'getArtists']),
-
+            async addComment() {
+                try {
+                    if (this.textarea.length === 0) return false;
+                    const res = await API.patch(`news/comment/${this.id}`, {userId: this.session._id, content: this.textarea});
+                    
+                    this.ADD_NEW_COMMENT({
+                        articleId: this.id,
+                        commentData: { ...res.data}
+                    });
+                } catch (error) {
+                    this.error.response.data.message
+                }
+            }
         },
         computed: {
             ...mapState({
@@ -66,7 +84,8 @@
                         return state.artists.filter(e => this.article.artistesId.includes(e.id))
                     }
                     return {}
-                }
+                },
+                session: state => state.session
             })
         },
         mounted() {
