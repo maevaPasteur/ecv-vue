@@ -114,7 +114,7 @@
             ...mapActions(['getArtists', 'getNews', 'getGenres', 'getAlbums', 'getConcerts', 'likeArtist']),
             like() {
                 if(this.session) {
-                    this.likeArtist(this.id, {shouldLiked: this.isLiked, id: this.id})
+                    this.likeArtist({ id: this.id, shouldLiked: this.isLiked})
                         .then(res => {
                             console.log(res);
                             this.UPDATE_SESSION_FIELDS({artistLiked: res.data.newArtistLiked})

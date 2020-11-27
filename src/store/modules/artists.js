@@ -76,6 +76,7 @@ const actions = {
         })
     },
     likeArtist({commit}, params) {
+        console.log(params);
         return new Promise(resolve => {
             API.patch(`artists/like/${params.id}`, { shouldLiked: params.shouldLiked })
                 .then(res => {
