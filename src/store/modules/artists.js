@@ -22,6 +22,15 @@ const mutations = {
     CREATE_ARTIST(state, artist) {
         artist.id = artist._id;
         state.artists.push(artist)
+    },
+    LIKE_ARTIST(state, params) {
+        const artists = [...state.artists];
+        artists.forEach((item, index) => {
+            if (item.id === params.id) {
+                artists[index].likes = params.shouldLiked ? artists[index].likes + 1 : artists[index].likes - 1
+            }
+        });
+        state.artists = [...artists];
     }
 };
 
@@ -64,6 +73,15 @@ const actions = {
                     resolve()
                 })
                 .catch(err => reject(err))
+        })
+    },
+    likeArtist({commit}, params) {
+        return new Promise(resolve => {
+            API.patch(`artists/like/${params.id}`, { shouldLiked: params.shouldLiked })
+                .then(res => {
+                    commit('LIKE_ARTIST', params);
+                    resolve(res)
+                })
         })
     }
 };
