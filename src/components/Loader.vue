@@ -1,6 +1,6 @@
 <template>
     <transition name="loader-fade">
-        <div v-if="visible" class="loader" aria-hidden="true">
+        <div class="loader" aria-hidden="true">
             <div>
                 <span></span>
                 <span></span>
@@ -16,10 +16,7 @@
 <script>
 
     export default {
-        name: 'Loader',
-        props: {
-            visible: Boolean
-        }
+        name: 'Loader'
     }
 
 </script>

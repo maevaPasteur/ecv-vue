@@ -43,13 +43,13 @@ import API from '../../api/config';
 
     export default {
         name: 'Backoffice',
-        async mounted() {
+        async beforeRouteEnter (to, from, next) {
             try {
-                    await API.head('admin');
-                } catch (error) {
-                    console.log('ERRORRR');
-                    this.$router.push('/');
-                }
+                await API.head('admin');
+                next();
+            } catch (error) {
+                this.$router.push('/');
+            }
         }
     }
 

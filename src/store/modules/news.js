@@ -17,6 +17,13 @@ const mutations = {
         });
         state.news = [...newNews];
     },
+    ADD_NEW_COMMENT (state, newComment) {
+        const newNews = [ ...state.news ];
+        const newsById = newNews.findIndex(item => item._id === newComment.articleId);
+
+        newNews[newsById].comments.push(newComment.commentData);
+        state.news = [ ...newNews ];
+    },
     DELETE_NEW(state, id) {
         state.news = [...state.news].filter(e => e.id !== id);
     },
