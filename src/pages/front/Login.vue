@@ -36,7 +36,6 @@ import {mapMutations} from 'vuex';
                         email: this.user.email,
                         password: this.user.password
                     });
-                    
                     this.POPULATE_SESSION_DATA(res.data.userData);
                     this.$router.push('/');
                 } catch (error) {

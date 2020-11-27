@@ -30,10 +30,8 @@ const actions = {
         new Promise(resolve => {
             API.get('albums')
                 .then(response => {
-                    if(response.data) {
-                        commit('SET_ALBUMS', response.data);
-                        resolve(response.data)
-                    }
+                    commit('SET_ALBUMS', response.data);
+                    resolve(response.data)
                 })
         })
     },

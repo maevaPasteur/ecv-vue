@@ -14,7 +14,7 @@
                     <li><router-link @click.native="toggleMenu" :to="{ name: 'home' }">Accueil</router-link></li>
                     <li><router-link @click.native="toggleMenu" :to="{ name: 'login' }">Connexion</router-link></li>
                     <li><router-link @click.native="toggleMenu" :to="{ name: 'register' }">Inscription</router-link></li>
-                    <li @click.prevent="logout" v-if="session">Logout</li>
+                    <li><a href="#" @click.prevent="logout" v-if="session">Logout</a></li>
                 </ul>
             </nav>
         </transition>
