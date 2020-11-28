@@ -7,7 +7,6 @@ const response = require('../utils/response');
  */
 module.exports = async function (req, res, next) {
     const { role } = await UsersModel.findById(res.locals.data.newSession.userId, 'role').exec();
-    console.log(role);
 
     if (role) {
         return next();
