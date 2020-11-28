@@ -69,7 +69,7 @@
                         commentData: { ...res.data}
                     });
                 } catch (error) {
-                    this.error.response.data.message
+                    this.errorApi = error.response.data.message
                 }
             }
         },
