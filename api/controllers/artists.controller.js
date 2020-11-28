@@ -1,5 +1,6 @@
 const UsersModel = require('../models/user.model');
 const ArtistsModel = require('../models/artists.model');
+const artistsModel = require('../models/artists.model');
 
 exports.getArtists = async (req, res) => {
     try {
@@ -45,6 +46,7 @@ exports.deleteArtist = async (req, res) => {
  */
 exports.likeArtistById = async function (id, userId, shouldLike) {
     const user = await UsersModel.findById(userId, 'artistLiked').exec();
+    const artist = await artistsModel.findById(id);
 
     if (shouldLike) {
         if (user.artistLiked.includes(id)) {
@@ -54,6 +56,9 @@ exports.likeArtistById = async function (id, userId, shouldLike) {
         }
 
         user.artistLiked.push(id);
+        artist.likes = artist.likes + 1;
+
+        await artist.save();
         await user.save();
 
         return {
@@ -74,6 +79,9 @@ exports.likeArtistById = async function (id, userId, shouldLike) {
         user.artistLiked.findIndex(i => i === id),
         1
     );
+    artist.likes = artist.likes - 1;
+
+    await artist.save();
     await user.save();
 
     return {
