@@ -7,22 +7,34 @@ const newsRoutes = [
     {
         path: '/admin/albums',
         name: 'albums.index',
-        component: Index
+        component: Index,
+        meta: {
+            auth: true
+        }
     },
     {
         path: '/admin/albums/nouveau',
         name: 'albums.create',
-        component: Create
+        component: Create,
+        meta: {
+            auth: true
+        }
     },
     {
         path: '/admin/albums/:id/modifier',
         name: 'albums.edit',
-        component: Edit
+        component: Edit,
+        meta: {
+            auth: true
+        }
     },
     {
         path: '/admin/albums/:id',
         name: 'albums.show',
-        component: Show
+        component: Show,
+        meta: {
+            auth: true
+        }
     }
 ];
 

@@ -39,16 +39,9 @@
 </template>
 
 <script>
-import API from '../../api/config';
 
     export default {
-        name: 'Backoffice',
-        beforeRouteEnter (to, from, next) {
-            API.head('/admin').then(function (res) {
-                if (res.statusText === 'OK') return next();
-                else next({path: '/'});
-            })
-        },
+        name: 'Backoffice'
     }
 
 </script>

@@ -1,14 +1,13 @@
 import Router from 'vue-router'
 import Vue from 'vue'
-import userApi from '@/api/users'
+import API from "@/api/config";
 
 import newsRoutes from "./news";
 import concertsRoutes from "./concerts";
 import artistsRoutes from "./artists";
 import albumsRoutes from "./albums";
 import frontRoutes from "./front";
-
-import Backoffice from "@/pages/backoffice/Index";
+import adminRoutes from './admin'
 
 Vue.use(Router);
 
@@ -19,28 +18,26 @@ const router = new Router({
     mode: 'history',
     base: '/',
     routes: [
-        {
-          path: '/admin',
-          name: 'admin',
-          component: Backoffice
-        },
         ...frontRoutes,
         ...newsRoutes,
         ...concertsRoutes,
         ...artistsRoutes,
-        ...albumsRoutes
+        ...albumsRoutes,
+        ...adminRoutes
     ]
 });
 
+
 router.beforeEach(async (to, from, next) => {
     if (to.matched.some(route => route.meta.auth)) {
-        try {
-            await userApi.verifyUser();
-            return next()
-        } catch (e) {
-            localStorage.removeItem('token');
-            return next('/connexion')
-        }
+
+        if(!localStorage.getItem('token')) return next('/connexion');
+
+        API.head('/admin').then(res => {
+            if (res.statusText === 'OK') return next();
+            else return next({name: 'login'})
+        }).catch(() => next({name: 'login'}))
+
     } else {
         return next()
     }

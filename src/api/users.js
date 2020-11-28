@@ -1,9 +1,8 @@
-import API from '../api/config'
-import jwt_decode from "jwt-decode"
+import API from '../api/config';
 
-export default {
-  verifyUser: () => {
-    const { sub } = jwt_decode(localStorage.getItem('token'));
-    return API.get(`users/${sub}`)
-  }
-}
+export const isAdmin = new Promise((resolve, reject) => {
+    API.head('/admin').then(res => {
+        if (res.statusText === 'OK') resolve();
+        else reject()
+    }).catch(() => reject())
+});

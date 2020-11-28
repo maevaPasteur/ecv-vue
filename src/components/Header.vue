@@ -14,8 +14,9 @@
                     <li><router-link @click.native="toggleMenu" :to="{ name: 'home' }">Accueil</router-link></li>
                     <li><router-link @click.native="toggleMenu" :to="{ name: 'login' }">Connexion</router-link></li>
                     <li><router-link @click.native="toggleMenu" :to="{ name: 'register' }">Inscription</router-link></li>
+                    <li  v-if="session && session.role"><router-link @click.native="toggleMenu" :to="{ name: 'admin' }">Back-office</router-link></li>
                     <li><router-link @click.native="toggleMenu" :to="{ name: 'admin' }">Back-office</router-link></li>
-                    <li @click.prevent="logout" v-if="session">Logout</li>
+                    <li v-if="session" @click.prevent="logout">Logout</li>
                 </ul>
             </nav>
         </transition>
@@ -24,7 +25,7 @@
 
 
 <script>
-    import IconSearch from "@/components/icons/IconSearch";
+    import IconSearch from "@/components/Icons/IconSearch";
     import {mapState, mapMutations} from 'vuex';
     import API from '@/api/config';
 

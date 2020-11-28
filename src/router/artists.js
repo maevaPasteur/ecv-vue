@@ -7,22 +7,34 @@ const newsRoutes = [
     {
         path: '/admin/artists',
         name: 'artists.index',
-        component: Index
+        component: Index,
+        meta: {
+            auth: true
+        }
     },
     {
         path: '/admin/artists/nouveau',
         name: 'artists.create',
-        component: Create
+        component: Create,
+        meta: {
+            auth: true
+        }
     },
     {
         path: '/admin/artists/:id/modifier',
         name: 'artists.edit',
-        component: Edit
+        component: Edit,
+        meta: {
+            auth: true
+        }
     },
     {
         path: '/admin/artists/:id',
         name: 'artists.show',
-        component: Show
+        component: Show,
+        meta: {
+            auth: true
+        }
     }
 ];
 

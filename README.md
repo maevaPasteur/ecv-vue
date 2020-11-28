@@ -47,7 +47,7 @@ npm run serve
 
 Finally launch the back-end:
 ```bash
-npm run back
+npm run server
 ```
 
 ## API 👩‍💻

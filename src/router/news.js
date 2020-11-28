@@ -7,22 +7,34 @@ const newsRoutes = [
   {
     path: '/admin/article',
     name: 'news.index',
-    component: Index
+    component: Index,
+    meta: {
+      auth: true
+    }
   },
   {
     path: '/admin/article/nouveau',
     name: 'news.create',
-    component: Create
+    component: Create,
+    meta: {
+      auth: true
+    }
   },
   {
     path: '/admin/article/:id/modifier',
     name: 'news.edit',
-    component: Edit
+    component: Edit,
+    meta: {
+      auth: true
+    }
   },
   {
     path: '/admin/article/:id',
     name: 'news.show',
-    component: Show
+    component: Show,
+    meta: {
+      auth: true
+    }
   }
 ];
 

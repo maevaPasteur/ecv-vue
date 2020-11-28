@@ -7,22 +7,34 @@ const newsRoutes = [
     {
         path: '/admin/concerts',
         name: 'concerts.index',
-        component: Index
+        component: Index,
+        meta: {
+            auth: true
+        }
     },
     {
         path: '/admin/concerts/nouveau',
         name: 'concerts.create',
-        component: Create
+        component: Create,
+        meta: {
+            auth: true
+        }
     },
     {
         path: '/admin/concerts/:id/modifier',
         name: 'concerts.edit',
-        component: Edit
+        component: Edit,
+        meta: {
+            auth: true
+        }
     },
     {
         path: '/admin/concerts/:id',
         name: 'concerts.show',
-        component: Show
+        component: Show,
+        meta: {
+            auth: true
+        }
     }
 ];
 

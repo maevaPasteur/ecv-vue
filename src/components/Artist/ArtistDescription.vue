@@ -71,7 +71,7 @@
 <script>
 
     import {mapState, mapActions, mapMutations} from 'vuex';
-    import IconHeart from "@/components/icons/IconHeart";
+    import IconHeart from "@/components/Icons/IconHeart";
     import API from '../../api/config';
 
     export default {
@@ -119,12 +119,12 @@
                     const res = await API.patch(
                         `artists/like/${this.id}`, 
                         { 
-                            shouldLiked: this.session.artistLiked.includes(this.id) ? false : true 
+                            shouldLiked: !this.session.artistLiked.includes(this.id)
                         }
                     );
 
                     this.UPDATE_SESSION_FIELDS({artistLiked: res.data.newArtistLiked});
-                    this.LIKE_ARTIST({id: this.id, shouldLiked: this.session.artistLiked.includes(this.id) ? true : false});
+                    this.LIKE_ARTIST({id: this.id, shouldLiked: !!this.session.artistLiked.includes(this.id)});
                 } catch (error) {
                     this.errorLike = error.data.message
                 }
