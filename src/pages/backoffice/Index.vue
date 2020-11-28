@@ -43,14 +43,12 @@ import API from '../../api/config';
 
     export default {
         name: 'Backoffice',
-        async beforeRouteEnter (to, from, next) {
-            try {
-                await API.head('admin');
-                next();
-            } catch (error) {
-                this.$router.push('/');
-            }
-        }
+        beforeRouteEnter (to, from, next) {
+            API.head('/admin').then(function (res) {
+                if (res.statusText === 'OK') return next();
+                else next({path: '/'});
+            })
+        },
     }
 
 </script>
