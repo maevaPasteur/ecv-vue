@@ -10,6 +10,7 @@
                     <icon-heart 
                         @click.native.prevent="like"
                         :like="isLiked"
+                        v-if="session"
                     />
                 </p>
                 <br><br>
@@ -70,7 +71,8 @@
 <script>
 
     import {mapState, mapActions, mapMutations} from 'vuex';
-    import IconHeart from "@/components/Icons/IconHeart";
+    import IconHeart from "@/components/icons/IconHeart";
+    import API from '../../api/config';
 
     export default {
         name: 'ArtistDescription',
@@ -110,17 +112,21 @@
             })
         },
         methods: {
-            ...mapMutations(['UPDATE_SESSION_FIELDS']),
+            ...mapMutations(['UPDATE_SESSION_FIELDS', 'LIKE_ARTIST']),
             ...mapActions(['getArtists', 'getNews', 'getGenres', 'getAlbums', 'getConcerts', 'likeArtist']),
-            like() {
-                if(this.session) {
-                    this.likeArtist({ id: this.id, shouldLiked: this.isLiked})
-                        .then(res => {
-                            console.log(res);
-                            this.UPDATE_SESSION_FIELDS({artistLiked: res.data.newArtistLiked})
-                        })
-                } else {
-                    this.$router.push({name: 'login'})
+            async like() {
+                try {
+                    const res = await API.patch(
+                        `artists/like/${this.id}`, 
+                        { 
+                            shouldLiked: this.session.artistLiked.includes(this.id) ? false : true 
+                        }
+                    );
+
+                    this.UPDATE_SESSION_FIELDS({artistLiked: res.data.newArtistLiked});
+                    this.LIKE_ARTIST({id: this.id, shouldLiked: this.session.artistLiked.includes(this.id) ? true : false});
+                } catch (error) {
+                    this.errorLike = error.data.message
                 }
             }
         },
