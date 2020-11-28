@@ -7,11 +7,8 @@
             <div>
                 <h1>{{ artist.name }}</h1>
                 <p class="like">{{ artist.likes | splitNumber }}
-                    <icon-heart 
-                        @click.native.prevent="like"
-                        :like="isLiked"
-                        v-if="session"
-                    />
+                    <icon-heart
+                        @click.native.prevent="like" :like="isLiked"/>
                 </p>
                 <br><br>
                 <h2>Pays d'origine</h2>
@@ -72,15 +69,13 @@
 
     import {mapState, mapActions, mapMutations} from 'vuex';
     import IconHeart from "@/components/Icons/IconHeart";
-    import API from '../../api/config';
 
     export default {
         name: 'ArtistDescription',
         components: { IconHeart },
         data() {
             return {
-                id: this.$route.params.id,
-                errorLike: ''
+                id: this.$route.params.id
             }
         },
         computed: {
@@ -112,21 +107,14 @@
             })
         },
         methods: {
-            ...mapMutations(['UPDATE_SESSION_FIELDS', 'LIKE_ARTIST']),
+            ...mapMutations(['UPDATE_SESSION_FIELDS']),
             ...mapActions(['getArtists', 'getNews', 'getGenres', 'getAlbums', 'getConcerts', 'likeArtist']),
-            async like() {
-                try {
-                    const res = await API.patch(
-                        `artists/like/${this.id}`, 
-                        { 
-                            shouldLiked: !this.session.artistLiked.includes(this.id)
-                        }
-                    );
-
-                    this.UPDATE_SESSION_FIELDS({artistLiked: res.data.newArtistLiked});
-                    this.LIKE_ARTIST({id: this.id, shouldLiked: !!this.session.artistLiked.includes(this.id)});
-                } catch (error) {
-                    this.errorLike = error.data.message
+            like() {
+                if(this.session) {
+                    this.likeArtist({id: this.id, isLiked: this.isLiked})
+                        .then(res => this.UPDATE_SESSION_FIELDS({artistLiked: res.data.newArtistLiked}))
+                } else {
+                    this.$router.push({name: 'login'})
                 }
             }
         },

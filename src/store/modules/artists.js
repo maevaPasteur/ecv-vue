@@ -27,7 +27,7 @@ const mutations = {
         const artists = [...state.artists];
         artists.forEach((item, index) => {
             if (item.id === params.id) {
-                artists[index].likes = params.shouldLiked ? artists[index].likes + 1 : artists[index].likes - 1
+                artists[index].likes = !params.isLiked ? artists[index].likes + 1 : artists[index].likes - 1
             }
         });
         state.artists = [...artists];
@@ -76,9 +76,8 @@ const actions = {
         })
     },
     likeArtist({commit}, params) {
-        console.log(params);
         return new Promise(resolve => {
-            API.patch(`artists/like/${params.id}`, { shouldLiked: params.shouldLiked })
+            API.patch(`artists/like/${params.id}`, { shouldLiked: !params.isLiked })
                 .then(res => {
                     commit('LIKE_ARTIST', params);
                     resolve(res)

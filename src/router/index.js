@@ -31,7 +31,7 @@ const router = new Router({
 router.beforeEach(async (to, from, next) => {
     if (to.matched.some(route => route.meta.auth)) {
 
-        if(!localStorage.getItem('token')) return next('/connexion');
+        if(!localStorage.getItem('token')) return next({name: 'login'});
 
         API.head('/admin').then(res => {
             if (res.statusText === 'OK') return next();

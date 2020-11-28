@@ -6,7 +6,7 @@
                 <div class="infos">
                     <span>#{{ index + 1 }}</span>
                     <p class="likes">{{ artist.likes | splitNumber }}
-                        <icon-heart @click.native.prevent="like"/>
+                        <icon-heart @click.native.prevent="like" :like="isLiked"/>
                     </p>
                     <p class="name">{{ artist.name }}</p>
                 </div>
@@ -17,6 +17,7 @@
 
 <script>
 
+    import {mapState, mapActions, mapMutations} from 'vuex';
     import IconHeart from "@/components/Icons/IconHeart";
 
     export default {
@@ -26,9 +27,24 @@
             artist: Object,
             index: Number
         },
+        computed: {
+            ...mapState({
+                session: state => state.session,
+                isLiked(state) {
+                    return !!(state.session && state.session.artistLiked.includes(this.artist.id));
+                }
+            })
+        },
         methods: {
+            ...mapMutations(['UPDATE_SESSION_FIELDS']),
+            ...mapActions(['likeArtist']),
             like() {
-                console.log('like')
+                if(this.session) {
+                    this.likeArtist({id: this.artist.id, isLiked: this.isLiked})
+                        .then(res => this.UPDATE_SESSION_FIELDS({artistLiked: res.data.newArtistLiked}))
+                } else {
+                    this.$router.push({name: 'login'})
+                }
             }
         }
     }

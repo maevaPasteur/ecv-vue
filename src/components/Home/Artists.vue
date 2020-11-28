@@ -3,7 +3,10 @@
         <h2>Tous nos artistes du moment</h2>
         <flickity class="slider" :class="{'is-dragging': isDragging}" :options="flickityOptions" ref="flickity" @init="initSlider">
             <Artist v-for="(artist, index) in artists" :key="index + artist.name" class="slide" :artist="artist">
-                <p>{{ artist.likes | splitNumber }}<icon-heart @click.native.prevent="like"/></p>
+                <p>
+                    {{ artist.likes | splitNumber }}
+                    <icon-heart @click.native.prevent="like(artist.id)" :like="isLiked(artist.id)"/>
+                </p>
             </Artist>
         </flickity>
     </section>
@@ -11,7 +14,7 @@
 
 <script>
 
-    import {mapState, mapActions} from 'vuex';
+    import {mapState, mapActions, mapMutations} from 'vuex';
     import Flickity from 'vue-flickity'
     import IconHeart from "@/components/Icons/IconHeart";
     import Artist from "@/components/Home/Artist";
@@ -37,13 +40,23 @@
         },
         computed: {
             ...mapState({
-                artists: state => state.artists
+                artists: state => state.artists,
+                session: state => state.session
             })
         },
         methods: {
-            ...mapActions(['getArtists']),
-            like() {
-                console.log('like')
+            ...mapMutations(['UPDATE_SESSION_FIELDS']),
+            ...mapActions(['getArtists', 'likeArtist']),
+            isLiked(id) {
+                return !!(this.session && this.session.artistLiked.includes(id));
+            },
+            like(id) {
+                if(this.session) {
+                    this.likeArtist({id: id, isLiked: this.isLiked(id)})
+                        .then(res => this.UPDATE_SESSION_FIELDS({artistLiked: res.data.newArtistLiked}))
+                } else {
+                    this.$router.push({name: 'login'})
+                }
             },
             initSlider() {
                 this.$refs.flickity.on('dragStart', () => this.isDragging = true);
@@ -110,6 +123,7 @@
 
         svg {
             width: 15px;
+            margin-left: 5px;
         }
     }
 

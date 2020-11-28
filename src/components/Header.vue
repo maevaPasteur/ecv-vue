@@ -4,7 +4,7 @@
             <div class="bar">
                 <router-link :to="{ name: 'home' }"><h1>NEWS APP</h1></router-link>
                 <router-link class="search-icon" :to="{name: 'search'}"><icon-search/></router-link>
-                <router-link v-if="session" :to="{name: 'home'}"><p>Bienvenue {{session.username}}</p></router-link>
+                <p v-if="session">Bienvenue {{session.username}}</p>
                 <button @click="toggleMenu" :class="{'open' : menuVisible}"></button>
             </div>
         </header>
@@ -111,6 +111,10 @@
             width: calc(100% - 40px);
             align-items: center;
             justify-content: space-between;
+
+            p {
+                margin-right: 20px;
+            }
         }
 
         button {
