@@ -34,7 +34,7 @@
 
 <script>
 
-    import {mapActions} from 'vuex';
+    import {mapActions, mapState} from 'vuex';
     import Flickity from 'vue-flickity'
 
     export default {
@@ -57,6 +57,11 @@
                 error: null
             }
         },
+        computed: {
+            ...mapState({
+                session: state => state.session
+            })
+        },
         methods: {
             ...mapActions(['register']),
             submit() {
@@ -68,6 +73,9 @@
                 this.$refs.slider.on('dragStart', () => this.isDragging = true);
                 this.$refs.slider.on('dragEnd', () => this.isDragging = false);
             }
+        },
+        mounted() {
+            if(this.session) this.$router.push('/')
         }
     }
 </script>

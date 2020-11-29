@@ -15,7 +15,7 @@
 
 <script>
 
-import {mapActions} from 'vuex';
+import {mapActions, mapState} from 'vuex';
 
     export default {
         data() {
@@ -27,6 +27,11 @@ import {mapActions} from 'vuex';
                 error: null
             }
         },
+        computed: {
+            ...mapState({
+                session: state => state.session
+            })
+        },
         methods: {
             ...mapActions(['login']),
             submit() {
@@ -34,6 +39,9 @@ import {mapActions} from 'vuex';
                     .then(() => this.$router.push('/'))
                     .catch(() => this.error = 'Adresse email ou mot de passe incorrect');
             }
+        },
+        mounted() {
+            if(this.session) this.$router.push('/')
         }
 
     }

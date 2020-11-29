@@ -45,7 +45,7 @@
 
 <script>
 
-    import {mapState, mapActions, mapMutations} from 'vuex';
+    import {mapState, mapActions} from 'vuex';
 
     export default {
         name: 'ArticleContent',
@@ -71,7 +71,6 @@
             })
         },
         methods: {
-            ...mapMutations(['ADD_NEW_COMMENT']),
             ...mapActions(['getNews', 'getArtists', 'addComment']),
             submit() {
                 this.addComment({

@@ -16,7 +16,7 @@
                     <li v-if="!session"><router-link @click.native="toggleMenu" :to="{ name: 'register' }">Inscription</router-link></li>
                     <li v-if="session"><router-link @click.native="toggleMenu" :to="{ name: 'profile' }">Mon profil</router-link></li>
                     <li  v-if="session && session.role"><router-link @click.native="toggleMenu" :to="{ name: 'admin' }">Back-office</router-link></li>
-                    <li v-if="session" @click.prevent="logout">Logout</li>
+                    <li v-if="session" @click.prevent="submitLogout">Logout</li>
                 </ul>
             </nav>
         </transition>
@@ -25,9 +25,9 @@
 
 
 <script>
+
     import IconSearch from "@/components/Icons/IconSearch";
-    import {mapState, mapMutations} from 'vuex';
-    import API from '@/api/config';
+    import {mapState, mapActions} from 'vuex';
 
     export default {
         name: 'Header',
@@ -42,18 +42,13 @@
             ...mapState(['session'])
         },
         methods: {
-            ...mapMutations(['UNPOPULATE_SESSION_DATA']),
+            ...mapActions(['logout']),
+            submitLogout() {
+                this.logout();
+                this.toggleMenu();
+            },
             toggleMenu() {
                 this.menuVisible = !this.menuVisible
-            },
-            async logout () {
-                try {
-                    await API.delete('logout', {withCredentials: true});
-                    localStorage.removeItem('token');
-                    this.UNPOPULATE_SESSION_DATA();
-                } catch (error) {
-                    this.errorLogout = error.data.message;
-                }
             }
         }
     }

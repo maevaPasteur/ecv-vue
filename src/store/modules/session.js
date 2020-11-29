@@ -47,6 +47,13 @@ const actions = {
                 .catch(() => reject())
         })
     },
+    logout({commit}) {
+      API.delete('logout', {withCredentials: true})
+          .then(() => {
+              localStorage.removeItem('token');
+              commit('UNPOPULATE_SESSION_DATA')
+          })
+    },
     tryLogin({commit}) {
         API.get('/user')
             .then(res => {
