@@ -23,7 +23,7 @@ exports.createArtist = async (req, res) => {
 
 exports.updateArtist = async (req, res) => {
     try {
-        const data = await ArtistsModel.updateOne({_id: req.params.id}, {$set: req.body});
+        const data = await ArtistsModel.findByIdAndUpdate({_id: req.params.id}, {$set: req.body}, { new: true });
         res.status(201).json(data)
     } catch (err) {
         res.json({message: err})
@@ -32,7 +32,7 @@ exports.updateArtist = async (req, res) => {
 
 exports.deleteArtist = async (req, res) => {
     try {
-        Artists.deleteOne({_id: req.params.id}).then(() => res.json(req.body))
+        ArtistsModel.deleteOne({_id: req.params.id}).then(() => res.status(200).json({message: "Supprimé"}))
     } catch (err) {
         res.json({message: err})
     }

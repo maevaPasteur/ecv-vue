@@ -21,7 +21,7 @@ exports.createNew = async (req, res) => {
 
 exports.updateNew = async (req, res) => {
     try {
-        const data = await NewsModel.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body });
+        const data = await NewsModel.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body }, { new: true });
         res.status(201).json(data)
     } catch(err) {
         res.json({ message: err })
@@ -30,7 +30,7 @@ exports.updateNew = async (req, res) => {
 
 exports.deletetNew = async (req, res) => {
     try {
-        NewsModel.deleteOne({ _id: req.params.id }).then(() => res.json(req.body))
+        NewsModel.deleteOne({ _id: req.params.id }).then(() => res.status(200).json({message: "Supprimé"}));
     } catch(err) {
         res.json({ message: err })
     }

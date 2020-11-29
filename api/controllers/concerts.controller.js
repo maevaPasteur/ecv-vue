@@ -21,7 +21,7 @@ exports.createConcert = async (req, res) => {
 
 exports.updateConcert = async (req, res) => {
     try {
-        const data = await ConcertsRoute.updateOne({ _id: req.params.id }, { $set: req.body });
+        const data = await ConcertsRoute.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body }, { new: true });
         res.status(201).json(data)
     } catch(err) {
         res.json({ message: err })
@@ -30,7 +30,7 @@ exports.updateConcert = async (req, res) => {
 
 exports.deleteConcert = async (req, res) => {
     try {
-        ConcertsRoute.deleteOne({ _id: req.params.id }).then(() => res.json(req.body))
+        ConcertsRoute.deleteOne({ _id: req.params.id }).then(() => res.status(200).json({message: "Supprimé"}));
     } catch(err) {
         res.json({ message: err })
     }

@@ -21,7 +21,7 @@ exports.createAlbum = async (req, res) => {
 
 exports.updateAlbum = async (req, res) => {
     try {
-        const data = await AlbumsModel.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body });
+        const data = await AlbumsModel.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body }, { new: true });
         res.status(201).json(data)
     } catch(err) {
         res.json({ message: err })
@@ -30,7 +30,7 @@ exports.updateAlbum = async (req, res) => {
 
 exports.deleteAlbum = async (req, res) => {
     try {
-        AlbumsModel.deleteOne({ _id: req.params.id }).then(() => res.json(req.body))
+        AlbumsModel.deleteOne({ _id: req.params.id }).then(() => res.status(200).json({message: "Supprimé"}));
     } catch(err) {
         res.json({ message: err })
     }
