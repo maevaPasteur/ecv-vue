@@ -14,7 +14,7 @@
                     <li><router-link @click.native="toggleMenu" :to="{ name: 'home' }">Accueil</router-link></li>
                     <li v-if="!session"><router-link @click.native="toggleMenu" :to="{ name: 'login' }">Connexion</router-link></li>
                     <li v-if="!session"><router-link @click.native="toggleMenu" :to="{ name: 'register' }">Inscription</router-link></li>
-                    <li v-if="session"><router-link @click.native="toggleMenu" :to="{ name: 'profile' }">Mon profile</router-link></li>
+                    <li v-if="session"><router-link @click.native="toggleMenu" :to="{ name: 'profile' }">Mon profil</router-link></li>
                     <li  v-if="session && session.role"><router-link @click.native="toggleMenu" :to="{ name: 'admin' }">Back-office</router-link></li>
                     <li v-if="session" @click.prevent="logout">Logout</li>
                 </ul>
@@ -95,6 +95,10 @@
         font-size: 40px;
         line-height: 1.5;
         text-align: center;
+
+        li {
+            cursor: pointer;
+        }
     }
 
     header {

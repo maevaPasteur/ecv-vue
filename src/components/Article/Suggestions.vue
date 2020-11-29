@@ -66,6 +66,7 @@
 
         .suggestion-articles {
             outline: 0;
+            position: relative;
 
             &.is-dragging a {
                 pointer-events: none;

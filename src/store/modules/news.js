@@ -68,6 +68,11 @@ const actions = {
                 })
                 .catch(err => reject(err))
         }))
+    },
+    addComment({commit}, data) {
+        API.patch(`news/comment/${data.id}`, {userId: data.userId, content: data.content})
+            .then(res => commit('ADD_NEW_COMMENT', {articleId: data.id, commentData: res.data}))
+
     }
 };
 

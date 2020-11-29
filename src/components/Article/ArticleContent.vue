@@ -31,8 +31,8 @@
                 </li>
             </ul>
             <p class="no-comment" v-else>Aucun commentaire pour le moment</p>
-            <form @submit.prevent="addComment" v-if="session">
-                <label class="text"><textarea placeholder="Mon commentaire..." v-model="textarea"></textarea></label>
+            <form @submit.prevent="submit" v-if="session">
+                <label class="text"><textarea placeholder="Mon commentaire..." v-model="textarea" required></textarea></label>
                 <button class="text" type="submit">Publier</button>
             </form>
             <div class="comments" v-else>
@@ -44,33 +44,15 @@
 </template>
 
 <script>
+
     import {mapState, mapActions, mapMutations} from 'vuex';
-    import API from '../../api/config';
 
     export default {
         name: 'ArticleContent',
         data() {
             return {
                 id: this.$route.params.id,
-                textarea: '',
-                errorApi: ''
-            }
-        },
-        methods: {
-            ...mapMutations(['ADD_NEW_COMMENT']),
-            ...mapActions(['getNews', 'getArtists']),
-            async addComment() {
-                try {
-                    if (this.textarea.length === 0) return false;
-                    const res = await API.patch(`news/comment/${this.id}`, {userId: this.session._id, content: this.textarea});
-                    
-                    this.ADD_NEW_COMMENT({
-                        articleId: this.id,
-                        commentData: { ...res.data}
-                    });
-                } catch (error) {
-                    this.errorApi = error.response.data.message
-                }
+                textarea: ''
             }
         },
         computed: {
@@ -87,6 +69,18 @@
                 },
                 session: state => state.session
             })
+        },
+        methods: {
+            ...mapMutations(['ADD_NEW_COMMENT']),
+            ...mapActions(['getNews', 'getArtists', 'addComment']),
+            submit() {
+                this.addComment({
+                    id: this.id,
+                    userId: this.session._id,
+                    content: this.textarea
+                });
+                this.textarea = ''
+            }
         },
         mounted() {
             if (!Object.keys(this.article).length) {
