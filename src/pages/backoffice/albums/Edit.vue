@@ -6,6 +6,7 @@
             :routes="routes"
             :fields="fields"
             :states="states"
+            :showLoader="showLoader"
             @save="save"
     />
 
@@ -32,14 +33,16 @@
                     {label: "Tracks", param: "tracks", type: "number"},
                     {label: "Cover", param: "cover", type: "image"},
                     {label: "Artiste", param: "artistId", type: "radio", options: 'artists'}
-                ]
+                ],
+                showLoader: false
             }
         },
         methods: {
             ...mapActions(['getAlbums', 'getArtists', 'updateAlbum']),
             save() {
-                this.updateAlbum(this.album);
-                this.$router.push({name: 'albums.show', params: {id: this.id}})
+                this.showLoader = true;
+                this.updateAlbum(this.album)
+                    .then(() => this.$router.push({name: 'albums.show', params: {id: this.id}}))
             }
         },
         computed: {

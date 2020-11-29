@@ -33,6 +33,9 @@
                 </tr>
             </table>
         </div>
+
+        <loader v-if="showLoader"/>
+
     </show>
 </template>
 
@@ -40,16 +43,19 @@
 
     import {mapState, mapActions} from 'vuex';
     import Show from "@/components/Backoffice/Show";
+    import Loader from "../../../components/Loader";
 
     export default {
         components: {
+            Loader,
             Show
         },
         data() {
             return {
                 id: this.$route.params.id,
                 editRouteName: 'albums.edit',
-                confirmSentence: 'Êtes-vous certain de vouloir supprimer ce concert ?'
+                confirmSentence: 'Êtes-vous certain de vouloir supprimer ce concert ?',
+                showLoader: false
             }
         },
         computed: {
@@ -69,8 +75,10 @@
         methods: {
             ...mapActions(['getAlbums', 'getArtists', 'deleteAlbum']),
             remove() {
-                this.deleteAlbum(this.id);
-                this.$router.push({name: 'albums.index'})
+                this.showLoader = true;
+                this.deleteAlbum(this.id).then(() => {
+                    this.$router.push({name: 'albums.index'})
+                })
             }
         },
         mounted() {

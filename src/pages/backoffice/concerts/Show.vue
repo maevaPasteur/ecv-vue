@@ -15,6 +15,7 @@
                 <span>{{ artist.name }}</span>
             </router-link>
         </div>
+        <loader v-if="showLoader"/>
     </show>
 </template>
 
@@ -22,16 +23,19 @@
 
     import {mapState, mapActions} from 'vuex';
     import Show from "@/components/Backoffice/Show";
+    import Loader from "../../../components/Loader";
 
     export default {
         components: {
+            Loader,
             Show
         },
         data() {
             return {
                 id: this.$route.params.id,
                 editRouteName: 'concerts.edit',
-                confirmSentence: 'Êtes-vous certain de vouloir supprimer ce concert ?'
+                confirmSentence: 'Êtes-vous certain de vouloir supprimer ce concert ?',
+                showLoader: false
             }
         },
         computed: {
@@ -51,8 +55,10 @@
         methods: {
             ...mapActions(['getConcerts', 'getArtists', 'deleteConcert']),
             remove() {
-                this.deleteConcert(this.id);
-                this.$router.push({name: 'concerts.index'})
+                this.showLoader = true;
+                this.deleteConcert(this.id).then(() => {
+                    this.$router.push({name: 'concerts.index'})
+                })
             }
         },
         mounted() {

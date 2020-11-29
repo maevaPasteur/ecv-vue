@@ -38,8 +38,13 @@ const actions = {
         })
     },
     updateConcert({commit}, concert) {
-        API.patch(`concerts/${concert.id}`, {...concert})
-            .then(response => commit('SET_CONCERT', response.data))
+        return new Promise(resolve => {
+            API.patch(`concerts/${concert.id}`, {...concert})
+                .then(response => {
+                    commit('SET_CONCERT', response.data);
+                    resolve()
+                })
+        })
     },
     createConcert({commit}, concert) {
         return new Promise((resolve, reject) => {

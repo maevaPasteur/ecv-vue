@@ -36,8 +36,13 @@ const actions = {
         })
     },
     updateAlbum({commit}, album) {
-        API.patch(`albums/${album.id}`, {...album})
-            .then(response => commit('SET_ALBUM', response.data))
+        return new Promise(resolve => {
+            API.patch(`albums/${album.id}`, {...album})
+                .then(response => {
+                    commit('SET_ALBUM', response.data);
+                    resolve()
+                })
+        })
     },
     createAlbum({commit}, album) {
         return new Promise((resolve, reject) => {

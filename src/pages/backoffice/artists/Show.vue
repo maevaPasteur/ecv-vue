@@ -61,7 +61,7 @@
             <router-link :to="{name: 'artist', params: { id: artist.id }}" class="button">Voir la page de l'artiste</router-link>
         </div>
 
-        <loader :visible="showLoader"/>
+        <loader v-if="showLoader"/>
 
     </show>
 </template>

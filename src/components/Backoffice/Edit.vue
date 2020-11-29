@@ -43,19 +43,24 @@
             <button type="submit">Valider</button>
 
         </form>
+
+        <loader v-if="showLoader"/>
     </div>
 </template>
 
 <script>
 
+    import Loader from "../Loader";
     export default {
         name: 'Edit',
+        components: {Loader},
         props: {
             activeObject: Object,
             title: String,
             routes: Array,
             fields: Array,
-            states: Object
+            states: Object,
+            showLoader: Boolean
         },
         methods: {
             save() {

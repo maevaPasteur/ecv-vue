@@ -35,7 +35,7 @@ const mutations = {
 
 const actions = {
     getNews({commit}) {
-        new Promise(resolve => {
+        return new Promise(resolve => {
             API.get('news').then(response => {
                 let articles = response.data.sort((a, b) => {
                     return new Date(b.published) - new Date(a.published)
@@ -46,8 +46,13 @@ const actions = {
         })
     },
     updateNew({commit}, article) {
-        API.patch(`news/${article.id}`, {...article})
-            .then(response => commit('SET_NEW', response.data))
+        return new Promise(resolve => {
+            API.patch(`news/${article.id}`, {...article})
+                .then(response => {
+                    commit('SET_NEW', response.data);
+                    resolve()
+                })
+        })
     },
     createNew({commit}, article) {
         return new Promise((resolve, reject) => {

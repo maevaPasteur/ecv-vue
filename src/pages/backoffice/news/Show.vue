@@ -42,6 +42,7 @@
             </table>
             <router-link :to="{name: 'article', params: { id: article.id }}" class="button">Voir la page de l'article</router-link>
         </div>
+        <loader v-if="showLoader"/>
     </show>
 </template>
 
@@ -49,16 +50,19 @@
 
     import {mapState, mapActions} from 'vuex';
     import Show from "@/components/Backoffice/Show";
+    import Loader from "../../../components/Loader";
 
     export default {
         components: {
+            Loader,
             Show
         },
         data() {
             return {
                 id: this.$route.params.id,
                 editRouteName: 'news.edit',
-                confirmSentence: 'Êtes-vous certain de vouloir supprimer cet article ?'
+                confirmSentence: 'Êtes-vous certain de vouloir supprimer cet article ?',
+                showLoader: false
             }
         },
         computed: {
@@ -78,8 +82,10 @@
         methods: {
             ...mapActions(['getNews', 'getArtists', 'deleteNew']),
             remove() {
-                this.deleteNew(this.id);
-                this.$router.push({name: 'news.index'})
+                this.showLoader = true;
+                this.deleteNew(this.id).then(() => {
+                    this.$router.push({name: 'news.index'})
+                })
             }
         },
         mounted() {

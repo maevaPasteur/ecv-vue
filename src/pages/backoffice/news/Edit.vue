@@ -5,6 +5,7 @@
         :routes="routes"
         :fields="fields"
         :states="states"
+        :showLoader="showLoader"
         @save="save"
     />
 </template>
@@ -30,14 +31,16 @@
                     { label: "Lien de l'image", param: "image", type: "image" },
                     { label: "Contenu", param: "content", type: "textarea" },
                     { label: "Les artistes taggés", param: "artistesId", type: "checkbox", options: 'artists' }
-                ]
+                ],
+                showLoader: false
             }
         },
         methods: {
             ...mapActions(['getNews', 'getArtists', 'updateNew']),
             save() {
-                this.updateNew(this.article);
-                this.$router.push({name: 'news.show', params: {id: this.id}})
+                this.showLoader = true;
+                this.updateNew(this.article)
+                    .then(() => this.$router.push({name: 'news.show', params: {id: this.id}}))
             }
         },
         computed: {

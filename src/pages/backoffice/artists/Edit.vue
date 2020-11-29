@@ -6,6 +6,7 @@
           :routes="routes"
           :fields="fields"
           :states="states"
+          :showLoader="showLoader"
           @save="save"
     />
 
@@ -33,12 +34,14 @@
                     {label: "Description", param: "description", type: "textarea"},
                     {label: "Likes", param: "likes", type: "number"},
                     {label: "Le genre", param: "genreId", type: "radio", options: 'genres'}
-                ]
+                ],
+                showLoader: false
             }
         },
         methods: {
             ...mapActions(['getGenres', 'getArtists', 'updateArtist']),
             save() {
+                this.showLoader = true;
                 this.updateArtist(this.artist)
                     .then(() => this.$router.push({ name: 'artists.show', params: {id: this.id} }))
             }

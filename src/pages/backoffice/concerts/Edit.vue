@@ -6,6 +6,7 @@
         :routes="routes"
         :fields="fields"
         :states="states"
+        :showLoader="showLoader"
         @save="save"
     />
 
@@ -30,14 +31,16 @@
                     {label: "Lieu du concert", param: "name", type: "text"},
                     {label: "Date", param: "date", type: "date"},
                     {label: "Les artistes taggés", param: "artistId", type: "radio", options: 'artists'}
-                ]
+                ],
+                showLoader: false
             }
         },
         methods: {
             ...mapActions(['getConcert', 'getArtists', 'updateConcert']),
             save() {
-                this.updateConcert(this.concert);
-                this.$router.push({name: 'concerts.show', params: {id: this.id}})
+                this.showLoader = true;
+                this.updateConcert(this.concert)
+                    .then(() => this.$router.push({name: 'concerts.show', params: {id: this.id}}))
             }
         },
         computed: {
