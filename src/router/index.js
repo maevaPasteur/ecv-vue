@@ -1,6 +1,6 @@
 import Router from 'vue-router'
 import Vue from 'vue'
-import API from "@/api/config";
+import {isConnect, isAdmin} from "@/api/users";
 
 import newsRoutes from "./news";
 import concertsRoutes from "./concerts";
@@ -34,16 +34,16 @@ router.beforeEach(async (to, from, next) => {
         if(!localStorage.getItem('token')) return next({name: 'login'});
 
         if(to.matched.some(route => route.meta.auth === "admin")) {
-            API.head('/admin').then(res => {
-                if (res.statusText === 'OK') return next();
-                else return next({name: 'login'})
-            }).catch(() => next({name: 'login'}))
+
+            isAdmin()
+                .then(() => next())
+                .catch(() => next({name: 'login'}))
 
         } else {
-            API.head('/user').then(res => {
-                if (res.statusText === 'OK') return next();
-                else return next({name: 'login'})
-            }).catch(() => next({name: 'login'}))
+
+            isConnect()
+                .then(() => next())
+                .catch(() => next({name: 'login'}))
 
         }
     } else {

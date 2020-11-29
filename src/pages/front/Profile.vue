@@ -1,7 +1,7 @@
 <template>
-    <div class="page-content section-item page-profile">
+    <div class="page-content section-item page-profile" v-if="session">
         <h1>Mon profil</h1>
-        <div v-if="session">
+        <div>
             <div class="infos">
                 <img :src="session.avatar" :alt="session.username">
                 <div>
@@ -27,7 +27,7 @@
 
 <script>
 
-    import {mapState} from 'vuex';
+    import {mapState, mapActions} from 'vuex';
 
     export default {
         name: 'Profile',
@@ -41,6 +41,9 @@
                 },
                 session: state => state.session
             })
+        },
+        methods: {
+            ...mapActions(['getArtists'])
         },
         mounted() {
             if(!this.artists.length) {

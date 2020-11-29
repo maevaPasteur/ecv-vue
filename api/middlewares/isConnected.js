@@ -28,6 +28,7 @@ module.exports = async function (req, res, next) {
         return verify(token, userSession.key, async function (err) {
             if (err) {
                 if (err.name === 'TokenExpiredError') {
+                    // eslint-disable-next-line no-useless-catch
                     try {
                         if (await compare(userSession.key, req.cookies.token)) {
                             res.locals.data = await createSessionAndLog(userSession, true);

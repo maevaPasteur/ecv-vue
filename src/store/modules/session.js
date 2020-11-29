@@ -11,15 +11,12 @@ const mutations = {
     UNPOPULATE_SESSION_DATA(state) {
         state.session = null;
     },
-    UPDATE_SESSION_FIELDS (state, fieldsToupdate) {
+    UPDATE_SESSION_FIELDS (state, fieldsToUpdate) {
         const newtState = { ...state.session};
-
-        Object.keys(fieldsToupdate).forEach(function (key) {
+        Object.keys(fieldsToUpdate).forEach(function (key) {
             if (key === '_id' || key === 'password') return;
-
-            newtState[key] = fieldsToupdate[key];
+            newtState[key] = fieldsToUpdate[key];
         });
-
         state.session = { ...newtState };
     }
 };
@@ -49,6 +46,17 @@ const actions = {
                 })
                 .catch(() => reject())
         })
+    },
+    tryLogin({commit}) {
+        API.get('/user')
+            .then(res => {
+                if(res.statusText === 'OK') {
+                    commit('POPULATE_SESSION_DATA', res.data);
+                } else localStorage.removeItem('token')
+            })
+            .catch(() => {
+                localStorage.removeItem('token')
+            })
     }
 };
 
