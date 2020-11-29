@@ -35,7 +35,10 @@ const frontRoutes = [
     {
         path: '/mon-compte',
         name: 'profile',
-        component: Profile
+        component: Profile,
+        meta: {
+            auth: 'user'
+        }
     },
     {
         path: '/rechercher',

@@ -33,11 +33,19 @@ router.beforeEach(async (to, from, next) => {
 
         if(!localStorage.getItem('token')) return next({name: 'login'});
 
-        API.head('/admin').then(res => {
-            if (res.statusText === 'OK') return next();
-            else return next({name: 'login'})
-        }).catch(() => next({name: 'login'}))
+        if(to.matched.some(route => route.meta.auth === "admin")) {
+            API.head('/admin').then(res => {
+                if (res.statusText === 'OK') return next();
+                else return next({name: 'login'})
+            }).catch(() => next({name: 'login'}))
 
+        } else {
+            API.head('/user').then(res => {
+                if (res.statusText === 'OK') return next();
+                else return next({name: 'login'})
+            }).catch(() => next({name: 'login'}))
+
+        }
     } else {
         return next()
     }

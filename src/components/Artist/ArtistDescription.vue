@@ -102,7 +102,7 @@
                 },
                 session: state => state.session,
                 isLiked(state) {
-                    return !!(state.session && state.session.artistLiked.includes(this.id));
+                    return !!(state.session && state.session.artistLiked && this.session.artistLiked.includes(this.id));
                 }
             })
         },

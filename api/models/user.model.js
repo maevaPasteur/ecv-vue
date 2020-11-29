@@ -5,8 +5,7 @@ module.exports = mongoose.model(
   new mongoose.Schema({
     username: {
       required: true,
-      type: String,
-      lowercase: true,
+      type: String
     },
     email: {
       required: true,

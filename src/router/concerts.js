@@ -9,7 +9,7 @@ const newsRoutes = [
         name: 'concerts.index',
         component: Index,
         meta: {
-            auth: true
+            auth: 'admin'
         }
     },
     {
@@ -17,7 +17,7 @@ const newsRoutes = [
         name: 'concerts.create',
         component: Create,
         meta: {
-            auth: true
+            auth: 'admin'
         }
     },
     {
@@ -25,7 +25,7 @@ const newsRoutes = [
         name: 'concerts.edit',
         component: Edit,
         meta: {
-            auth: true
+            auth: 'admin'
         }
     },
     {
@@ -33,7 +33,7 @@ const newsRoutes = [
         name: 'concerts.show',
         component: Show,
         meta: {
-            auth: true
+            auth: 'admin'
         }
     }
 ];

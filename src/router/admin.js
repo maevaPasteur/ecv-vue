@@ -6,7 +6,7 @@ const newsRoutes = [
         name: 'admin',
         component: Backoffice,
         meta: {
-            auth: true
+            auth: 'admin'
         }
     }
 ];

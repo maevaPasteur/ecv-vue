@@ -1,6 +1,6 @@
 <template>
     <div class="page-login">
-        <form @submit.prevent="login">
+        <form @submit.prevent="submit">
             <h1>Je me connecte</h1>
             <label>Mail</label>
             <input type="email" required v-model="user.email"/>
@@ -14,14 +14,13 @@
 </template>
 
 <script>
-import API from '../../api/config';
-import {mapMutations} from 'vuex';
+
+import {mapActions} from 'vuex';
 
     export default {
         data() {
             return {
                 user: {
-                    username: '',
                     email: '',
                     password: ''
                 },
@@ -29,18 +28,11 @@ import {mapMutations} from 'vuex';
             }
         },
         methods: {
-            ...mapMutations(['POPULATE_SESSION_DATA']),
-            async login() {
-                try {
-                    const res = await API.post('login', {
-                        email: this.user.email,
-                        password: this.user.password
-                    });
-                    this.POPULATE_SESSION_DATA(res.data.userData);
-                    this.$router.push('/');
-                } catch (error) {
-                    this.error = error.response.data.message
-                }
+            ...mapActions(['login']),
+            submit() {
+                this.login(this.user)
+                    .then(() => this.$router.push('/'))
+                    .catch(() => this.error = 'Adresse email ou mot de passe incorrect');
             }
         }
 

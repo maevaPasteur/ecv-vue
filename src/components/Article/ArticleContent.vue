@@ -91,7 +91,6 @@
         mounted() {
             if (!Object.keys(this.article).length) {
                 this.getNews();
-                console.log('get news')
             }
             if (!this.artists.length) {
                 this.getArtists()

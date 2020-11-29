@@ -14,6 +14,7 @@ const albumsRouter = require('./routes/albums.route');
 const artistsRouter = require('./routes/artists.route');
 const genresRouter = require('./routes/genres.route');
 const adminRouter = require('./routes/admin.route');
+const userRouter = require('./routes/user.route');
 
 const initDb = require('./middlewares/initDb');
 
@@ -37,5 +38,6 @@ app.use('/api/albums', albumsRouter);
 app.use('/api/artists', artistsRouter);
 app.use('/api/genres', genresRouter);
 app.use('/api/admin', adminRouter);
+app.use('/api/user', userRouter);
 
 app.listen(3002);

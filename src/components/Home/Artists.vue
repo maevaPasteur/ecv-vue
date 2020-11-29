@@ -48,7 +48,7 @@
             ...mapMutations(['UPDATE_SESSION_FIELDS']),
             ...mapActions(['getArtists', 'likeArtist']),
             isLiked(id) {
-                return !!(this.session && this.session.artistLiked.includes(id));
+                return !!(this.session && this.session.artistLiked && this.session.artistLiked.includes(id));
             },
             like(id) {
                 if(this.session) {
