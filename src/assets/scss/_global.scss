@@ -24,6 +24,10 @@ textarea {
   max-width: 1200px;
   margin: 150px auto;
 
+  @media screen and (max-width: 520px) {
+    margin: 100px auto;
+  }
+
   .flickity-prev-next-button {
     top: -75px;
     background-color: transparent;

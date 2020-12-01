@@ -44,10 +44,32 @@
             flex-wrap: wrap;
 
             .new {
-                width: calc((100% - 60px) / 4);
                 margin-bottom: 40px;
-                &:not(:nth-of-type(4n)) {
-                    margin-right: 20px;
+
+                @media screen and (min-width: 1025px) {
+                    width: calc((100% - 60px) / 4);
+                    &:not(:nth-of-type(4n)) {
+                        margin-right: 20px;
+                    }
+                }
+
+                @media screen and (max-width: 1024px) and (min-width: 761px) {
+                    width: calc((100% - 40px) / 3);
+                    &:not(:nth-of-type(3n)) {
+                        margin-right: 20px;
+                    }
+                }
+
+                @media screen and (max-width: 760px) and (min-width: 521px) {
+                    width: calc((100% - 20px) / 2);
+                    &:not(:nth-of-type(2n)) {
+                        margin-right: 20px;
+                    }
+                }
+
+                @media screen and (max-width: 520px) {
+                    width: 100%;
+                    margin-bottom: 20px;
                 }
             }
 

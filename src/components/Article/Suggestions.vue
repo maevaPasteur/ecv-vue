@@ -31,7 +31,8 @@
                     prevNextButtons: true,
                     pageDots: false,
                     contain: true,
-                    wrapAround: true
+                    wrapAround: true,
+                    cellAlign: 'left'
                 }
             }
         },
@@ -78,6 +79,14 @@
             margin-right: 20px;
             font-size: 25px;
             text-align: left;
+
+            @media screen and (max-width: 1024px) {
+                width: calc((100% - 20px) / 2);
+            }
+
+            @media screen and (max-width: 600px) {
+               width: 100%;
+            }
 
             a {
                 display: block;
@@ -128,6 +137,9 @@
                 font-size: 35px;
                 margin-top: 10px;
                 text-shadow: 0 0 10px #5a5a5a;
+                @media screen and (max-width: 700px) {
+                    font-size: 1.8rem;
+                }
             }
         }
     }

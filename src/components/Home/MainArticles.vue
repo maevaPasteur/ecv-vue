@@ -97,10 +97,20 @@
             font-size: 60px;
             max-width: 500px;
             display: block;
+
+            @media screen and (max-width: 700px) {
+                left: 20px;
+                bottom: 20px;
+                width: calc(100% - 40px);
+            }
         }
 
         h2 {
             text-shadow: 0 0 10px #5a5a5a;
+
+            @media screen and (max-width: 700px) {
+                font-size: 2rem;
+            }
         }
 
         p {
@@ -110,6 +120,10 @@
             padding-top: 20px;
             margin-top: 10px;
             position: relative;
+
+            @media screen and (max-width: 700px) {
+                font-size: 2rem;
+            }
 
             &:before {
                 content: '';
@@ -131,6 +145,10 @@
             z-index: 2;
             display: flex;
             justify-content: flex-end;
+
+            @media screen and (max-width: 700px) {
+                display: none;
+            }
         }
 
         .dot {

@@ -4,6 +4,13 @@
         <ul v-if="artists && artists.length">
             <top-artist v-for="(artist, index) in artists" :key="'top-' + index + artist.name" :index="index" :artist="artist"/>
         </ul>
+        <ul v-else class="placehodler">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </section>
 </template>
 
@@ -39,12 +46,20 @@
             display: flex;
         }
 
+        .placehodler li {
+            background-color: #272727;
+            border-radius: 50%;
+            padding-bottom: 20%;
+        }
+
         li {
             width: 20%;
             font-size: 1.6rem;
 
-            &:not(:first-of-type) {
-                margin-left: 20px;
+            @media screen and (min-width: 1025px) {
+                &:not(:first-of-type) {
+                    margin-left: 20px;
+                }
             }
 
             &:hover {
@@ -55,6 +70,27 @@
 
                 .name:after {
                     transform: scale(1, 1);
+                }
+            }
+        }
+
+        @media screen and (max-width: 1024px) {
+            ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            li {
+                width: 180px;
+                margin: 0 10px 20px;
+            }
+        }
+
+        @media screen and (max-width: 520px) {
+            li {
+                margin: 0 0 20px;
+                width: calc((100% - 20px) / 2);
+                &:nth-of-type(odd) {
+                    margin-right: 20px;
                 }
             }
         }

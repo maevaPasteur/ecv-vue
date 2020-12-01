@@ -154,8 +154,18 @@
     .section-artist {
         display: flex;
 
+        @media screen and (max-width: 1024px) {
+            flex-direction: column;
+        }
+
         h1 {
             font-size: 90px;
+            @media screen and (max-width: 1024px) {
+                font-size: 70px;
+            }
+            @media screen and (max-width: 700px) {
+                font-size: 40px;
+            }
         }
 
         h2 {
@@ -166,6 +176,10 @@
 
         & > div {
             width: 50%;
+
+            @media screen and (max-width: 1024px) {
+                width: 100%;
+            }
         }
 
         .like {
@@ -178,11 +192,18 @@
         }
 
         .image {
-            position: relative;
-            position: -webkit-sticky;
-            position: sticky;
-            top: 0;
-            height: 100vh;
+            @media screen and (max-width: 1024px) {
+                position: relative;
+                height: 70vh;
+            }
+
+            @media screen and (min-width: 1025px) {
+                width: 100%;
+                position: -webkit-sticky;
+                position: sticky;
+                top: 0;
+                height: 100vh;
+            }
 
             img {
                 position: absolute;
@@ -197,6 +218,10 @@
         .infos {
             & > div {
                 padding: 100px 40px;
+
+                @media screen and (max-width: 1024px) {
+                    padding: 20px;
+                }
             }
         }
 

@@ -118,20 +118,31 @@
         }
 
         .sliders {
-            display: flex;
-            justify-content: space-between;
 
-            & > div {
-                width: calc((100% - 40px) / 2);
+            @media screen and (min-width: 521px) {
+                display: flex;
+                justify-content: space-between;
 
                 & > div {
-                    outline: 0;
+                    width: calc((100% - 40px) / 2);
+
+                    & > div {
+                        outline: 0;
+                    }
+                }
+            }
+            @media screen and (max-width: 520px) {
+                & > div {
+                    width: 100%;
                 }
             }
         }
 
         .slider2 {
             margin-top: 100px;
+            @media screen and (max-width: 520px) {
+                display: none;
+            }
         }
 
         .slide {

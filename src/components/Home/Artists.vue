@@ -88,6 +88,18 @@
             width: calc((100% - 30px) / 4);
             margin-right: 10px;
             overflow: hidden;
+
+            @media screen and (max-width: 1024px) {
+                width: calc((100% - 20px) / 3);
+            }
+
+            @media screen and (max-width: 700px) {
+                width: calc((100% - 10px) / 2);
+            }
+
+            @media screen and (max-width: 520px) {
+                width: 100%;
+            }
         }
 
         a:hover img {
